@@ -1,5 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
+import Matter from "matter-js";
+import TechStackCard from "@/components/TechStackCard";
 import { Github, Instagram, Linkedin } from "lucide-react"
 
 export default function Page() {
@@ -64,7 +66,7 @@ export default function Page() {
 
         <div className="space-y-8">
           {/* Project cards */}
-          <div className="bg-[#F5F5F5] rounded-xl p-4 md:p-10 hover:shadow-lg transition-shadow">
+          <div className="bg-[#F5F5F5] rounded-xl p-6 md:p-10 hover:shadow-lg transition-shadow">
             <div className="flex justify-between items-start mb-4">
                 <div className="flex items-center gap-3">
                 <Image
@@ -102,7 +104,7 @@ export default function Page() {
               />
             </div>
           </div>
-          <div className="bg-[#F5F5F5] rounded-xl p-4 md:p-10 hover:shadow-lg transition-shadow">
+          <div className="bg-[#F5F5F5] rounded-xl p-6 md:p-10 hover:shadow-lg transition-shadow">
             <div className="flex justify-between items-start mb-4">
                 <div className="flex items-center gap-3">
                 <Image
@@ -142,72 +144,67 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Experience and Tech Stack - Reduced max-width and padding */}
       <section id="experience" className="max-w-full mx-4 sm:mx-8 md:mx-16 lg:mx-24 px-4 sm:px-6 lg:px-8 mb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-          <div className="bg-white rounded-xl p-6 md:p-8 shadow-lg">
-            <h2 className="text-xl md:text-2xl font-medium mb-4 md:mb-6 tracking-tighter" style={{ fontSize: "clamp(1.6rem, 2vw, 1.875rem)" }}>Experience</h2>
-            <p className="max-w-2xl font-medium text-gray-600 mb-6 tracking-tighter" 
-               style={{ fontSize: "clamp(1.25rem, 1.5vw, 1.5rem)" }}>
+          <div className="bg-white rounded-xl p-6 md:p-8 shadow-lg flex flex-col">
+            <h2 
+              className="text-xl md:text-2xl font-medium mb-4 md:mb-6 tracking-tighter" 
+              style={{ fontSize: "clamp(1.6rem, 2vw, 1.875rem)" }}
+            >
+              Experience
+            </h2>
+            <p 
+              className="max-w-2xl font-medium text-gray-600 mb-6 tracking-tighter" 
+              style={{ fontSize: "clamp(1.25rem, 1.5vw, 1.5rem)" }}
+            >
               Bringing ideas to life through technology, I've worked across different roles, from leading event tech
               operations to developing platforms that enhance user experiences. Whether it's building scalable
               systems, optimizing performance, or crafting seamless UI, I love turning challenges into functional
               solutions.
             </p>
-            <div className="mt-6 flex gap-4 justify-center">
+            <div className="flex gap-2 justify-center">
               <Image
-              src="/draftanakitb_logo.svg"
-              alt="DraftAnakITB Logo"
-              width={40}
-              height={40}
-              className="rounded-lg"
+                src="/draftanakitb_logo.svg"
+                alt="DraftAnakITB Logo"
+                width={40}
+                height={40}
+                className="rounded-lg w-auto h-auto"
               />
               <Image
-              src="/ludic_logo.png"
-              alt="Ludic Logo" 
-              width={83}
-              height={40}
-              className="rounded-lg"
+                src="/ludic_logo.png"
+                alt="Ludic Logo" 
+                width={83}
+                height={40}
+                className="rounded-lg w-auto h-auto transform scale-75"
               />
               <Image
-              src="/gsis_logo.svg"
-              alt="GSIS Logo"
-              width={40}
-              height={40}
-              className="rounded-lg"
+                src="/gsis_logo.svg"
+                alt="GSIS Logo"
+                width={40}
+                height={40}
+                className="rounded-lg w-auto h-auto"
               />
             </div>
-            <Link href="#" className="text-lg tracking-tighter text-gray-600 mt-6 block hover:underline">
-              View full experience →
-            </Link>
-          </div>
-          <div className="bg-white rounded-xl p-6 md:p-8 shadow-lg">
-            <h2 className="text-xl md:text-2xl font-medium mb-4 md:mb-6 tracking-tighter" style={{ fontSize: "clamp(1.6rem, 2vw, 1.875rem)" }}>Tech Stack</h2>
-            <div className="grid grid-cols-3 sm:grid-cols-4 gap-4 md:gap-6">
-              {Array.from({ length: 12 }).map((_, i) => (
-                <Image
-                  key={i}
-                  src="/placeholder.svg?height=60&width=60"
-                  alt={`Tech stack item ${i + 1}`}
-                  width={60}
-                  height={60}
-                  className="rounded-xl"
-                />
-              ))}
+            <div className="mt-auto pt-6">
+              <Link href="#" className="text-lg tracking-tighter text-gray-600 hover:underline">
+                View full experience →
+              </Link>
             </div>
           </div>
+          <TechStackCard />
         </div>
       </section>
+      
 
       {/* Contact Card - Reduced max-width and padding */}
-      <section id="connect" className="max-w-full mx-4 px-4 sm:px-5 lg:px-6 mb-16">
+      {/* <section id="connect" className="max-w-full mx-4 px-4 sm:px-5 lg:px-6 mb-16">
         <div className="bg-white rounded-xl p-6 md:p-8 max-w-sm mx-auto text-center">
           <div className="w-20 h-20 bg-gray-200 rounded-xl mx-auto mb-4" />
           <h3 className="text-2xl font-bold mb-2">Arqila S.P.</h3>
           <p className="text-base text-gray-600 mb-6">LET'S CONNECT →</p>
           <div className="w-32 h-32 bg-gray-200 mx-auto" />
         </div>
-      </section>
+      </section> */}
 
       {/* Footer - Reduced max-width and padding */}
       <footer className="max-w-full mx-4 px-4 sm:px-5 lg:px-6 pb-8">
@@ -223,27 +220,13 @@ export default function Page() {
             <span className="text-sm">arqilasp@gmail.com</span>
           </Link>
           <div className="flex gap-4">
-            <Link href="#" className="text-gray-600 hover:text-gray-900">
-              <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
-                <path d="M7.5 9h9v6h-9z" />
-                <path
-                  fillRule="evenodd"
-                  d="M3 6a3 3 0 013-3h12a3 3 0 013 3v12a3 3 0 01-3 3H6a3 3 0 01-3-3V6zm3-1h12a1 1 0 011 1v12a1 1 0 01-1 1H6a1 1 0 01-1-1V6a1 1 0 011-1z"
-                />
-              </svg>
-            </Link>
-            <Link href="#" className="text-gray-600 hover:text-gray-900">
-              <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
-                <path d="M12 3a9 9 0 100 18 9 9 0 000-18zM2 12C2 6.48 6.48 2 12 2s10 4.48 10 10-4.48 10-10 10S2 17.52 2 12zm10-3.5v7l5-3.5-5-3.5z" />
-              </svg>
-            </Link>
-            <Link href="#" className="text-gray-600 hover:text-gray-900">
+            <Link href="https://instagram.com/yourusername" className="text-gray-600 hover:text-gray-900">
               <Instagram className="w-5 h-5" />
             </Link>
-            <Link href="#" className="text-gray-600 hover:text-gray-900">
+            <Link href="https://linkedin.com/in/yourusername" className="text-gray-600 hover:text-gray-900">
               <Linkedin className="w-5 h-5" />
             </Link>
-            <Link href="#" className="text-gray-600 hover:text-gray-900">
+            <Link href="https://github.com/yourusername" className="text-gray-600 hover:text-gray-900">
               <Github className="w-5 h-5" />
             </Link>
           </div>
