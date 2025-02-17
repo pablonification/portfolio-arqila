@@ -3,7 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import Lanyard from "@/components/Lanyard";
 import TechStackCard from "@/components/TechStackCard";
-import { Github, Instagram, Linkedin } from "lucide-react"
+import NavBar from "@/components/NavBar";
 
 export default function Page() {
   useEffect(() => {
@@ -11,36 +11,14 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-pink-200 to-[#e0f7f6]">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 pt-6 px-4 flex justify-center font-inter">
-        <div className="bg-black text-white rounded-xl px-3 py-1 flex gap-0">
-          {["Hola", "Works", "Experience", "Connect"].map((item) => (
-            <Link
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="hover:opacity-80 px-2 py-1 rounded-xl transition-all relative group text-lg font-medium flex items-center gap-4 whitespace-nowrap"
-            >
-              {
-                item === "Hola" && (
-                  <Image
-                    src="/iconamoon_confused-face-fill.svg"
-                    alt="confused face"
-                    width={30}
-                    height={30}
-                    className="w-6 h-6"
-                  />
-                )
-              }
-              <span className="relative z-10 transition-colors duration-200">{item}</span>
-              <div className="absolute inset-0 bg-pink-500 rounded-xl opacity-0 scale-50 transition-all duration-200 data-[active=true]:opacity-100 data-[active=true]:scale-100" />
-            </Link>
-          ))}
-        </div>
-      </nav>
+    <>
+    <div className="min-h-screen bg-gradient-to-b from-[#FFB7C3] to-[#BCF4F5] bg-fixed h-full w-full fixed inset-0 -z-10" />
+    <div className="min-h-screen relative z-0">
+      {/* <Navbar/> */}
+      <NavBar/>
 
       {/* Main Content - Reduced max-width and padding */}
-      <div className="max-w-full mx-4 px-4 sm:px-5 lg:px-6 pt-24 md:pt-32 lg:pt-40">
+      <div id="hola" className="max-w-full mx-4 px-4 sm:px-5 lg:px-6 pt-24 md:pt-32 lg:pt-40">
       <p className="mb-8 max-w-2xl leading-tight tracking-tighter text-[#575757]"
            style={{ fontSize: "clamp(1.25rem, 1.8vw, 2.5rem)" }}>
           Just a tech nerd who loves problem-solving, optimizing systems, and learning new things!
@@ -71,7 +49,7 @@ export default function Page() {
 
         <div className="space-y-8">
           {/* Project cards */}
-          <div className="bg-[#F5F5F5] rounded-xl p-6 md:p-10 hover:shadow-lg transition-shadow">
+          <div className="bg-[#F5F5F5] rounded-xl p-6 md:p-10 hover:shadow-lg transition-shadow" style={{ clipPath: "inset(0)" }}>
             <div className="flex justify-between items-start mb-4">
                 <div className="flex items-center gap-3">
                 <Image
@@ -92,24 +70,28 @@ export default function Page() {
               Where ITB students share their unfiltered thoughts anonymously, freely, and for everyone to see on
               @DraftAnakITB.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Image
-                src="/draftanakitb_pic1.png"
-                alt="DraftAnakITB Interface 1"
-                width={400}
-                height={300}
-                className="rounded-lg w-full"
-              />
-              <Image
-                src="/draftanakitb_pic2.png"
-                alt="DraftAnakITB Interface 2"
-                width={400}
-                height={300}
-                className="rounded-lg w-full"
-              />
-            </div>
+            <div className="flex flex-col md:flex-row gap-4 mt-2 -mb-24"> {/* Negative margin to extend below card */}
+                <div className="relative translate-x-24">
+                  <Image
+                    src="/draftanakitb_pic1.png"
+                    alt="DraftAnakITB Interface 1"
+                    width={600}
+                    height={450}
+                    className="rounded-lg w-full object-cover scale-110"
+                  />
+                </div>
+                <div className="relative translate-y-5 translate-x-28">
+                  <Image
+                    src="/draftanakitb_pic2.png"
+                    alt="DraftAnakITB Interface 2" 
+                    width={600}
+                    height={450}
+                    className="rounded-lg w-full object-cover scale-110"
+                  />
+                </div>
+              </div>
           </div>
-          <div className="bg-[#F5F5F5] rounded-xl p-6 md:p-10 hover:shadow-lg transition-shadow">
+          <div className="bg-[#F5F5F5] rounded-xl p-6 md:p-10 hover:shadow-lg transition-shadow" style={{ clipPath: "inset(0)" }}>
             <div className="flex justify-between items-start mb-4">
                 <div className="flex items-center gap-3">
                 <Image
@@ -129,22 +111,26 @@ export default function Page() {
                style={{ fontSize: "clamp(1.25rem, 1.5vw, 1.5rem)" }}>
               A digital front door to LFM ITB’s annual exhibition, celebrating creativity and storytelling.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Image
-                src="/ludic_pic1.png"
-                alt="DraftAnakITB Interface 1"
-                width={400}
-                height={300}
-                className="rounded-lg w-full"
-              />
-              <Image
-                src="/ludic_pic2.png"
-                alt="DraftAnakITB Interface 2"
-                width={400}
-                height={300}
-                className="rounded-lg w-full"
-              />
-            </div>
+            <div className="flex flex-col md:flex-row gap-4 mt-2 -mb-40"> {/* Negative margin to extend below card */}
+                <div className="relative translate-x-12">
+                  <Image
+                    src="/ludic_pic1.png"
+                    alt="DraftAnakITB Interface 1"
+                    width={600}
+                    height={450}
+                    className="rounded-lg w-full object-cover scale-90"
+                  />
+                </div>
+                <div className="relative translate-y-16 translate-x-14">
+                  <Image
+                    src="/ludic_pic2.png"
+                    alt="DraftAnakITB Interface 2" 
+                    width={600}
+                    height={450}
+                    className="rounded-lg w-full object-cover scale-125"
+                  />
+                </div>
+              </div>
           </div>
         </div>
       </section>
@@ -211,33 +197,77 @@ export default function Page() {
         </div>
       </section> */}
 
-      {/* Footer - Reduced max-width and padding */}
-      <footer className="max-w-full mx-4 px-4 sm:px-5 lg:px-6 pb-8">
-        <div className="bg-gradient-to-r from-pink-200 to-cyan-200 rounded-xl py-3 px-4 md:px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <Link
-            href="mailto:arqilasp@gmail.com"
-            className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
-          >
-            <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M21.2 8.4c.5.38.8.97.8 1.6v10a2 2 0 01-2 2H4a2 2 0 01-2-2V10a2 2 0 01.8-1.6l8-6a2 2 0 012.4 0l8 6z" />
-              <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8" />
-            </svg>
-            <span className="text-sm">arqilasp@gmail.com</span>
-          </Link>
-          <div className="flex gap-4">
-            <Link href="https://instagram.com/yourusername" className="text-gray-600 hover:text-gray-900">
-              <Instagram className="w-5 h-5" />
+        {/* Footer - Reduced max-width and padding */}
+        <footer className="max-w-full mx-4 px-4 sm:px-5 lg:px-6 pb-8">
+          <div className="bg-[#FFB7C3] rounded-xl py-4 sm:py-3 px-4 md:px-6 flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-4">
+            <Link
+              href="mailto:arqilasp@gmail.com"
+              className="flex items-center gap-2 text-black hover:text-gray-700 transition-colors duration-300"
+            >
+              <Image
+                src="/email.svg"
+                alt="Email Icon"
+                width={100}
+                height={100}
+                  className="w-[clamp(1.5rem,2vw,1.75rem)] h-[clamp(1.5rem,2vw,1.75rem)]"
+                />
+              <span className="text-2xl tracking-tighter">arqilasp@gmail.com</span>
             </Link>
-            <Link href="https://linkedin.com/in/yourusername" className="text-gray-600 hover:text-gray-900">
-              <Linkedin className="w-5 h-5" />
-            </Link>
-            <Link href="https://github.com/yourusername" className="text-gray-600 hover:text-gray-900">
-              <Github className="w-5 h-5" />
-            </Link>
+
+            {/* divider */}
+            <div className="w-full -translate-y-2 h-[1px] bg-black/20 sm:hidden" />
+
+            <div className="flex gap-3">
+              <Link href="https://letterboxd.com/meninblacked/" className="group">
+                <Image
+                  src="/letterboxd.svg"
+                  alt="Letterboxd Icon"
+                  width={100}
+                  height={100}
+                  className="rounded-lg w-9 h-10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 group-hover:-translate-y-1"
+                />
+              </Link>
+              <Link href="https://open.spotify.com/user/31yzm7xwxf7ckfwnpo2frvlvinha?si=45af59bfe15c4594" className="group">
+                <Image
+                  src="/spotify.svg"
+                  alt="Spotify Icon"
+                  width={100}
+                  height={100}
+                  className="rounded-lg w-10 h-10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 group-hover:-translate-y-1"
+                />
+              </Link>
+              <Link href="https://instagram.com/arqilasp" className="group">
+                <Image
+                  src="/instagram.svg"
+                  alt="Instagram Icon"
+                  width={100}
+                  height={100}
+                  className="rounded-lg w-9 h-10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 group-hover:-translate-y-1"
+                />
+              </Link>
+              <Link href="https://www.linkedin.com/in/arqila-surya-putra-342160237/" className="group">
+                <Image
+                  src="/linkedin.svg"
+                  alt="Linkedin Icon"
+                  width={100}
+                  height={100}
+                  className="rounded-lg w-9 h-10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 group-hover:-translate-y-1"
+                />
+              </Link>
+              <Link href="https://github.com/pablonification" className="group">
+                <Image
+                  src="/github.svg"
+                  alt="Github Icon"
+                  width={100}
+                  height={100}
+                  className="rounded-lg w-10 h-10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 group-hover:-translate-y-1"
+                />
+              </Link>
+            </div>
           </div>
-        </div>
       </footer>
     </div>
+    </>
   )
 }
 
