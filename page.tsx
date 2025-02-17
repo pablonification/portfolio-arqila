@@ -1,10 +1,15 @@
+import { useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import Matter from "matter-js";
+import Lanyard from "@/components/Lanyard";
 import TechStackCard from "@/components/TechStackCard";
 import { Github, Instagram, Linkedin } from "lucide-react"
 
 export default function Page() {
+  useEffect(() => {
+    document.documentElement.style.scrollBehavior = "smooth";
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-pink-200 to-[#e0f7f6]">
       {/* Navigation */}
@@ -195,7 +200,7 @@ export default function Page() {
         </div>
       </section>
       
-
+      <Lanyard />
       {/* Contact Card - Reduced max-width and padding */}
       {/* <section id="connect" className="max-w-full mx-4 px-4 sm:px-5 lg:px-6 mb-16">
         <div className="bg-white rounded-xl p-6 md:p-8 max-w-sm mx-auto text-center">
