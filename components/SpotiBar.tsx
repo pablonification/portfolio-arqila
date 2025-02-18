@@ -53,7 +53,7 @@ const lyricsData: Lyric[] = [
   { start: 116, text: "And this relationship, it even got me back to drinking" },
   { start: 118, text: "Now this Hennessy, uh, it's gonna be the death of me (Be the death of me)" },
   { start: 125, text: "And I always thought that you having my child was our destiny" },
-  { start: 128, text: "But I can't even vibe with you sexually" },
+  { start: 128, text: "But I can't even vibe with you s*****ly" },
   { start: 132, text: "'Cause every time that I'd try, you would question me" },
   { start: 134, text: "Saying, \"You f***ing them girls, disrespecting me" },
   { start: 137, text: "You don't see how your lies is affecting me?" },
@@ -112,19 +112,19 @@ const formatLyric = (lyric: string) => {
     const trimmed = word.replace(/^[^a-zA-Z]+|[^a-zA-Z]+$/g, "").toLowerCase();
     if (boldKeywords.has(trimmed)) {
       return (
-        <strong key={idx} className="font-bold text-black transition-all duration-300 ease-in-out">
+        <strong key={idx} className="font-bold text-white transition-all duration-300 ease-in-out">
           {word}
         </strong>
       );
     } else if (semiBoldKeywords.has(trimmed)) {
       return (
-        <span key={idx} className="font-semibold text-black transition-all duration-300 ease-in-out">
+        <span key={idx} className="font-semibold text-white transition-all duration-300 ease-in-out">
           {word}
         </span>
       );
     }
     return (
-      <span key={idx} className="font-medium text-black transition-all duration-300 ease-in-out">
+      <span key={idx} className="font-medium text-white transition-all duration-300 ease-in-out">
         {word}
       </span>
     );
@@ -213,35 +213,37 @@ export default function SpotiBar() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className={`relative bg-gradient-to-r from-[#CF7A65] to-[#A679BF] rounded-xl p-3 sm:p-4 flex items-center min-h-[60px] sm:min-h-[80px] text-black transition-transform duration-300 ease-out ${isHovered ? 'scale-[1.02] shadow-lg' : 'scale-100'}`}>
+      <div className={`relative bg-gradient-to-r from-[#B14A9E] to-[#C1986E] rounded-xl p-3 sm:p-4 flex items-center min-h-[60px] sm:min-h-[80px] text-white transition-transform duration-300 ease-out ${isHovered ? 'scale-[1.02] shadow-lg' : 'scale-100'}`}>
         {/* Cover & Info */}
         <div className="flex items-center gap-2 sm:gap-4 z-10">
           <div className="relative group cursor-pointer">
             <Image
               src="/graduation.svg"
               alt="Album Cover"
-              width={56}
-              height={56}
+              width={224}
+              height={224}
+              quality={100}
               className={`w-10 h-10 sm:w-14 sm:h-14 rounded-md transition-transform duration-200 ${isPlaying ? 'animate-spin-slow' : ''}`}
             />
             <div className="absolute inset-0 bg-black/40 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             <PlayPauseButton isPlaying={isPlaying} onClick={handlePlayPause} />
           </div>
           <div className="transform transition-transform duration-200 hover:translate-x-1">
-            <span className="text-sm sm:text-lg font-bold tracking-tight text-black hover:underline cursor-pointer block">
+            <span className="text-sm sm:text-lg font-bold tracking-tight text-white hover:underline cursor-pointer block">
               Kanye West
             </span>
-            <p className="text-sm sm:text-lg font-medium tracking-tight text-black hover:underline cursor-pointer">
+            <p className="text-sm sm:text-lg font-medium tracking-tight text-white hover:underline cursor-pointer">
               Bittersweet Poetry
             </p>
           </div>
         </div>
         <div className="ml-auto transform transition-all duration-200 hover:scale-110 hover:rotate-12 z-10">
           <Image
-            src="/spotibar.svg"
+            src="/spotibar_white.svg"
             alt="Spotify Icon"
-            width={50}
-            height={50}
+            width={200}
+            height={200}
+            quality={100}
             className="w-8 h-8 sm:w-12 sm:h-12 opacity-80 hover:opacity-100 transition-opacity duration-200"
           />
         </div>

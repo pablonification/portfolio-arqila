@@ -62,8 +62,9 @@ export default function Page() {
                     <Image
                       src="/draftanakitb_black1.svg"
                       alt="DraftAnakITB icon"
-                      width={24}
-                      height={24}
+                      width={96}
+                      height={96}
+                      quality={100}
                       style={{
                         width: "clamp(2rem, 2.5vw, 3rem)",
                         height: "clamp(2rem, 2.5vw, 3rem)"
@@ -97,8 +98,9 @@ export default function Page() {
                     <Image
                       src="/draftanakitb_pic1.png"
                       alt="DraftAnakITB Interface 1"
-                      width={600}
-                      height={450}
+                      width={1200}
+                      height={900}
+                      quality={100}
                       className="rounded-lg w-full object-cover scale-100"
                     />
                   </div>
@@ -116,8 +118,9 @@ export default function Page() {
                     <Image
                       src="/draftanakitb_pic2.png"
                       alt="DraftAnakITB Interface 2"
-                      width={600}
-                      height={450}
+                      width={1200}
+                      height={900}
+                      quality={100}
                       className="rounded-lg w-full object-cover scale-110"
                     />
                   </div>
@@ -136,8 +139,9 @@ export default function Page() {
                     <Image
                       src="/ludic-black.svg"
                       alt="DraftAnakITB icon"
-                      width={24}
-                      height={24}
+                      width={96}
+                      height={96}
+                      quality={100}
                       style={{ width: "clamp(2rem, 2.5vw, 3rem)", height: "clamp(2rem, 2.5vw, 3rem)" }}
                     />
                     <span className="font-medium tracking-tighter" 
@@ -166,8 +170,9 @@ export default function Page() {
                     <Image
                       src="/ludic_pic1.png"
                       alt="Ludic Interface 1"
-                      width={600}
-                      height={450}
+                      width={1200}
+                      height={900}
+                      quality={100}
                       className="rounded-lg w-full object-cover scale-90"
                     />
                   </div>
@@ -188,6 +193,7 @@ export default function Page() {
                       alt="Ludic Interface 2" 
                       width={1600}
                       height={1200}
+                      quality={100}
                       className="rounded-lg w-full object-cover scale-110"
                     />
                   </div>
@@ -220,22 +226,25 @@ export default function Page() {
               <Image
                 src="/draftanakitb_logo.svg"
                 alt="DraftAnakITB Logo"
-                width={40}
-                height={40}
+                width={160}
+                height={160}
+                quality={100}
                 className="rounded-lg w-auto h-auto"
               />
               <Image
                 src="/ludic_logo.png"
                 alt="Ludic Logo" 
-                width={83}
-                height={40}
+                width={332}
+                height={160}
+                quality={100}
                 className="rounded-lg w-auto h-auto transform scale-75"
               />
               <Image
                 src="/gsis_logo.svg"
                 alt="GSIS Logo"
-                width={40}
-                height={40}
+                width={160}
+                height={160}
+                quality={100}
                 className="rounded-lg w-auto h-auto"
               />
             </div>
@@ -273,10 +282,11 @@ export default function Page() {
               <Image
                 src="/email.svg"
                 alt="Email Icon"
-                width={100}
-                height={100}
-                  className="w-[clamp(1.5rem,2vw,1.75rem)] h-[clamp(1.5rem,2vw,1.75rem)]"
-                />
+                width={200}
+                height={200}
+                quality={100}
+                className="w-[clamp(1.5rem,2vw,1.75rem)] h-[clamp(1.5rem,2vw,1.75rem)]"
+              />
               <span className="text-2xl tracking-tighter">arqilasp@gmail.com</span>
             </Link>
 
@@ -288,8 +298,9 @@ export default function Page() {
                 <Image
                   src="/letterboxd.svg"
                   alt="Letterboxd Icon"
-                  width={100}
-                  height={100}
+                  width={200}
+                  height={200}
+                  quality={100}
                   className="rounded-lg w-9 h-10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 group-hover:-translate-y-1"
                 />
               </Link>
@@ -297,8 +308,9 @@ export default function Page() {
                 <Image
                   src="/spotify.svg"
                   alt="Spotify Icon"
-                  width={100}
-                  height={100}
+                  width={200}
+                  height={200}
+                  quality={100}
                   className="rounded-lg w-10 h-10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 group-hover:-translate-y-1"
                 />
               </Link>
@@ -306,8 +318,9 @@ export default function Page() {
                 <Image
                   src="/instagram.svg"
                   alt="Instagram Icon"
-                  width={100}
-                  height={100}
+                  width={200}
+                  height={200}
+                  quality={100}
                   className="rounded-lg w-9 h-10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 group-hover:-translate-y-1"
                 />
               </Link>
@@ -315,8 +328,9 @@ export default function Page() {
                 <Image
                   src="/linkedin.svg"
                   alt="Linkedin Icon"
-                  width={100}
-                  height={100}
+                  width={200}
+                  height={200}
+                  quality={100}
                   className="rounded-lg w-9 h-10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 group-hover:-translate-y-1"
                 />
               </Link>
@@ -324,8 +338,9 @@ export default function Page() {
                 <Image
                   src="/github.svg"
                   alt="Github Icon"
-                  width={100}
-                  height={100}
+                  width={200}
+                  height={200}
+                  quality={100}
                   className="rounded-lg w-10 h-10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 group-hover:-translate-y-1"
                 />
               </Link>

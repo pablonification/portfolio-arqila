@@ -130,8 +130,9 @@ const Navbar = () => {
               <Image
                 src={item.icon}
                 alt={`${item.name} icon`}
-                width={24}
-                height={24}
+                width={96}
+                height={96}
+                quality={100}
                 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 relative z-10"
               />
             )}
