@@ -19,25 +19,28 @@ const Navbar = () => {
     width: '0'
   });
   const navRef = useRef<HTMLDivElement | null>(null);
-  const highlightTimer = useRef<NodeJS.Timeout | null>(null);
+  const isAnimating = useRef(false);
 
-  // Debounced updateHighlight using requestAnimationFrame
+  // Modified updateHighlight to prevent rapid clicking issues
   const updateHighlight = (target: HTMLElement | null) => {
-    if (!target || !navRef.current) return;
-    if (highlightTimer.current) clearTimeout(highlightTimer.current);
-    highlightTimer.current = setTimeout(() => {
-      window.requestAnimationFrame(() => {
-        const containerPadding = parseInt(window.getComputedStyle(navRef.current as HTMLElement).paddingLeft);
-        const { offsetLeft, offsetWidth } = target;
-        setHighlightStyle({
-          transform: `translateX(${offsetLeft - containerPadding}px)`,
-          width: `${offsetWidth}px`
-        });
-      });
-    }, 20);
+    if (!target || !navRef.current || isAnimating.current) return;
+    
+    isAnimating.current = true;
+    const containerPadding = parseInt(window.getComputedStyle(navRef.current as HTMLElement).paddingLeft);
+    const { offsetLeft, offsetWidth } = target;
+    
+    setHighlightStyle({
+      transform: `translateX(${offsetLeft - containerPadding}px)`,
+      width: `${offsetWidth}px`
+    });
+
+    // Reset animation lock after transition
+    setTimeout(() => {
+      isAnimating.current = false;
+    }, 500);
   };
 
-  // Initialize highlight position without delay
+  // Initialize highlight position
   useEffect(() => {
     const activeElement = navRef.current?.querySelector(`[data-tab="${activeTab}"]`) as HTMLElement;
     if (activeElement) {
@@ -45,29 +48,38 @@ const Navbar = () => {
     }
   }, [activeTab]);
 
-  // Handle scroll-based active tab updates
+  // Modified scroll handling with better offset and special connect section handling
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['hola', 'works', 'experience', 'connect'];
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY;
+      const defaultOffset = window.innerHeight * 0.15; // Dynamic offset based on viewport height
 
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveTab(section);
-            const target = navRef.current?.querySelector(`[data-tab="${section}"]`) as HTMLElement;
-            updateHighlight(target);
+          // Apply larger offset for connect section
+          const offset = section === 'connect' ? window.innerHeight * 0.3 : defaultOffset;
+          
+          if (
+            scrollPosition >= offsetTop - offset && 
+            scrollPosition < offsetTop + offsetHeight - offset
+          ) {
+            if (activeTab !== section) {
+              setActiveTab(section);
+              const target = navRef.current?.querySelector(`[data-tab="${section}"]`) as HTMLElement;
+              updateHighlight(target);
+            }
             break;
           }
         }
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [activeTab]);
 
   const navItems: NavItem[] = [
     { name: 'Hola', icon: '/iconamoon_confused-face-fill.svg' },
@@ -82,7 +94,6 @@ const Navbar = () => {
         ref={navRef}
         className="bg-black text-white rounded-[24px] px-2 py-1.5 flex items-center relative overflow-hidden"
       >
-        {/* Animated highlight */}
         <div 
           className="absolute h-[85%] -translate-y-1/2 bg-[#ffb7c3] rounded-[20px] transition-all duration-500 ease-out opacity-75"
           style={highlightStyle}
@@ -94,12 +105,22 @@ const Navbar = () => {
             href={`#${item.name.toLowerCase()}`}
             data-tab={item.name.toLowerCase()}
             onClick={(e) => {
-              e.preventDefault(); // Prevent default scroll behavior
-              setActiveTab(item.name.toLowerCase());
-              updateHighlight(e.currentTarget);
-              // Smooth scroll to section
-              const section = document.getElementById(item.name.toLowerCase());
-              section?.scrollIntoView({ behavior: 'smooth' });
+              e.preventDefault();
+              if (!isAnimating.current) {
+                const sectionId = item.name.toLowerCase();
+                const section = document.getElementById(sectionId);
+                if (section) {
+                  const offset = sectionId === 'connect' 
+                    ? window.innerHeight * 0  // Larger offset for connect section
+                    : window.innerHeight * 0.15; // Default offset for other sections
+                  window.scrollTo({
+                    top: section.offsetTop - offset,
+                    behavior: 'smooth'
+                  });
+                }
+                setActiveTab(item.name.toLowerCase());
+                updateHighlight(e.currentTarget);
+              }
             }}
             className={`relative px-3 sm:px-4 py-1.5 text-sm sm:text-base lg:text-lg font-medium 
                      flex items-center gap-2 whitespace-nowrap transition-colors duration-300

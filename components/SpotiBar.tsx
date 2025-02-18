@@ -85,7 +85,6 @@ const lyricsData: Lyric[] = [
   { start: 211, text: "I love you and hate you at the very same time" }
 ];
 
-// Set keyword untuk bold dan semibold (abaikan kapitalisasi)
 const boldKeywords = new Set([
   "bittersweet",
   "death",
@@ -94,6 +93,7 @@ const boldKeywords = new Set([
   "emergency",
   "destiny"
 ]);
+
 const semiBoldKeywords = new Set([
   "surgery",
   "tequila",
@@ -105,26 +105,25 @@ const semiBoldKeywords = new Set([
   "question"
 ]);
 
-// Fungsi format untuk membungkus kata dengan style yang sesuai
 const formatLyric = (lyric: string) => {
   const words = lyric.split(" ");
   const formatted = words.map((word, idx) => {
     const trimmed = word.replace(/^[^a-zA-Z]+|[^a-zA-Z]+$/g, "").toLowerCase();
     if (boldKeywords.has(trimmed)) {
       return (
-        <strong key={idx} className="font-bold text-black">
+        <strong key={idx} className="font-bold text-black transition-all duration-300 ease-in-out">
           {word}
         </strong>
       );
     } else if (semiBoldKeywords.has(trimmed)) {
       return (
-        <span key={idx} className="font-semibold text-black">
+        <span key={idx} className="font-semibold text-black transition-all duration-300 ease-in-out">
           {word}
         </span>
       );
     }
     return (
-      <span key={idx} className="font-medium text-black">
+      <span key={idx} className="font-medium text-black transition-all duration-300 ease-in-out">
         {word}
       </span>
     );
@@ -135,11 +134,32 @@ const formatLyric = (lyric: string) => {
   }, [] as (string | JSX.Element)[]);
 };
 
+const PlayPauseButton = ({ isPlaying, onClick }: { isPlaying: boolean; onClick: () => void }) => (
+  <div 
+    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+               cursor-pointer transition-transform duration-200 hover:scale-110
+               active:scale-95"
+    onClick={onClick}
+  >
+    {isPlaying ? (
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
+        <rect x="6" y="4" width="4" height="16" rx="1" />
+        <rect x="14" y="4" width="4" height="16" rx="1" />
+      </svg>
+    ) : (
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+    )}
+  </div>
+);
+
 export default function SpotiBar() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [currentLyricIndex, setCurrentLyricIndex] = useState<number>(-1);
   const [prevLyricIndex, setPrevLyricIndex] = useState<number>(-1);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
 
   const handlePlayPause = () => {
     if (!audioRef.current) return;
@@ -152,24 +172,25 @@ export default function SpotiBar() {
     }
   };
 
+  // Single useEffect for the audio event listener
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
-
     const handleTimeUpdate = () => {
       const currentTime = audio.currentTime;
       const newIndex = lyricsData.findIndex((lyric, i) => {
         const next = lyricsData[i + 1];
-        return next
-          ? currentTime >= lyric.start && currentTime < next.start
+        return next 
+          ? currentTime >= lyric.start && currentTime < next.start 
           : currentTime >= lyric.start;
       });
       if (newIndex !== currentLyricIndex) {
         setPrevLyricIndex(currentLyricIndex);
         setCurrentLyricIndex(newIndex);
-        setTimeout(() => {
+        const timeoutId = setTimeout(() => {
           setPrevLyricIndex(-1);
-        }, 500);
+        }, 300); // Updated delay minimal
+        return () => clearTimeout(timeoutId);
       }
     };
 
@@ -179,90 +200,118 @@ export default function SpotiBar() {
     };
   }, [currentLyricIndex]);
 
+  const handleAnimationEnd = (index: number) => {
+    if (index === currentLyricIndex) {
+      setPrevLyricIndex(-1);
+    }
+  };
+
   return (
-    <div className="max-w-full mx-4 sm:mx-8 md:mx-16 lg:mx-24 px-4 sm:px-6 lg:px-8 mb-16">
-      <div className="relative bg-gradient-to-r from-[#CF7A65] to-[#A679BF] rounded-xl p-4 flex items-center text-black">
+    <div
+      className="max-w-full mx-4 sm:mx-8 md:mx-16 lg:mx-24 px-4 sm:px-6 lg:px-8 mb-16"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className={`relative bg-gradient-to-r from-[#CF7A65] to-[#A679BF] rounded-xl p-4 flex items-center text-black transition-transform duration-300 ease-out ${isHovered ? 'scale-[1.02] shadow-lg' : 'scale-100'}`}>
         {/* Cover & Info */}
         <div className="flex items-center gap-4">
-          <div className="relative">
+          <div className="relative group cursor-pointer">
             <Image
               src="/graduation.svg"
               alt="Album Cover"
               width={56}
               height={56}
-              className="rounded-md"
+              className={`rounded-md transition-transform duration-200 ${isPlaying ? 'animate-spin-slow' : ''}`}
             />
-            <Image
-              src="/play-button.svg"
-              alt="Play Button"
-              width={30}
-              height={30}
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
-              onClick={handlePlayPause}
-            />
+            <div className="absolute inset-0 bg-black/40 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+            <PlayPauseButton isPlaying={isPlaying} onClick={handlePlayPause} />
           </div>
-          <div>
-            <span className="text-lg font-bold tracking-tight text-black">
+          <div className="transform transition-transform duration-200 hover:translate-x-1">
+            <span className="text-lg font-bold tracking-tight text-black hover:underline cursor-pointer">
               Kanye West
             </span>
-            <p className="text-lg font-medium tracking-tight text-black">
+            <p className="text-lg font-medium tracking-tight text-black hover:underline cursor-pointer">
               Bittersweet Poetry
             </p>
           </div>
         </div>
-        <div className="ml-auto">
+        <div className="ml-auto transform transition-all duration-200 hover:scale-110 hover:rotate-12">
           <Image
             src="/spotibar.svg"
             alt="Spotify Icon"
             width={50}
             height={50}
-            className="opacity-80"
+            className="opacity-80 hover:opacity-100 transition-opacity duration-200"
           />
         </div>
-        {/* Render lirik: Posisi absolut tumpang tindih */}
-        <div className="absolute inset-0 pointer-events-none">
-          {prevLyricIndex !== -1 && (
-            <p
-              key={`prev-${prevLyricIndex}`}
-              className="absolute inset-0 flex justify-center items-center text-2xl fadeOut"
-            >
-              <span>{formatLyric(lyricsData[prevLyricIndex].text)}</span>
-            </p>
-          )}
+        {/* Lyrics overlay */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {currentLyricIndex !== -1 && (
             <p
               key={`curr-${currentLyricIndex}`}
-              className="absolute inset-0 flex justify-center items-center text-2xl fadeIn"
+              className="absolute inset-0 flex justify-center items-center text-3xl tracking-tight"
             >
-              <span>{formatLyric(lyricsData[currentLyricIndex].text)}</span>
+              <span
+                className="fadeIn"
+                onAnimationEnd={() => handleAnimationEnd(currentLyricIndex)}
+              >
+                {formatLyric(lyricsData[currentLyricIndex].text)}
+              </span>
+            </p>
+          )}
+          {prevLyricIndex !== -1 && (
+            <p
+              key={`prev-${prevLyricIndex}`}
+              className="absolute inset-0 flex justify-center items-center text-3xl tracking-tight"
+            >
+              <span
+                className="fadeOut"
+                onAnimationEnd={() => handleAnimationEnd(prevLyricIndex)}
+              >
+                {formatLyric(lyricsData[prevLyricIndex].text)}
+              </span>
             </p>
           )}
         </div>
       </div>
-      {/* Audio tersembunyi */}
       <audio ref={audioRef} src="/bittersweet.mp3" />
       <style jsx>{`
-        @keyframes fadeIn {
+        @keyframes spin-slow {
           from {
-            opacity: 0;
+            transform: rotate(0deg);
           }
           to {
+            transform: rotate(360deg);
+          }
+        }
+        .animate-spin-slow {
+          animation: spin-slow 20s linear infinite;
+        }
+        @keyframes fadeIn {
+          0% {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          100% {
             opacity: 1;
+            transform: translateY(0);
           }
         }
         @keyframes fadeOut {
-          from {
+          0% {
             opacity: 1;
+            transform: translateY(0);
           }
-          to {
+          100% {
             opacity: 0;
+            transform: translateY(-20px);
           }
         }
         .fadeIn {
-          animation: fadeIn 0.5s ease;
+          animation: fadeIn 0.5s ease-in-out forwards;
         }
         .fadeOut {
-          animation: fadeOut 0.5s ease;
+          animation: fadeOut 0.5s ease-in-out forwards;
         }
       `}</style>
     </div>
