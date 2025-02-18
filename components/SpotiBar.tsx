@@ -8,7 +8,8 @@ interface Lyric {
 
 // Daftar lirik dengan timestamp (dalam detik)
 const lyricsData: Lyric[] = [
-  { start: 0, text: "Test 12 12 12"},
+  { start: 1, text: "I present to you"},
+  { start: 8, text: "My favorite song of all time"},
   { start: 13, text: "Bittersweet, you're gonna be the death of me" },
   { start: 19, text: "I don't want you, but I need you" },
   { start: 22, text: "I love you and hate you at the very same time" },
@@ -208,51 +209,51 @@ export default function SpotiBar() {
 
   return (
     <div
-      className="max-w-full mx-4 sm:mx-8 md:mx-16 lg:mx-24 px-4 sm:px-6 lg:px-8 mb-16"
+      className="max-w-full mx-4 sm:mx-8 md:mx-16 lg:mx-24 px-4 sm:px-6 lg:px-8 mb-8 sm:mb-16 relative z-20"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className={`relative bg-gradient-to-r from-[#CF7A65] to-[#A679BF] rounded-xl p-4 flex items-center text-black transition-transform duration-300 ease-out ${isHovered ? 'scale-[1.02] shadow-lg' : 'scale-100'}`}>
+      <div className={`relative bg-gradient-to-r from-[#CF7A65] to-[#A679BF] rounded-xl p-3 sm:p-4 flex items-center min-h-[60px] sm:min-h-[80px] text-black transition-transform duration-300 ease-out ${isHovered ? 'scale-[1.02] shadow-lg' : 'scale-100'}`}>
         {/* Cover & Info */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4 z-10">
           <div className="relative group cursor-pointer">
             <Image
               src="/graduation.svg"
               alt="Album Cover"
               width={56}
               height={56}
-              className={`rounded-md transition-transform duration-200 ${isPlaying ? 'animate-spin-slow' : ''}`}
+              className={`w-10 h-10 sm:w-14 sm:h-14 rounded-md transition-transform duration-200 ${isPlaying ? 'animate-spin-slow' : ''}`}
             />
             <div className="absolute inset-0 bg-black/40 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             <PlayPauseButton isPlaying={isPlaying} onClick={handlePlayPause} />
           </div>
           <div className="transform transition-transform duration-200 hover:translate-x-1">
-            <span className="text-lg font-bold tracking-tight text-black hover:underline cursor-pointer">
+            <span className="text-sm sm:text-lg font-bold tracking-tight text-black hover:underline cursor-pointer block">
               Kanye West
             </span>
-            <p className="text-lg font-medium tracking-tight text-black hover:underline cursor-pointer">
+            <p className="text-sm sm:text-lg font-medium tracking-tight text-black hover:underline cursor-pointer">
               Bittersweet Poetry
             </p>
           </div>
         </div>
-        <div className="ml-auto transform transition-all duration-200 hover:scale-110 hover:rotate-12">
+        <div className="ml-auto transform transition-all duration-200 hover:scale-110 hover:rotate-12 z-10">
           <Image
             src="/spotibar.svg"
             alt="Spotify Icon"
             width={50}
             height={50}
-            className="opacity-80 hover:opacity-100 transition-opacity duration-200"
+            className="w-8 h-8 sm:w-12 sm:h-12 opacity-80 hover:opacity-100 transition-opacity duration-200"
           />
         </div>
-        {/* Lyrics overlay */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Lyrics overlay - Hidden below 900px, shown at 900px and above */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden hidden min-[1600px]:block">
           {currentLyricIndex !== -1 && (
             <p
               key={`curr-${currentLyricIndex}`}
-              className="absolute inset-0 flex justify-center items-center text-3xl tracking-tight"
+              className="absolute inset-0 flex justify-center items-center text-3xl tracking-tight px-12"
             >
               <span
-                className="fadeIn"
+                className="fadeIn text-center max-w-[70%]"
                 onAnimationEnd={() => handleAnimationEnd(currentLyricIndex)}
               >
                 {formatLyric(lyricsData[currentLyricIndex].text)}
@@ -262,10 +263,10 @@ export default function SpotiBar() {
           {prevLyricIndex !== -1 && (
             <p
               key={`prev-${prevLyricIndex}`}
-              className="absolute inset-0 flex justify-center items-center text-3xl tracking-tight"
+              className="absolute inset-0 flex justify-center items-center text-3xl tracking-tight px-12"
             >
               <span
-                className="fadeOut"
+                className="fadeOut text-center max-w-[70%]"
                 onAnimationEnd={() => handleAnimationEnd(prevLyricIndex)}
               >
                 {formatLyric(lyricsData[prevLyricIndex].text)}

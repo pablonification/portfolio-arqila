@@ -89,13 +89,13 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 pt-4 sm:pt-6 px-2 sm:px-4 flex justify-center font-inter">
+    <nav className="fixed top-0 left-0 right-0 z-50 p-3 flex justify-center font-inter">
       <div 
         ref={navRef}
-        className="bg-black text-white rounded-[24px] px-2 py-1.5 flex items-center relative overflow-hidden"
+        className="bg-black text-white rounded-[20px] px-1.5 py-1 flex items-center relative overflow-hidden"
       >
         <div 
-          className="absolute h-[85%] -translate-y-1/2 bg-[#ffb7c3] rounded-[20px] transition-all duration-500 ease-out opacity-75"
+          className="absolute h-[85%] -translate-y-1/2 bg-[#ffb7c3] rounded-[16px] sm:rounded-[20px] transition-all duration-500 ease-out opacity-75"
           style={highlightStyle}
         />
         
@@ -122,8 +122,8 @@ const Navbar = () => {
                 updateHighlight(e.currentTarget);
               }
             }}
-            className={`relative px-3 sm:px-4 py-1.5 text-sm sm:text-base lg:text-lg font-medium 
-                     flex items-center gap-2 whitespace-nowrap transition-colors duration-300
+            className={`relative px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 text-xs sm:text-sm md:text-base lg:text-lg font-medium 
+                     flex items-center gap-1 sm:gap-2 whitespace-nowrap transition-colors duration-300
                      hover:text-white group`}
           >
             {item.icon && (
@@ -132,7 +132,7 @@ const Navbar = () => {
                 alt={`${item.name} icon`}
                 width={24}
                 height={24}
-                className="w-5 h-5 sm:w-6 sm:h-6 relative z-10"
+                className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 relative z-10"
               />
             )}
             <span className={`relative z-10 transition-colors duration-300 

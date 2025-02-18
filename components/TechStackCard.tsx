@@ -106,10 +106,21 @@ const TechStackCard: React.FC = () => {
     const mouse = Matter.Mouse.create(canvasRef.current);
     const mouseConstraint = Matter.MouseConstraint.create(newEngine, {
       mouse,
-      constraint: { stiffness: 0.1, render: { visible: false } },
+      constraint: { 
+        stiffness: 0.2,
+        render: { visible: false },
+        // Add damping to reduce wild movements
+        damping: 0.4
+      },
     });
 
+    // Adjust world bounds to be slightly larger than container
     Matter.World.add(newEngine.world, [...boundaries, mouseConstraint]);
+    
+    // Reduce gravity to make movements less extreme
+    newEngine.gravity.y = 0.5;
+    // Add air friction to dampen movement
+    newEngine.world.gravity.scale = 0.001;
 
     // Add passive wheel event listener to allow scrolling
     const handleWheel = (e: WheelEvent) => {
@@ -204,10 +215,20 @@ const TechStackCard: React.FC = () => {
     const logoBodies = techStack.map((item, idx) => {
       const x = (render.options.width as number) / 2 + Math.random() * 20 - 10;
       const y = 50 + idx * 1.5;
-      return Matter.Bodies.rectangle(x, y, bodyWidth, bodyHeight, {
-        restitution: 0.5,
-        friction: 0.1,
-        density: 0.001,
+      
+      // Create the logo body with adjusted physics properties
+      const body = Matter.Bodies.rectangle(x, y, bodyWidth, bodyHeight, {
+        restitution: 0.3, // Reduce bounciness
+        friction: 0.8,    // Increase friction
+        density: 0.002,   // Slightly increase density
+        frictionAir: 0.03, // Add air friction
+        // Add force limits to prevent extreme movements
+        plugin: {
+          wrap: {
+            min: { x: 0, y: 0 },
+            max: { x: render.options.width as number, y: render.options.height as number }
+          }
+        },
         render: {
           sprite: {
             texture: item.src,
@@ -216,13 +237,60 @@ const TechStackCard: React.FC = () => {
           },
         },
       });
+
+      // Set initial velocity and angular velocity to be moderate
+      Matter.Body.setVelocity(body, { x: 0, y: 0 });
+      Matter.Body.setAngularVelocity(body, 0);
+
+      return body;
     });
 
     Matter.World.add(engine.world, logoBodies);
 
+    // Add a collision event listener to keep bodies in bounds
+    Matter.Events.on(engine, 'afterUpdate', () => {
+      logoBodies.forEach(body => {
+        const x = body.position.x;
+        const y = body.position.y;
+        const containerWidth = render.options.width as number;
+        const containerHeight = render.options.height as number;
+
+        // Check if body is out of bounds and wrap it back
+        if (x < 0) Matter.Body.setPosition(body, { x: containerWidth, y });
+        if (x > containerWidth) Matter.Body.setPosition(body, { x: 0, y });
+        if (y < 0) Matter.Body.setPosition(body, { x, y: containerHeight });
+        if (y > containerHeight) Matter.Body.setPosition(body, { x, y: 0 });
+
+        // Limit velocity if it gets too high
+        const maxVelocity = 15;
+        const currentVelX = body.velocity.x;
+        const currentVelY = body.velocity.y;
+
+        if (Math.abs(currentVelX) > maxVelocity || Math.abs(currentVelY) > maxVelocity) {
+          Matter.Body.setVelocity(body, {
+            x: Math.min(Math.abs(currentVelX), maxVelocity) * Math.sign(currentVelX),
+            y: Math.min(Math.abs(currentVelY), maxVelocity) * Math.sign(currentVelY)
+          });
+        }
+
+        // Limit angular velocity
+        const maxAngularVelocity = 0.2;
+        if (Math.abs(body.angularVelocity) > maxAngularVelocity) {
+          Matter.Body.setAngularVelocity(body, maxAngularVelocity * Math.sign(body.angularVelocity));
+        }
+      });
+    });
+
     const runner = Runner.create();
     Runner.run(runner, engine);
     Render.run(render);
+
+    // Cleanup function
+    return () => {
+      Matter.Events.off(engine, 'afterUpdate');
+      Runner.stop(runner);
+      Render.stop(render);
+    };
   }, [inView, engine, render]);
 
   return (
@@ -231,7 +299,7 @@ const TechStackCard: React.FC = () => {
         className="max-w-2xl font-medium text-gray-600 mb-6 tracking-tighter" 
         style={{ fontSize: "clamp(1.25rem, 1.5vw, 1.5rem)" }}
       >
-        And here’s my tech stack...
+        And here's my tech stack...
       </h2>
       <div ref={containerRef} className="relative w-full h-[400px]">
         <canvas 
