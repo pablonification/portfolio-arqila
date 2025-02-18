@@ -4,7 +4,7 @@ import Link from "next/link"
 import Lanyard from "@/components/Lanyard";
 import TechStackCard from "@/components/TechStackCard";
 import NavBar from "@/components/NavBar";
-// import Noise from '@/components/Noise';
+import SpotiBar from "@/components/SpotiBar";
 
 export default function Page() {
   useEffect(() => {
@@ -48,225 +48,91 @@ export default function Page() {
           }}
         >(and they actually work!)</p>
 
-        <div className="flex flex-col gap-8">
+        <div className="space-y-8">
           {/* Project cards */}
-          <Link href="/#hola">
-            <div
-              className="
-              bg-[#F5F5F5] 
-              rounded-xl 
-              p-6 
-              md:p-10 
-              hover:shadow-lg 
-              relative
-              group
-              "
-              style={{ clipPath: "inset(0)" }}
-            >
-              {/* Add gradient overlay */}
-                <div 
-                  className="
-                  absolute
-                  rounded-xl  
-                  inset-0 
-                  bg-[linear-gradient(90deg,_#FDF3EF_55%,_#CBF88A_100%)]
-                  opacity-0
-                  transition-opacity
-                  duration-500
-                  ease-in-out
-                  group-hover:opacity-100
-                  "
-                />
-                {/* <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <Noise
-                    patternSize={250}
-                    patternScaleX={1}
-                    patternScaleY={1}
-                    patternRefreshInterval={2}
-                    patternAlpha={25}
-                  />
-                </div> */}
-              {/* Wrap content in relative div to keep it above gradient */}
-              <div className="relative z-10">
-                {/* Header */}
-                <div className="flex justify-between items-start mb-4">
+          <div className="bg-[#F5F5F5] rounded-xl p-6 md:p-10 hover:shadow-lg transition-shadow" style={{ clipPath: "inset(0)" }}>
+            <div className="flex justify-between items-start mb-4">
                 <div className="flex items-center gap-3">
-                  <Image
-                  src="/draftanakitb_black1.svg"
-                  alt="DraftAnakITB icon"
-                  width={24}
-                  height={24}
-                  style={{ 
-                    width: "clamp(2.5rem, 3vw, 3rem)", 
-                    height: "clamp(2.5rem, 3vw, 3rem)" 
-                  }}
-                  />
-                  <span 
-                  className="font-medium tracking-tighter"
-                  style={{ fontSize: "clamp(1.6rem, 2vw, 1.875rem)" }}
-                  >
-                  DraftAnakITB
-                  </span>
-                </div>
-                <svg 
-                  className="w-8 h-8" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="2"
-                >
-                  <path d="M7 17L17 7M17 7H7M17 7V17" />
-                </svg>
-                </div>
-
-                {/* Deskripsi */}
-                <p 
-                className="max-w-2xl font-medium text-gray-600 mb-6 tracking-tighter" 
-                style={{ fontSize: "clamp(1.25rem, 1.5vw, 1.5rem)" }}
-                >
-                Where ITB students share their unfiltered thoughts anonymously, freely, and for everyone to see on
-                @DraftAnakITB.
-                </p>
-
-                {/* Gambar dengan animasi hover */}
-                <div className="flex flex-col md:flex-row gap-4 mt-2 -mb-24">
-                <div 
-                  className="
-                  relative 
-                  translate-x-24
-                  translate-y-4
-                  transition-transform 
-                  duration-300 
-                  group-hover:translate-x-20
-                  group-hover:-translate-y-1
-                  group-hover:-rotate-2
-                  "
-                >
-                  <Image
-                  src="/draftanakitb_pic1.png"
-                  alt="DraftAnakITB Interface 1"
-                  width={600}
-                  height={450}
-                  className="rounded-lg w-full object-cover scale-110"
-                  />
-                </div>
-                <div 
-                  className="
-                  relative 
-                  translate-y-5 
-                  translate-x-28 
-                  transition-transform 
-                  duration-300 
-                  group-hover:translate-y-2 
-                  group-hover:translate-x-28
-                  group-hover:rotate-1
-                  "
-                >
-                  <Image
-                  src="/draftanakitb_pic2.png"
-                  alt="DraftAnakITB Interface 2" 
-                  width={600}
-                  height={450}
-                  className="rounded-lg w-full object-cover scale-110"
-                  />
-                </div>
-                </div>
-              </div>
-            </div>
-          </Link>
-          {/* Project 2 */}
-          <Link href="/#hola">
-            <div className="bg-[#F5F5F5] rounded-xl p-6 md:p-10 hover:shadow-lg relative group" style={{ clipPath: "inset(0)" }}>
-              {/* Add gradient overlay */}
-              <div 
-                className="
-                absolute
-                rounded-xl  
-                inset-0 
-                bg-[linear-gradient(90deg,_#FDF3EF_55%,_#CBF88A_100%)]
-                opacity-0
-                transition-opacity
-                duration-500
-                ease-in-out
-                group-hover:opacity-100
-                "
-              />
-              {/* <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <Noise
-                  patternSize={250}
-                  patternScaleX={1}
-                  patternScaleY={1}
-                  patternRefreshInterval={2}
-                  patternAlpha={25}
+                <Image
+                src="/draftanakitb_black1.svg"
+                alt="DraftAnakITB icon"
+                width={24}
+                height={24}
+                style={{ width: "clamp(2.5rem, 3vw, 3rem)", height: "clamp(2.5rem, 3vw, 3rem)" }}
                 />
-              </div> */}
-              <div className="relative z-10">
-                {/* Header content remains the same */}
-                <div className="flex justify-between items-start mb-4">
-                  <div className="flex items-center gap-3">
+                <span className="font-medium tracking-tighter" style={{ fontSize: "clamp(1.6rem, 2vw, 1.875rem)" }}>DraftAnakITB</span>
+                </div>
+              <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
+            </div>
+            <p className="max-w-2xl font-medium text-gray-600 mb-6 tracking-tighter" 
+               style={{ fontSize: "clamp(1.25rem, 1.5vw, 1.5rem)" }}>
+              Where ITB students share their unfiltered thoughts anonymously, freely, and for everyone to see on
+              @DraftAnakITB.
+            </p>
+            <div className="flex flex-col md:flex-row gap-4 mt-2 -mb-24"> {/* Negative margin to extend below card */}
+                <div className="relative translate-x-24">
                   <Image
-                  src="/ludic-black.svg"
-                  alt="GEP icon"
-                  width={24}
-                  height={24}
-                  style={{ width: "clamp(2.5rem, 3vw, 3rem)", height: "clamp(2.5rem, 3vw, 3rem)" }}
+                    src="/draftanakitb_pic1.png"
+                    alt="DraftAnakITB Interface 1"
+                    width={600}
+                    height={450}
+                    className="rounded-lg w-full object-cover scale-110"
                   />
-                  <span className="font-medium tracking-tighter" style={{ fontSize: "clamp(1.6rem, 2vw, 1.875rem)" }}>Ganesha Exhibition Programme 2025</span>
-                  </div>
-                <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M7 17L17 7M17 7H7M17 7V17" />
-                </svg>
-              </div>
-              <p className="max-w-2xl font-medium text-gray-600 mb-6 tracking-tighter" 
-                 style={{ fontSize: "clamp(1.25rem, 1.5vw, 1.5rem)" }}>
-                A digital front door to LFM ITB's annual exhibition, celebrating creativity and storytelling.
-              </p>
-              <div className="flex flex-col md:flex-row gap-4 mt-2 -mb-40"> {/* Negative margin to extend below card */}
-                  <div 
-                    className="
-                    relative 
-                    translate-x-12
-                    -translate-y-9 
-                    transition-transform 
-                    duration-300 
-                    group-hover:translate-x-16
-                    group-hover:-translate-y-14
-                    group-hover:-rotate-2
-                    "
-                  >
-                    <Image
-                      src="/ludic_pic1.png"
-                      alt="GEP Interface 1"
-                      width={600}
-                      height={450}
-                      className="rounded-lg w-full object-cover scale-90"
-                    />
-                  </div>
-                  <div 
-                    className="
-                    relative 
-                    translate-y-20 
-                    scale-110
-                    translate-x-20
-                    transition-transform 
-                    duration-300 
-                    group-hover:translate-y-16
-                    group-hover:translate-x-24
-                    group-hover:rotate-1
-                    "
-                  >
-                    <Image
-                      src="/ludic_pic2.png"
-                      alt="GEP Interface 2" 
-                      width={600}
-                      height={450}
-                      className="rounded-lg w-full object-cover scale-125"
-                    />
-                  </div>
+                </div>
+                <div className="relative translate-y-5 translate-x-28">
+                  <Image
+                    src="/draftanakitb_pic2.png"
+                    alt="DraftAnakITB Interface 2" 
+                    width={600}
+                    height={450}
+                    className="rounded-lg w-full object-cover scale-110"
+                  />
                 </div>
               </div>
+          </div>
+          <div className="bg-[#F5F5F5] rounded-xl p-6 md:p-10 hover:shadow-lg transition-shadow" style={{ clipPath: "inset(0)" }}>
+            <div className="flex justify-between items-start mb-4">
+                <div className="flex items-center gap-3">
+                <Image
+                src="/ludic-black.svg"
+                alt="DraftAnakITB icon"
+                width={24}
+                height={24}
+                style={{ width: "clamp(2.5rem, 3vw, 3rem)", height: "clamp(2.5rem, 3vw, 3rem)" }}
+                />
+                <span className="font-medium tracking-tighter" style={{ fontSize: "clamp(1.6rem, 2vw, 1.875rem)" }}>Ganesha Exhibition Programme 2025</span>
+                </div>
+              <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
             </div>
-          </Link>
+            <p className="max-w-2xl font-medium text-gray-600 mb-6 tracking-tighter" 
+               style={{ fontSize: "clamp(1.25rem, 1.5vw, 1.5rem)" }}>
+              A digital front door to LFM ITB’s annual exhibition, celebrating creativity and storytelling.
+            </p>
+            <div className="flex flex-col md:flex-row gap-4 mt-2 -mb-40"> {/* Negative margin to extend below card */}
+                <div className="relative translate-x-12">
+                  <Image
+                    src="/ludic_pic1.png"
+                    alt="DraftAnakITB Interface 1"
+                    width={600}
+                    height={450}
+                    className="rounded-lg w-full object-cover scale-90"
+                  />
+                </div>
+                <div className="relative translate-y-16 translate-x-14">
+                  <Image
+                    src="/ludic_pic2.png"
+                    alt="DraftAnakITB Interface 2" 
+                    width={600}
+                    height={450}
+                    className="rounded-lg w-full object-cover scale-125"
+                  />
+                </div>
+              </div>
+          </div>
         </div>
       </section>
 
@@ -320,7 +186,10 @@ export default function Page() {
           <TechStackCard />
         </div>
       </section>
-      
+       
+       {/* Spotify */}
+      <SpotiBar/>
+
       <Lanyard />
       {/* Contact Card - Reduced max-width and padding */}
       {/* <section id="connect" className="max-w-full mx-4 px-4 sm:px-5 lg:px-6 mb-16">

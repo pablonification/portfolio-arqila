@@ -22,15 +22,15 @@ const techStack: TechStackItem[] = [
 ];
 
 const TechStackCard: React.FC = () => {
-    const cardRef = useRef<HTMLDivElement | null>(null);
-    const containerRef = useRef<HTMLDivElement | null>(null);
-    const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  
-    const [inView, setInView] = useState(false);
-    const [engine, setEngine] = useState<Engine | null>(null);
-    const [render, setRender] = useState<Render | null>(null);
-    const bodiesAdded = useRef(false);
-    const boundariesRef = useRef<Matter.Body[]>([]); // Track boundary bodies
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
+  const [inView, setInView] = useState(false);
+  const [engine, setEngine] = useState<Engine | null>(null);
+  const [render, setRender] = useState<Render | null>(null);
+  const bodiesAdded = useRef(false);
+  const boundariesRef = useRef<Matter.Body[]>([]);
 
   // Intersection Observer to detect visibility
   useEffect(() => {
@@ -74,29 +74,29 @@ const TechStackCard: React.FC = () => {
           containerHeight + 10,
           containerWidth,
           20,
-          { isStatic: true, render: { visible: false } }
-        ),
+          { isStatic: true, render: { visible: false } 
+        }),
         Matter.Bodies.rectangle(
           -10,
           containerHeight / 2,
           20,
           containerHeight,
-          { isStatic: true, render: { visible: false } }
-        ),
+          { isStatic: true, render: { visible: false } 
+        }),
         Matter.Bodies.rectangle(
           containerWidth + 10,
           containerHeight / 2,
           20,
           containerHeight,
-          { isStatic: true, render: { visible: false } }
-        ),
+          { isStatic: true, render: { visible: false } 
+        }),
         Matter.Bodies.rectangle(
           containerWidth / 2,
           -10,
           containerWidth,
           20,
-          { isStatic: true, render: { visible: false } }
-        )
+          { isStatic: true, render: { visible: false } 
+        })
       ];
     };
 
@@ -111,8 +111,20 @@ const TechStackCard: React.FC = () => {
 
     Matter.World.add(newEngine.world, [...boundaries, mouseConstraint]);
 
+    // Add passive wheel event listener to allow scrolling
+    const handleWheel = (e: WheelEvent) => {
+      // Allow default scroll behavior
+    };
+    canvasRef.current.addEventListener('wheel', handleWheel, { passive: true });
+
     setEngine(newEngine);
     setRender(newRender);
+
+    return () => {
+      if (canvasRef.current) {
+        canvasRef.current.removeEventListener('wheel', handleWheel);
+      }
+    };
   }, []);
 
   // Handle window resize
@@ -128,8 +140,8 @@ const TechStackCard: React.FC = () => {
       render.options.height = newHeight;
       render.canvas.width = newWidth * 3;
       render.canvas.height = newHeight * 3;
-      render.canvas.style.width = newWidth + "px";   // Added line to fix stretching
-      render.canvas.style.height = newHeight + "px";  // Added line to fix stretching
+      render.canvas.style.width = newWidth + "px";
+      render.canvas.style.height = newHeight + "px";
 
       Render.lookAt(render, {
         min: { x: 0, y: 0 },
@@ -153,22 +165,22 @@ const TechStackCard: React.FC = () => {
           newHeight / 2,
           20,
           newHeight,
-          { isStatic: true, render: { visible: false } }
-        ),
+          { isStatic: true, render: { visible: false } 
+        }),
         Matter.Bodies.rectangle(
           newWidth + 10,
           newHeight / 2,
           20,
           newHeight,
-          { isStatic: true, render: { visible: false } }
-        ),
+          { isStatic: true, render: { visible: false } 
+        }),
         Matter.Bodies.rectangle(
           newWidth / 2,
           -10,
           newWidth,
           20,
-          { isStatic: true, render: { visible: false } }
-        )
+          { isStatic: true, render: { visible: false } 
+        })
       ];
 
       // Add new boundaries to the world
@@ -177,31 +189,28 @@ const TechStackCard: React.FC = () => {
     };
 
     window.addEventListener("resize", updateDimensions);
-    updateDimensions(); // Initial call
+    updateDimensions();
 
     return () => window.removeEventListener("resize", updateDimensions);
-  }, [render, engine]); // Add engine as dependency
+  }, [render, engine]);
 
-  // When the card is in view, add logo bodies and start the simulation (only once)
+  // When the card is in view, add logo bodies and start the simulation
   useEffect(() => {
-    if (!engine || !render || !inView) return;
-    if (bodiesAdded.current) return;
+    if (!engine || !render || !inView || bodiesAdded.current) return;
     bodiesAdded.current = true;
 
     const bodyWidth = 80;
     const bodyHeight = 80;
     const logoBodies = techStack.map((item, idx) => {
-      // Tighter stacking: small horizontal offset and minimal vertical gap
-      const x =
-        (render.options.width as number) / 2 + Math.random() * 20 - 10; // ±10px horizontally
-      const y = 50 + idx * 1.5; // vertical gap of 1.5px per logo
+      const x = (render.options.width as number) / 2 + Math.random() * 20 - 10;
+      const y = 50 + idx * 1.5;
       return Matter.Bodies.rectangle(x, y, bodyWidth, bodyHeight, {
         restitution: 0.5,
         friction: 0.1,
         density: 0.001,
         render: {
           sprite: {
-            texture: item.src, // Ensure your SVG files are in /public
+            texture: item.src,
             xScale: bodyWidth / 128,
             yScale: bodyHeight / 128,
           },
@@ -224,9 +233,12 @@ const TechStackCard: React.FC = () => {
       >
         And here’s my tech stack...
       </h2>
-      {/* Canvas container uses a ref for responsive sizing */}
       <div ref={containerRef} className="relative w-full h-[400px]">
-        <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full" />
+        <canvas 
+          ref={canvasRef} 
+          className="absolute top-0 left-0 w-full h-full"
+          style={{ touchAction: 'pan-y' }}
+        />
       </div>
     </div>
   );
