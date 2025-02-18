@@ -16,24 +16,24 @@ const lyricsData: Lyric[] = [
   { start: 24, text: "Bittersweet" },
 
   { start: 25, text: "See, what I want so much should never hurt this bad" },
-  { start: 28, text: "''Never did this before'', that's what the virgin says" },
+  { start: 28, text: "\"Never did this before\", that's what the virgin says" },
   { start: 31, text: "We've been generally warned, that's what the surgeon says" },
   { start: 34, text: "God, talk to me now, this is an emergency" },
 
   { start: 37, text: "And she claims she only with me for the currency" },
-  { start: 40, text: "You cut me deep, b***, cut me like surgery" },
+  { start: 40, text: "You cut me deep, ***, cut me like surgery" },
   { start: 43, text: "And I was too proud to admit that it was hurting me" },
   { start: 46, text: "I'd never do that to you, at least purposely" },
   { start: 49, text: "We breaking up again, we making up again" },
-  { start: 52, text: "But we don't love no more, I guess we f*** then" },
+  { start: 52, text: "But we don't love no more, I guess we *** then" },
   { start: 55, text: "Have you ever felt you ever want to kill her?" },
   { start: 58, text: "And you mix them emotions with tequila" },
   { start: 61, text: "And you mix that with a little bad advice" },
   { start: 63, text: "On one of them bad nights, y'all have a bad fight" },
-  { start: 66, text: "And you talk about her family, her aunts and s***" },
-  { start: 69, text: "And she say, \"M*****er, your momma's a b***\"" },
-  { start: 72, text: "You know, domestic drama and s***, all the attitude" },
-  { start: 75, text: "I'd never hit a girl, but I'd shake the s*** out of you" },
+  { start: 66, text: "And you talk about her family, her aunts and ***" },
+  { start: 69, text: "And she say, \"*****, your momma's a ***\"" },
+  { start: 72, text: "You know, domestic drama and ***, all the attitude" },
+  { start: 75, text: "I'd never hit a girl, but I'd shake the *** out of you" },
   { start: 78, text: "But I'ma be the bigger man, big pimpin' like Jigga man" },
   { start: 82, text: "Oh, I guess I figure it's" },
 
@@ -43,7 +43,7 @@ const lyricsData: Lyric[] = [
   { start: 95, text: "Bittersweet" },
 
   { start: 96, text: "See, what I want so much should never hurt this bad" },
-  { start: 99, text: "''Never did this before'', that's what the virgin says" },
+  { start: 99, text: "\"Never did this before\", that's what the virgin says" },
   { start: 102, text: "We've been generally warned, that's what the surgeon says" },
   { start: 105, text: "God, talk to me now, this is an emergency" },
 
@@ -53,9 +53,9 @@ const lyricsData: Lyric[] = [
   { start: 116, text: "And this relationship, it even got me back to drinking" },
   { start: 118, text: "Now this Hennessy, uh, it's gonna be the death of me (Be the death of me)" },
   { start: 125, text: "And I always thought that you having my child was our destiny" },
-  { start: 128, text: "But I can't even vibe with you s*****ly" },
+  { start: 128, text: "But I can't even vibe with you *******" },
   { start: 132, text: "'Cause every time that I'd try, you would question me" },
-  { start: 134, text: "Saying, \"You f***ing them girls, disrespecting me" },
+  { start: 134, text: "Saying, \"You **** them girls, disrespecting me" },
   { start: 137, text: "You don't see how your lies is affecting me?" },
   { start: 140, text: "You don't see how our life was supposed to be?" },
   { start: 145, text: "And I never let my people get that close to me" },
@@ -63,21 +63,21 @@ const lyricsData: Lyric[] = [
   { start: 149, text: "You always gone, you always be where those women will be" },
   { start: 152, text: "And this the first time she ever spilled her soul to me" },
 
-  { start: 155, text: "Bittersweet (I f****d up and I know it, G)" },
+  { start: 155, text: "Bittersweet (I **** up and I know it, G)" },
   { start: 158, text: "You're gonna be the death of me (I guess it's bittersweet poetry)" },
   { start: 161, text: "I don't want you, but I need you" },
   { start: 164, text: "I love you and hate you at the very same time" },
   { start: 167, text: "Bittersweet (Bittersweet, oh)" },
   { start: 170, text: "You're gonna be the death of me (Oh, oh)" },
   { start: 173, text: "I don't want you, but I need you" },
-  { start: 176, text: "I love you and hate you at the very same time (I love you and hate you at the very same time)" },
+  { start: 176, text: "I love you and hate you at the very same time" },
 
   { start: 179, text: "See, what I want so much should never hurt this bad (Oh, oh, oh)" },
-  { start: 182, text: "''Never did this before'', that's what the virgin says (Oh, oh, oh)" },
+  { start: 182, text: "\"Never did this before\", that's what the virgin says (Oh, oh, oh)" },
   { start: 185, text: "We've been generally warned, that's what the surgeon says (Oh, oh, oh)" },
   { start: 188, text: "God, talk to me now, this is an emergency (Oh, oh, oh)" },
   { start: 191, text: "See, what I want so much should never hurt this bad (Oh, oh, oh)" },
-  { start: 194, text: "''Never did this before'', that's what the virgin says (Oh, oh, oh)" },
+  { start: 194, text: "\"Never did this before\", that's what the virgin says (Oh, oh, oh)" },
   { start: 197, text: "We've been generally warned, that's what the surgeon says (Oh, oh, oh)" },
   { start: 200, text: "God, talk to me now, this is an emergency (Oh, oh, oh)" },
 
@@ -89,21 +89,29 @@ const lyricsData: Lyric[] = [
 const boldKeywords = new Set([
   "bittersweet",
   "death",
+  "of",
+  "me",
   "love",
   "hate",
   "emergency",
-  "destiny"
+  "destiny",
+  "you",
+  "song",
+  "of",
+  "all",
+  "time",
+  "poetry"
 ]);
 
 const semiBoldKeywords = new Set([
   "surgery",
-  "tequila",
-  "drama",
-  "relationship",
-  "vibe",
-  "currency",
-  "hennessy",
-  "question"
+  // "tequila",
+  // "drama",
+  // "relationship",
+  // "vibe",
+  // "currency",
+  // "hennessy",
+  // "question"
 ]);
 
 const formatLyric = (lyric: string) => {
