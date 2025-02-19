@@ -49,7 +49,7 @@ export default function Page() {
         >(and they actually work!)</p>
 
         <div className="flex flex-col gap-8 sm:gap-16">
-          <Link href="/#hola">
+          <Link href="/coming-soon">
             <div className="bg-[#F5F5F5] rounded-xl p-4 sm:p-6 md:p-10 hover:shadow-lg relative group"
               style={{ clipPath: "inset(0)" }}>
               {/* Add gradient overlay */}
@@ -129,7 +129,7 @@ export default function Page() {
             </div>
           </Link>
 
-          <Link href="/#hola">
+          <Link href="/coming-soon">
             <div className="bg-[#F5F5F5] rounded-xl p-4 sm:p-6 md:p-10 hover:shadow-lg relative group"
               style={{ clipPath: "inset(0)" }}>
               <div className="absolute inset-0 bg-[linear-gradient(45deg,_#FDF3EF_60%,_#CBF88A_90%)] opacity-0 rounded-xl transition-opacity duration-500 ease-in-out group-hover:opacity-100" />
@@ -249,7 +249,7 @@ export default function Page() {
               />
             </div>
             <div className="mt-auto pt-6">
-              <Link href="#" className="text-lg tracking-tighter text-gray-600 hover:underline">
+              <Link href="/coming-soon" className="text-lg tracking-tighter text-gray-600 hover:underline">
                 View full experience →
               </Link>
             </div>

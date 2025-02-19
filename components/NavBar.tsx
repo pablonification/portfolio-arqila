@@ -4,7 +4,6 @@ import Image from 'next/image';
 
 interface NavItem {
   name: string;
-  icon: string | null;
 }
 
 interface HighlightStyle {
@@ -14,6 +13,7 @@ interface HighlightStyle {
 
 const Navbar = () => {
   const [activeTab, setActiveTab] = useState('hola');
+  const [isIconSpinning, setIsIconSpinning] = useState(false);
   const [highlightStyle, setHighlightStyle] = useState<HighlightStyle>({
     transform: 'translateX(0)',
     width: '0'
@@ -82,11 +82,30 @@ const Navbar = () => {
   }, [activeTab]);
 
   const navItems: NavItem[] = [
-    { name: 'Hola', icon: '/iconamoon_confused-face-fill.svg' },
-    { name: 'Works', icon: null },
-    { name: 'Experience', icon: null },
-    { name: 'Connect', icon: null }
+    { name: 'Hola' },
+    { name: 'Works' },
+    { name: 'Experience' },
+    { name: 'Connect' }
   ];
+
+  const handleIconClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (!isAnimating.current) {
+      setIsIconSpinning(true);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      setActiveTab('hola');
+      const holaElement = navRef.current?.querySelector('[data-tab="hola"]') as HTMLElement;
+      updateHighlight(holaElement);
+      
+      // Reset spinning after animation
+      setTimeout(() => {
+        setIsIconSpinning(false);
+      }, 500);
+    }
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 p-3 flex justify-center font-inter">
@@ -98,6 +117,23 @@ const Navbar = () => {
           className="absolute h-[85%] -translate-y-1/2 bg-[#ffb7c3] rounded-[16px] sm:rounded-[20px] transition-all duration-500 ease-out opacity-75"
           style={highlightStyle}
         />
+
+        {/* Separate Icon Link */}
+        <Link
+          href="#hola"
+          onClick={handleIconClick}
+          className="relative px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 group"
+        >
+          <Image
+            src="/iconamoon_confused-face-fill.svg"
+            alt="Navigation icon"
+            width={96}
+            height={96}
+            quality={100}
+            className={`w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 relative z-10 transition-transform duration-500
+                      ${isIconSpinning ? 'rotate-[360deg]' : ''}`}
+          />
+        </Link>
         
         {navItems.map((item) => (
           <Link
@@ -111,8 +147,8 @@ const Navbar = () => {
                 const section = document.getElementById(sectionId);
                 if (section) {
                   const offset = sectionId === 'connect' 
-                    ? window.innerHeight * 0  // Larger offset for connect section
-                    : window.innerHeight * 0.15; // Default offset for other sections
+                    ? window.innerHeight * 0
+                    : window.innerHeight * 0.15;
                   window.scrollTo({
                     top: section.offsetTop - offset,
                     behavior: 'smooth'
@@ -123,19 +159,9 @@ const Navbar = () => {
               }
             }}
             className={`relative px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 text-xs sm:text-sm md:text-base lg:text-lg font-medium 
-                     flex items-center gap-1 sm:gap-2 whitespace-nowrap transition-colors duration-300
-                     hover:text-white group`}
+                     whitespace-nowrap transition-colors duration-300
+                     hover:text-white`}
           >
-            {item.icon && (
-              <Image
-                src={item.icon}
-                alt={`${item.name} icon`}
-                width={96}
-                height={96}
-                quality={100}
-                className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 relative z-10"
-              />
-            )}
             <span className={`relative z-10 transition-colors duration-300 
                           ${activeTab === item.name.toLowerCase() ? 'text-[#FFD8DF]' : 'text-white/90'}`}>
               {item.name}
