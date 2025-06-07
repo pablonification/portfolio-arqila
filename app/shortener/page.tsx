@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -11,6 +11,7 @@ import PasswordProtection from '@/components/PasswordProtection';
 interface ShortenResult {
   shortUrl: string;
   id: string;
+  originalUrl?: string;
 }
 
 interface UrlStats {
@@ -28,10 +29,24 @@ interface UrlStats {
 
 export default function UrlShortenerPage() {
   const [url, setUrl] = useState('');
+  const [customAlias, setCustomAlias] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<ShortenResult | null>(null);
   const [stats, setStats] = useState<UrlStats | null>(null);
   const [showStats, setShowStats] = useState(false);
+  const [urlHistory, setUrlHistory] = useState<ShortenResult[]>([]);
+
+  // Load history from localStorage on mount
+  useEffect(() => {
+    const saved = localStorage.getItem('url_history');
+    if (saved) {
+      try {
+        setUrlHistory(JSON.parse(saved));
+      } catch (error) {
+        console.error('Error loading history:', error);
+      }
+    }
+  }, []);
 
   const handleShorten = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,10 +54,15 @@ export default function UrlShortenerPage() {
 
     setIsLoading(true);
     try {
+      const requestBody: any = { url };
+      if (customAlias.trim()) {
+        requestBody.customAlias = customAlias.trim();
+      }
+
       const response = await fetch('/api/shorten', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url }),
+        body: JSON.stringify(requestBody),
       });
 
       if (!response.ok) {
@@ -52,7 +72,14 @@ export default function UrlShortenerPage() {
 
       const data = await response.json();
       setResult(data);
+      
+      // Add to history and save to localStorage
+      const newHistory = [{ ...data, originalUrl: url }, ...urlHistory.slice(0, 9)];
+      setUrlHistory(newHistory);
+      localStorage.setItem('url_history', JSON.stringify(newHistory));
+      
       setUrl('');
+      setCustomAlias('');
       toast.success('URL shortened successfully!');
     } catch (error) {
       console.error('Error:', error);
@@ -107,18 +134,31 @@ export default function UrlShortenerPage() {
           </CardHeader>
           <CardContent>
             <form onSubmit={handleShorten} className="space-y-4">
-              <div className="flex gap-2">
+              <div className="space-y-3">
                 <Input
                   type="url"
                   placeholder="https://example.com/very/long/url"
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
-                  className="flex-1"
                   required
                 />
-                <Button type="submit" disabled={isLoading}>
-                  {isLoading ? 'Shortening...' : 'Shorten'}
-                </Button>
+                <div className="flex gap-2">
+                  <div className="flex-1">
+                    <Input
+                      type="text"
+                      placeholder="custom-alias (optional)"
+                      value={customAlias}
+                      onChange={(e) => setCustomAlias(e.target.value.replace(/[^a-zA-Z0-9_-]/g, ''))}
+                      className="text-sm"
+                    />
+                    <p className="text-xs text-gray-500 mt-1">
+                      Will create: arqilasp.com/s/{customAlias || 'random-id'}
+                    </p>
+                  </div>
+                  <Button type="submit" disabled={isLoading} className="shrink-0">
+                    {isLoading ? 'Shortening...' : 'Shorten'}
+                  </Button>
+                </div>
               </div>
             </form>
           </CardContent>
@@ -163,6 +203,70 @@ export default function UrlShortenerPage() {
                     View Stats
                   </Button>
                 </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* URL History */}
+        {urlHistory.length > 0 && (
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Clock className="w-5 h-5" />
+                Recent URLs
+              </CardTitle>
+              <CardDescription>
+                Your recently created short URLs
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                {urlHistory.slice(0, 5).map((item, index) => (
+                  <div key={item.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-1">
+                        <code className="text-sm text-blue-600 font-mono">
+                          {item.shortUrl}
+                        </code>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => handleCopy(item.shortUrl)}
+                          className="h-6 px-2"
+                        >
+                          <Copy className="w-3 h-3" />
+                        </Button>
+                      </div>
+                      {item.originalUrl && (
+                        <p className="text-xs text-gray-600 truncate">
+                          → {item.originalUrl}
+                        </p>
+                      )}
+                    </div>
+                    <div className="flex gap-1 ml-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => window.open(item.shortUrl, '_blank')}
+                      >
+                        <ExternalLink className="w-3 h-3" />
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => loadStats(item.id)}
+                      >
+                        <BarChart3 className="w-3 h-3" />
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+                {urlHistory.length > 5 && (
+                  <p className="text-xs text-gray-500 text-center">
+                    Showing 5 of {urlHistory.length} URLs
+                  </p>
+                )}
               </div>
             </CardContent>
           </Card>
