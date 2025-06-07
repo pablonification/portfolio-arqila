@@ -6,6 +6,7 @@ import { useParams } from 'next/navigation';
 export default function RedirectPage() {
   const params = useParams();
   const [status, setStatus] = useState<'loading' | 'notfound' | 'error'>('loading');
+  const [redirectUrl, setRedirectUrl] = useState<string>('');
   const id = params?.id as string;
 
   useEffect(() => {
@@ -31,8 +32,11 @@ export default function RedirectPage() {
         if (response.ok) {
           const data = await response.json();
           if (data.url) {
-            // Redirect to the original URL
-            window.location.href = data.url;
+            setRedirectUrl(data.url);
+            // Small delay to allow state update, then redirect
+            setTimeout(() => {
+              window.location.replace(data.url);
+            }, 100);
             return;
           }
         }
@@ -57,6 +61,19 @@ export default function RedirectPage() {
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
           <p className="text-gray-600">Redirecting...</p>
+          {redirectUrl && (
+            <div className="mt-4 p-4 bg-white/80 rounded-lg">
+              <p className="text-sm text-gray-500 mb-2">
+                Taking too long? 
+              </p>
+              <a 
+                href={redirectUrl} 
+                className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
+              >
+                Continue to destination
+              </a>
+            </div>
+          )}
         </div>
       </div>
     );
