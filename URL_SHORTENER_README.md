@@ -8,6 +8,8 @@ Simple URL shortener dengan tracking yang bisa di-deploy di Vercel menggunakan d
 - ✅ **Click Tracking**: Melacak setiap klik dengan metadata lengkap
 - ✅ **Statistics Dashboard**: Melihat statistik penggunaan URL
 - ✅ **Modern UI**: Interface yang clean dan responsive
+- ✅ **Password Protection**: Halaman `/shortener` dilindungi password untuk penggunaan pribadi
+- ✅ **Session Management**: Auto logout setelah 24 jam untuk keamanan
 - ✅ **Vercel Ready**: Siap deploy di Vercel dengan Vercel KV
 
 ## Tech Stack
@@ -82,8 +84,9 @@ vercel --prod
 
 ### Akses URL Shortener
 
-- Interface: `https://arqilasp.com/shortener`
-- Short URLs: `https://arqilasp.com/s/{id}`
+- **Interface**: `https://arqilasp.com/shortener` (Protected with password)
+- **Short URLs**: `https://arqilasp.com/s/{id}` (Public access)
+- **Password**: Required for accessing shortener interface (configured in code)
 
 ### API Endpoints
 
@@ -166,10 +169,12 @@ npm run dev
 
 ## Security & Limitations
 
-- Rate limiting: Handled by Vercel (100 requests/10s per IP)
-- URL validation: Basic URL format validation
-- Data retention: Click history disimpan 30 hari
-- No authentication: Public use (sesuai permintaan)
+- **Password Protection**: Shortener interface protected with password "biru1933"
+- **Session Management**: 24-hour auto logout for security
+- **Rate limiting**: Handled by Vercel (100 requests/10s per IP)
+- **URL validation**: Basic URL format validation
+- **Data retention**: Click history disimpan 30 hari
+- **Public Access**: Short URLs (/s/{id}) accessible without authentication
 
 ## Performance
 
