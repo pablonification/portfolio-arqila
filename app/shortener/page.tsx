@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Copy, ExternalLink, BarChart3, Clock, MousePointer } from 'lucide-react';
 import { toast } from 'sonner';
+import PasswordProtection from '@/components/PasswordProtection';
 
 interface ShortenResult {
   shortUrl: string;
@@ -84,7 +85,8 @@ export default function UrlShortenerPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
+    <PasswordProtection>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
       <div className="max-w-4xl mx-auto py-8">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-2">
@@ -248,7 +250,8 @@ export default function UrlShortenerPage() {
             </CardContent>
           </Card>
         )}
+        </div>
       </div>
-    </div>
+    </PasswordProtection>
   );
 } 
