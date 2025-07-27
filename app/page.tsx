@@ -297,7 +297,7 @@ export default function Page() {
             </div>
             <div className="mt-auto pt-6">
               <Link
-                href="/coming-soon"
+                href="/experiences"
                 className="text-lg tracking-tighter text-gray-600 hover:underline"
               >
                 View full experience →
