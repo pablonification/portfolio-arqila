@@ -58,13 +58,19 @@ export default function Page() {
         <div className="flex flex-col gap-8 sm:gap-16">
           <Link href="/works/draftanakitb">
             <div
-              className="bg-[#F5F5F5] rounded-xl p-4 sm:p-6 md:p-10 hover:shadow-lg relative group"
+              className="bg-[#F5F5F5]/90 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-10 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15),0_15px_30px_-8px_rgba(0,0,0,0.12),inset_0_2px_0_rgba(255,255,255,0.9),inset_0_-1px_0_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-2 border border-gray-200/50 relative overflow-hidden group"
               style={{ clipPath: "inset(0)" }}
             >
+              {/* 3D Inner Glow Effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
+              {/* Top Highlight */}
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
+              {/* Bottom Shadow */}
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
               {/* Add gradient overlay */}
               <div className="absolute inset-0 bg-[linear-gradient(45deg,_#FDF3EF_60%,_#CBF88A_90%)] opacity-0 rounded-xl transition-opacity duration-500 ease-in-out group-hover:opacity-100" />
               {/* Wrap content in relative div to keep it above gradient */}
-              <div className="relative z-10">
+              <div className="relative z-20">
                 {/* Header */}
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex items-center gap-2 sm:gap-3">
@@ -154,11 +160,17 @@ export default function Page() {
 
           <Link href="/works/gep2025">
             <div
-              className="bg-[#F5F5F5] rounded-xl p-4 sm:p-6 md:p-10 hover:shadow-lg relative group"
+              className="bg-[#F5F5F5]/90 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-10 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15),0_15px_30px_-8px_rgba(0,0,0,0.12),inset_0_2px_0_rgba(255,255,255,0.9),inset_0_-1px_0_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-2 border border-gray-200/50 relative overflow-hidden group"
               style={{ clipPath: "inset(0)" }}
             >
+              {/* 3D Inner Glow Effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
+              {/* Top Highlight */}
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
+              {/* Bottom Shadow */}
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
               <div className="absolute inset-0 bg-[linear-gradient(45deg,_#FDF3EF_60%,_#CBF88A_90%)] opacity-0 rounded-xl transition-opacity duration-500 ease-in-out group-hover:opacity-100" />
-              <div className="relative z-10">
+              <div className="relative z-20">
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex items-center gap-2 sm:gap-3">
                     <Image
@@ -252,15 +264,21 @@ export default function Page() {
         className="max-w-full mx-2 px-2 sm:mx-8 sm:px-6 md:mx-16 lg:mx-24 lg:px-8 mb-16"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-          <div className="bg-white rounded-xl p-6 md:p-8 shadow-lg flex flex-col">
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15),0_15px_30px_-8px_rgba(0,0,0,0.12),inset_0_2px_0_rgba(255,255,255,0.9),inset_0_-1px_0_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-2 border border-gray-200/50 relative overflow-hidden group flex flex-col">
+            {/* 3D Inner Glow Effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
+            {/* Top Highlight */}
+            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
+            {/* Bottom Shadow */}
+            <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
             <h2
-              className="text-xl md:text-2xl font-medium mb-4 md:mb-6 tracking-tighter"
+              className="text-xl md:text-2xl font-medium mb-4 md:mb-6 tracking-tighter relative z-10"
               style={{ fontSize: "clamp(1.6rem, 2vw, 1.875rem)" }}
             >
               Experience
             </h2>
             <p
-              className="max-w-2xl font-medium text-gray-600 mb-6 tracking-tighter"
+              className="max-w-2xl font-medium text-gray-600 mb-6 tracking-tighter relative z-10"
               style={{ fontSize: "clamp(1.25rem, 1.5vw, 1.5rem)" }}
             >
               Bringing ideas to life through technology, I've worked across
@@ -269,7 +287,7 @@ export default function Page() {
               scalable systems, optimizing performance, or crafting seamless UI,
               I love turning challenges into functional solutions.
             </p>
-            <div className="flex gap-2 justify-center">
+            <div className="flex gap-2 justify-center relative z-10">
               <Image
                 src="/draftanakitb_logo.svg"
                 alt="DraftAnakITB Logo"
@@ -295,10 +313,10 @@ export default function Page() {
                 className="rounded-lg w-auto h-auto"
               />
             </div>
-            <div className="mt-auto pt-6">
+            <div className="mt-auto pt-6 relative z-10">
               <Link
                 href="/experiences"
-                className="text-lg tracking-tighter text-gray-600 hover:underline"
+                className="text-lg tracking-tighter text-gray-600 hover:underline transition-all duration-300 hover:text-gray-800"
               >
                 View full experience →
               </Link>

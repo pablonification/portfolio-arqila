@@ -79,8 +79,14 @@ export default function DraftAnakITBPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Kolom Kiri - Konten Utama */}
             <main className="lg:col-span-2 space-y-8">
-              <div className="bg-white rounded-xl p-6 md:p-8 shadow-md">
-                <h2 className="text-2xl font-bold tracking-tighter mb-4 font-inter">
+              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
+                {/* 3D Inner Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
+                {/* Top Highlight */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
+                {/* Bottom Shadow */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
+                <h2 className="text-2xl font-bold tracking-tighter mb-4 font-inter relative z-10">
                   Problem Overview
                 </h2>
                 <p className="text-gray-700 leading-relaxed space-y-4 font-inter tracking-tighter">
@@ -98,8 +104,14 @@ export default function DraftAnakITBPage() {
                 </p>
               </div>
 
-              <div className="bg-white rounded-xl p-6 md:p-8 shadow-md">
-                <h2 className="text-2xl font-bold tracking-tighter mb-4 font-inter">
+              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
+                {/* 3D Inner Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
+                {/* Top Highlight */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
+                {/* Bottom Shadow */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
+                <h2 className="text-2xl font-bold tracking-tighter mb-4 font-inter relative z-10">
                   My Role
                 </h2>
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -127,8 +139,14 @@ export default function DraftAnakITBPage() {
                 </ul>
               </div>
 
-              <div className="bg-white rounded-xl p-6 md:p-8 shadow-md">
-                <h2 className="text-2xl font-bold tracking-tighter mb-6 font-inter">
+              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
+                {/* 3D Inner Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
+                {/* Top Highlight */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
+                {/* Bottom Shadow */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
+                <h2 className="text-2xl font-bold tracking-tighter mb-6 font-inter relative z-10">
                   Process
                 </h2>
                 <div className="space-y-10">
@@ -211,8 +229,14 @@ export default function DraftAnakITBPage() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 md:p-8 shadow-md">
-                <h2 className="text-2xl font-bold tracking-tighter mb-4 font-inter">
+              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
+                {/* 3D Inner Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
+                {/* Top Highlight */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
+                {/* Bottom Shadow */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
+                <h2 className="text-2xl font-bold tracking-tighter mb-4 font-inter relative z-10">
                   Challenges & Lessons
                 </h2>
                 <h3 className="font-bold text-lg mb-3 font-inter tracking-tighter">
@@ -249,14 +273,14 @@ export default function DraftAnakITBPage() {
                 </div>
               </div>
 
-              <div
-                className="bg-white rounded-xl p-6 md:p-8 shadow-md"
-                style={{
-                  boxShadow:
-                    "0 10px 25px -5px rgba(236, 72, 153, 0.1), 0 8px 10px -6px rgba(236, 72, 153, 0.1)",
-                }}
-              >
-                <h2 className="text-2xl font-bold tracking-tighter mb-6 font-inter">
+              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
+                {/* 3D Inner Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
+                {/* Top Highlight */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
+                {/* Bottom Shadow */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
+                <h2 className="text-2xl font-bold tracking-tighter mb-6 font-inter relative z-10">
                   Results
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center mb-6">
@@ -303,8 +327,14 @@ export default function DraftAnakITBPage() {
 
             {/* Kolom Kanan - Sidebar */}
             <aside className="lg:col-span-1 space-y-8 lg:sticky top-8 self-start">
-              <div className="bg-white rounded-xl p-6 shadow-md">
-                <h3 className="text-xl font-bold mb-4 font-inter tracking-tighter">
+              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
+                {/* 3D Inner Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
+                {/* Top Highlight */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
+                {/* Bottom Shadow */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
+                <h3 className="text-xl font-bold mb-4 font-inter tracking-tighter relative z-10">
                   Tech Stack
                 </h3>
                 <div className="grid grid-cols-2 gap-x-8 gap-y-4">
@@ -364,44 +394,68 @@ export default function DraftAnakITBPage() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-md">
-                <h3 className="text-xl font-bold mb-4 font-inter tracking-tighter">
+              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
+                {/* 3D Inner Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
+                {/* Top Highlight */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
+                {/* Bottom Shadow */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
+                <h3 className="text-xl font-bold mb-4 font-inter tracking-tighter relative z-10">
                   Project Links
                 </h3>
                 <div className="flex flex-col gap-3">
                   <Link
                     href="https://github.com/pablonification/draftanakitb-web/"
                     target="_blank"
-                    className="bg-black text-white text-center rounded-2xl py-3 font-medium hover:bg-gray-800 transition-colors font-inter tracking-tighter"
+                    className="bg-black text-white text-center rounded-2xl py-3 font-medium hover:bg-gray-800 transition-all duration-300 font-inter tracking-tighter shadow-[0_4px_8px_-2px_rgba(0,0,0,0.3),inset_0_2px_0_rgba(255,255,255,0.2),inset_0_-1px_0_rgba(0,0,0,0.2)] hover:shadow-[0_6px_12px_-3px_rgba(0,0,0,0.4),inset_0_2px_0_rgba(255,255,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.3)] hover:-translate-y-1 relative overflow-hidden group"
                   >
-                    <Image
-                      src="/github-white.svg"
-                      alt="GitHub"
-                      className="inline-block mr-1 -translate-y-[1px]"
-                      width={22}
-                      height={22}
-                    />
-                    GitHub Repository
+                    {/* Button inner glow */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/20 rounded-2xl pointer-events-none"></div>
+                    {/* Button top highlight */}
+                    <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-t-2xl"></div>
+                    <span className="relative z-10 flex items-center justify-center">
+                      <Image
+                        src="/github-white.svg"
+                        alt="GitHub"
+                        className="inline-block mr-1 -translate-y-[1px]"
+                        width={22}
+                        height={22}
+                      />
+                      GitHub Repository
+                    </span>
                   </Link>
                   <Link
                     href="https://draftanakitb.tech/"
                     target="_blank"
-                    className="bg-gradient-to-r from-[#ffbcc4] to-[#c1f0f1] text-gray-800 text-center rounded-2xl py-3 font-medium hover:opacity-90 transition-opacity font-inter tracking-tighter flex items-center justify-center"
+                    className="bg-gradient-to-r from-[#ffbcc4] to-[#c1f0f1] text-gray-800 text-center rounded-2xl py-3 font-medium hover:opacity-90 transition-all duration-300 font-inter tracking-tighter flex items-center justify-center shadow-[0_4px_8px_-2px_rgba(0,0,0,0.15),inset_0_2px_0_rgba(255,255,255,0.6),inset_0_-1px_0_rgba(0,0,0,0.1)] hover:shadow-[0_6px_12px_-3px_rgba(0,0,0,0.2),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.15)] hover:-translate-y-1 relative overflow-hidden group"
                   >
-                    <Image
-                      src="/globe.svg"
-                      alt="Globe"
-                      className="inline-block mr-1"
-                      width={20}
-                      height={20}
-                    />
-                    Live Demo
+                    {/* Button inner glow */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-gray-200/20 rounded-2xl pointer-events-none"></div>
+                    {/* Button top highlight */}
+                    <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/60 to-transparent rounded-t-2xl"></div>
+                    <span className="relative z-10 flex items-center justify-center">
+                      <Image
+                        src="/globe.svg"
+                        alt="Globe"
+                        className="inline-block mr-1"
+                        width={20}
+                        height={20}
+                      />
+                      Live Demo
+                    </span>
                   </Link>
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-md">
-                <h3 className="text-xl font-bold mb-4 font-inter tracking-tighter">
+              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
+                {/* 3D Inner Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
+                {/* Top Highlight */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
+                {/* Bottom Shadow */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
+                <h3 className="text-xl font-bold mb-4 font-inter tracking-tighter relative z-10">
                   Project Timeline
                 </h3>
                 <ul className="space-y-4 border-l-2 border-gray-200 pl-4">

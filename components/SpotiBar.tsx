@@ -8,16 +8,19 @@ interface Lyric {
 
 // Daftar lirik dengan timestamp (dalam detik)
 const lyricsData: Lyric[] = [
-  { start: 1, text: "I present to you"},
-  { start: 8, text: "My favorite song of all time"},
+  { start: 1, text: "I present to you" },
+  { start: 8, text: "My favorite song of all time" },
   { start: 13, text: "Bittersweet, you're gonna be the death of me" },
   { start: 19, text: "I don't want you, but I need you" },
   { start: 22, text: "I love you and hate you at the very same time" },
   { start: 24, text: "Bittersweet" },
 
   { start: 25, text: "See, what I want so much should never hurt this bad" },
-  { start: 28, text: "\"Never did this before\", that's what the virgin says" },
-  { start: 31, text: "We've been generally warned, that's what the surgeon says" },
+  { start: 28, text: '"Never did this before", that\'s what the virgin says' },
+  {
+    start: 31,
+    text: "We've been generally warned, that's what the surgeon says",
+  },
   { start: 34, text: "God, talk to me now, this is an emergency" },
 
   { start: 37, text: "And she claims she only with me for the currency" },
@@ -31,7 +34,7 @@ const lyricsData: Lyric[] = [
   { start: 61, text: "And you mix that with a little bad advice" },
   { start: 63, text: "On one of them bad nights, y'all have a bad fight" },
   { start: 66, text: "And you talk about her family, her aunts and ***" },
-  { start: 69, text: "And she say, \"*****, your momma's a ***\"" },
+  { start: 69, text: 'And she say, "*****, your momma\'s a ***"' },
   { start: 72, text: "You know, domestic drama and ***, all the attitude" },
   { start: 75, text: "I'd never hit a girl, but I'd shake the *** out of you" },
   { start: 78, text: "But I'ma be the bigger man, big pimpin' like Jigga man" },
@@ -43,28 +46,52 @@ const lyricsData: Lyric[] = [
   { start: 95, text: "Bittersweet" },
 
   { start: 96, text: "See, what I want so much should never hurt this bad" },
-  { start: 99, text: "\"Never did this before\", that's what the virgin says" },
-  { start: 102, text: "We've been generally warned, that's what the surgeon says" },
+  { start: 99, text: '"Never did this before", that\'s what the virgin says' },
+  {
+    start: 102,
+    text: "We've been generally warned, that's what the surgeon says",
+  },
   { start: 105, text: "God, talk to me now, this is an emergency" },
 
   { start: 108, text: "And my people said I shouldn't let it worry me" },
   { start: 111, text: "I need to focus on the girls we getting currently" },
   { start: 114, text: "But I been thinking and it got me back to sinking" },
-  { start: 116, text: "And this relationship, it even got me back to drinking" },
-  { start: 118, text: "Now this Hennessy, uh, it's gonna be the death of me (Be the death of me)" },
-  { start: 125, text: "And I always thought that you having my child was our destiny" },
+  {
+    start: 116,
+    text: "And this relationship, it even got me back to drinking",
+  },
+  {
+    start: 118,
+    text: "Now this Hennessy, uh, it's gonna be the death of me (Be the death of me)",
+  },
+  {
+    start: 125,
+    text: "And I always thought that you having my child was our destiny",
+  },
   { start: 128, text: "But I can't even vibe with you *******" },
   { start: 132, text: "'Cause every time that I'd try, you would question me" },
-  { start: 134, text: "Saying, \"You **** them girls, disrespecting me" },
+  { start: 134, text: 'Saying, "You **** them girls, disrespecting me' },
   { start: 137, text: "You don't see how your lies is affecting me?" },
   { start: 140, text: "You don't see how our life was supposed to be?" },
   { start: 145, text: "And I never let my people get that close to me" },
-  { start: 146, text: "And you ain't cracked up to what you were supposed to be" },
-  { start: 149, text: "You always gone, you always be where those women will be" },
-  { start: 152, text: "And this the first time she ever spilled her soul to me" },
+  {
+    start: 146,
+    text: "And you ain't cracked up to what you were supposed to be",
+  },
+  {
+    start: 149,
+    text: "You always gone, you always be where those women will be",
+  },
+  {
+    start: 152,
+    text: "And this the first time she ever spilled her soul to me",
+  },
 
   { start: 155, text: "Bittersweet (I **** up and I know it, G)" },
-  { start: 158, text: "You're gonna be the death of me (I guess it's bittersweet poetry)" },
+  {
+    start: 158,
+    text: "You're gonna be the death of me (I guess it's bittersweet poetry)",
+  },
   { start: 161, text: "I don't want you, but I need you" },
   { start: 164, text: "I love you and hate you at the very same time" },
   { start: 167, text: "Bittersweet (Bittersweet, oh)" },
@@ -72,18 +99,42 @@ const lyricsData: Lyric[] = [
   { start: 173, text: "I don't want you, but I need you" },
   { start: 176, text: "I love you and hate you at the very same time" },
 
-  { start: 179, text: "See, what I want so much should never hurt this bad (Oh, oh, oh)" },
-  { start: 182, text: "\"Never did this before\", that's what the virgin says (Oh, oh, oh)" },
-  { start: 185, text: "We've been generally warned, that's what the surgeon says (Oh, oh, oh)" },
-  { start: 188, text: "God, talk to me now, this is an emergency (Oh, oh, oh)" },
-  { start: 191, text: "See, what I want so much should never hurt this bad (Oh, oh, oh)" },
-  { start: 194, text: "\"Never did this before\", that's what the virgin says (Oh, oh, oh)" },
-  { start: 197, text: "We've been generally warned, that's what the surgeon says (Oh, oh, oh)" },
-  { start: 200, text: "God, talk to me now, this is an emergency (Oh, oh, oh)" },
+  {
+    start: 179,
+    text: "See, what I want so much should never hurt this bad (Oh, oh, oh)",
+  },
+  {
+    start: 182,
+    text: '"Never did this before", that\'s what the virgin says (Oh, oh, oh)',
+  },
+  {
+    start: 185,
+    text: "We've been generally warned, that's what the surgeon says (Oh, oh, oh)",
+  },
+  {
+    start: 188,
+    text: "God, talk to me now, this is an emergency (Oh, oh, oh)",
+  },
+  {
+    start: 191,
+    text: "See, what I want so much should never hurt this bad (Oh, oh, oh)",
+  },
+  {
+    start: 194,
+    text: '"Never did this before", that\'s what the virgin says (Oh, oh, oh)',
+  },
+  {
+    start: 197,
+    text: "We've been generally warned, that's what the surgeon says (Oh, oh, oh)",
+  },
+  {
+    start: 200,
+    text: "God, talk to me now, this is an emergency (Oh, oh, oh)",
+  },
 
   { start: 203, text: "Bittersweet, you're gonna be the death of me" },
   { start: 209, text: "I don't want you, but I need you" },
-  { start: 211, text: "I love you and hate you at the very same time" }
+  { start: 211, text: "I love you and hate you at the very same time" },
 ];
 
 const boldKeywords = new Set([
@@ -100,7 +151,7 @@ const boldKeywords = new Set([
   "of",
   "all",
   "time",
-  "poetry"
+  "poetry",
 ]);
 
 const semiBoldKeywords = new Set([
@@ -120,19 +171,28 @@ const formatLyric = (lyric: string) => {
     const trimmed = word.replace(/^[^a-zA-Z]+|[^a-zA-Z]+$/g, "").toLowerCase();
     if (boldKeywords.has(trimmed)) {
       return (
-        <strong key={idx} className="font-bold text-white transition-all duration-300 ease-in-out">
+        <strong
+          key={idx}
+          className="font-bold text-white transition-all duration-300 ease-in-out"
+        >
           {word}
         </strong>
       );
     } else if (semiBoldKeywords.has(trimmed)) {
       return (
-        <span key={idx} className="font-semibold text-white transition-all duration-300 ease-in-out">
+        <span
+          key={idx}
+          className="font-semibold text-white transition-all duration-300 ease-in-out"
+        >
           {word}
         </span>
       );
     }
     return (
-      <span key={idx} className="font-medium text-white transition-all duration-300 ease-in-out">
+      <span
+        key={idx}
+        className="font-medium text-white transition-all duration-300 ease-in-out"
+      >
         {word}
       </span>
     );
@@ -143,8 +203,14 @@ const formatLyric = (lyric: string) => {
   }, [] as (string | JSX.Element)[]);
 };
 
-const PlayPauseButton = ({ isPlaying, onClick }: { isPlaying: boolean; onClick: () => void }) => (
-  <div 
+const PlayPauseButton = ({
+  isPlaying,
+  onClick,
+}: {
+  isPlaying: boolean;
+  onClick: () => void;
+}) => (
+  <div
     className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
                cursor-pointer transition-transform duration-200 hover:scale-110
                active:scale-95"
@@ -189,8 +255,8 @@ export default function SpotiBar() {
       const currentTime = audio.currentTime;
       const newIndex = lyricsData.findIndex((lyric, i) => {
         const next = lyricsData[i + 1];
-        return next 
-          ? currentTime >= lyric.start && currentTime < next.start 
+        return next
+          ? currentTime >= lyric.start && currentTime < next.start
           : currentTime >= lyric.start;
       });
       if (newIndex !== currentLyricIndex) {
@@ -221,7 +287,17 @@ export default function SpotiBar() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className={`relative bg-gradient-to-r from-[#B14A9E] to-[#C1986E] rounded-xl p-3 sm:p-4 flex items-center min-h-[60px] sm:min-h-[80px] text-white transition-transform duration-300 ease-out ${isHovered ? 'scale-[1.02] shadow-lg' : 'scale-100'}`}>
+      <div
+        className={`relative bg-gradient-to-r from-[#B14A9E] to-[#C1986E] rounded-xl p-3 sm:p-4 flex items-center min-h-[60px] sm:min-h-[80px] text-white transition-transform duration-300 ease-out ${
+          isHovered ? "scale-[1.02]" : "scale-100"
+        } shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15),0_10px_20px_-5px_rgba(0,0,0,0.1),inset_0_2px_0_rgba(255,255,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.2)] border border-white/20 relative overflow-hidden`}
+      >
+        {/* 3D Inner Glow Effect */}
+        <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/10 rounded-xl pointer-events-none"></div>
+        {/* Top Highlight */}
+        <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/40 to-transparent rounded-t-xl"></div>
+        {/* Bottom Shadow */}
+        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-black/20 to-transparent rounded-b-xl"></div>
         {/* Cover & Info */}
         <div className="flex items-center gap-2 sm:gap-4 z-10">
           <div className="relative group cursor-pointer">
@@ -231,7 +307,9 @@ export default function SpotiBar() {
               width={224}
               height={224}
               quality={100}
-              className={`w-10 h-10 sm:w-14 sm:h-14 rounded-md transition-transform duration-200 ${isPlaying ? 'animate-spin-slow' : ''}`}
+              className={`w-10 h-10 sm:w-14 sm:h-14 rounded-md transition-transform duration-200 ${
+                isPlaying ? "animate-spin-slow" : ""
+              }`}
             />
             <div className="absolute inset-0 bg-black/40 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             <PlayPauseButton isPlaying={isPlaying} onClick={handlePlayPause} />

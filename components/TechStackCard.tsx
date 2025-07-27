@@ -49,7 +49,7 @@ const TechStackCard: React.FC = () => {
   // Initialize Matter.js engine and renderer
   useEffect(() => {
     if (!canvasRef.current || !containerRef.current) return;
-    
+
     const containerWidth = containerRef.current.clientWidth;
     const containerHeight = containerRef.current.clientHeight;
 
@@ -74,29 +74,23 @@ const TechStackCard: React.FC = () => {
           containerHeight + 10,
           containerWidth,
           20,
-          { isStatic: true, render: { visible: false } 
-        }),
-        Matter.Bodies.rectangle(
-          -10,
-          containerHeight / 2,
-          20,
-          containerHeight,
-          { isStatic: true, render: { visible: false } 
+          { isStatic: true, render: { visible: false } }
+        ),
+        Matter.Bodies.rectangle(-10, containerHeight / 2, 20, containerHeight, {
+          isStatic: true,
+          render: { visible: false },
         }),
         Matter.Bodies.rectangle(
           containerWidth + 10,
           containerHeight / 2,
           20,
           containerHeight,
-          { isStatic: true, render: { visible: false } 
+          { isStatic: true, render: { visible: false } }
+        ),
+        Matter.Bodies.rectangle(containerWidth / 2, -10, containerWidth, 20, {
+          isStatic: true,
+          render: { visible: false },
         }),
-        Matter.Bodies.rectangle(
-          containerWidth / 2,
-          -10,
-          containerWidth,
-          20,
-          { isStatic: true, render: { visible: false } 
-        })
       ];
     };
 
@@ -106,17 +100,17 @@ const TechStackCard: React.FC = () => {
     const mouse = Matter.Mouse.create(canvasRef.current);
     const mouseConstraint = Matter.MouseConstraint.create(newEngine, {
       mouse,
-      constraint: { 
+      constraint: {
         stiffness: 0.2,
         render: { visible: false },
         // Add damping to reduce wild movements
-        damping: 0.4
+        damping: 0.4,
       },
     });
 
     // Adjust world bounds to be slightly larger than container
     Matter.World.add(newEngine.world, [...boundaries, mouseConstraint]);
-    
+
     // Reduce gravity to make movements less extreme
     newEngine.gravity.y = 0.5;
     // Add air friction to dampen movement
@@ -126,14 +120,14 @@ const TechStackCard: React.FC = () => {
     const handleWheel = (e: WheelEvent) => {
       // Allow default scroll behavior
     };
-    canvasRef.current.addEventListener('wheel', handleWheel, { passive: true });
+    canvasRef.current.addEventListener("wheel", handleWheel, { passive: true });
 
     setEngine(newEngine);
     setRender(newRender);
 
     return () => {
       if (canvasRef.current) {
-        canvasRef.current.removeEventListener('wheel', handleWheel);
+        canvasRef.current.removeEventListener("wheel", handleWheel);
       }
     };
   }, []);
@@ -164,34 +158,22 @@ const TechStackCard: React.FC = () => {
 
       // Create new boundaries
       const newBoundaries = [
-        Matter.Bodies.rectangle(
-          newWidth / 2,
-          newHeight + 10,
-          newWidth,
-          20,
-          { isStatic: true, render: { visible: false } }
-        ),
-        Matter.Bodies.rectangle(
-          -10,
-          newHeight / 2,
-          20,
-          newHeight,
-          { isStatic: true, render: { visible: false } 
+        Matter.Bodies.rectangle(newWidth / 2, newHeight + 10, newWidth, 20, {
+          isStatic: true,
+          render: { visible: false },
         }),
-        Matter.Bodies.rectangle(
-          newWidth + 10,
-          newHeight / 2,
-          20,
-          newHeight,
-          { isStatic: true, render: { visible: false } 
+        Matter.Bodies.rectangle(-10, newHeight / 2, 20, newHeight, {
+          isStatic: true,
+          render: { visible: false },
         }),
-        Matter.Bodies.rectangle(
-          newWidth / 2,
-          -10,
-          newWidth,
-          20,
-          { isStatic: true, render: { visible: false } 
-        })
+        Matter.Bodies.rectangle(newWidth + 10, newHeight / 2, 20, newHeight, {
+          isStatic: true,
+          render: { visible: false },
+        }),
+        Matter.Bodies.rectangle(newWidth / 2, -10, newWidth, 20, {
+          isStatic: true,
+          render: { visible: false },
+        }),
       ];
 
       // Add new boundaries to the world
@@ -215,19 +197,22 @@ const TechStackCard: React.FC = () => {
     const logoBodies = techStack.map((item, idx) => {
       const x = (render.options.width as number) / 2 + Math.random() * 20 - 10;
       const y = 50 + idx * 1.5;
-      
+
       // Create the logo body with adjusted physics properties
       const body = Matter.Bodies.rectangle(x, y, bodyWidth, bodyHeight, {
         restitution: 0.3, // Reduce bounciness
-        friction: 0.8,    // Increase friction
-        density: 0.002,   // Slightly increase density
+        friction: 0.8, // Increase friction
+        density: 0.002, // Slightly increase density
         frictionAir: 0.03, // Add air friction
         // Add force limits to prevent extreme movements
         plugin: {
           wrap: {
             min: { x: 0, y: 0 },
-            max: { x: render.options.width as number, y: render.options.height as number }
-          }
+            max: {
+              x: render.options.width as number,
+              y: render.options.height as number,
+            },
+          },
         },
         render: {
           sprite: {
@@ -248,8 +233,8 @@ const TechStackCard: React.FC = () => {
     Matter.World.add(engine.world, logoBodies);
 
     // Add a collision event listener to keep bodies in bounds
-    Matter.Events.on(engine, 'afterUpdate', () => {
-      logoBodies.forEach(body => {
+    Matter.Events.on(engine, "afterUpdate", () => {
+      logoBodies.forEach((body) => {
         const x = body.position.x;
         const y = body.position.y;
         const containerWidth = render.options.width as number;
@@ -266,17 +251,27 @@ const TechStackCard: React.FC = () => {
         const currentVelX = body.velocity.x;
         const currentVelY = body.velocity.y;
 
-        if (Math.abs(currentVelX) > maxVelocity || Math.abs(currentVelY) > maxVelocity) {
+        if (
+          Math.abs(currentVelX) > maxVelocity ||
+          Math.abs(currentVelY) > maxVelocity
+        ) {
           Matter.Body.setVelocity(body, {
-            x: Math.min(Math.abs(currentVelX), maxVelocity) * Math.sign(currentVelX),
-            y: Math.min(Math.abs(currentVelY), maxVelocity) * Math.sign(currentVelY)
+            x:
+              Math.min(Math.abs(currentVelX), maxVelocity) *
+              Math.sign(currentVelX),
+            y:
+              Math.min(Math.abs(currentVelY), maxVelocity) *
+              Math.sign(currentVelY),
           });
         }
 
         // Limit angular velocity
         const maxAngularVelocity = 0.2;
         if (Math.abs(body.angularVelocity) > maxAngularVelocity) {
-          Matter.Body.setAngularVelocity(body, maxAngularVelocity * Math.sign(body.angularVelocity));
+          Matter.Body.setAngularVelocity(
+            body,
+            maxAngularVelocity * Math.sign(body.angularVelocity)
+          );
         }
       });
     });
@@ -287,25 +282,38 @@ const TechStackCard: React.FC = () => {
 
     // Cleanup function
     return () => {
-      Matter.Events.off(engine, 'afterUpdate');
+      Matter.Events.off(engine, "afterUpdate");
       Runner.stop(runner);
       Render.stop(render);
     };
   }, [inView, engine, render]);
 
   return (
-    <div ref={cardRef} className="bg-white rounded-xl p-6 md:p-8 shadow-lg">
+    <div
+      ref={cardRef}
+      className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden"
+    >
+      {/* 3D Inner Glow Effect */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
+      {/* Top Highlight */}
+      <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
+      {/* Bottom Shadow */}
+      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
+
       <h2
-        className="max-w-2xl font-medium text-gray-600 mb-6 tracking-tighter" 
+        className="max-w-2xl font-medium text-gray-600 mb-6 tracking-tighter relative z-10"
         style={{ fontSize: "clamp(1.25rem, 1.5vw, 1.5rem)" }}
       >
         And here's my tech stack...
       </h2>
-      <div ref={containerRef} className="relative w-full h-[400px]">
-        <canvas 
-          ref={canvasRef} 
+      <div
+        ref={containerRef}
+        className="relative w-full h-[400px] relative z-10"
+      >
+        <canvas
+          ref={canvasRef}
           className="absolute top-0 left-0 w-full h-full"
-          style={{ touchAction: 'pan-y' }}
+          style={{ touchAction: "pan-y" }}
         />
       </div>
     </div>
