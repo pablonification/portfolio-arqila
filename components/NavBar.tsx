@@ -71,9 +71,8 @@ const Navbar = () => {
         const element = document.getElementById(section);
         if (element) {
           const { offsetTop, offsetHeight } = element;
-          // Apply larger offset for connect section
-          const offset =
-            section === "connect" ? window.innerHeight * 0.3 : defaultOffset;
+          // Apply different offset for connect section
+          const offset = section === "connect" ? 80 : defaultOffset;
 
           if (
             scrollPosition >= offsetTop - offset &&
@@ -260,10 +259,13 @@ const Navbar = () => {
                 const sectionId = item.name.toLowerCase();
                 const section = document.getElementById(sectionId);
                 if (section) {
-                  const offset =
-                    sectionId === "connect"
-                      ? window.innerHeight * 0
-                      : window.innerHeight * 0.15;
+                  let offset;
+                  if (sectionId === "connect") {
+                    // For connect section, account for the negative top margin and navbar height
+                    offset = 80; // navbar height + some padding
+                  } else {
+                    offset = window.innerHeight * 0.15;
+                  }
                   window.scrollTo({
                     top: section.offsetTop - offset,
                     behavior: "smooth",

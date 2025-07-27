@@ -5,18 +5,43 @@ import Link from "next/link";
 import Lanyard from "@/components/Lanyard";
 import TechStackCard from "@/components/TechStackCard";
 import SpotiBar from "@/components/SpotiBar";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export default function Page() {
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";
   }, []);
 
+  // Scroll animation hooks for each section
+  const holaAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.3 });
+  const worksAnimation = useScrollAnimation<HTMLElement>({ threshold: 0.2 });
+  const experienceAnimation = useScrollAnimation<HTMLElement>({
+    threshold: 0.2,
+  });
+  const spotiAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.3 });
+  const lanyardAnimation = useScrollAnimation<HTMLDivElement>({
+    threshold: 0.3,
+  });
+
+  // Individual card animations
+  const draftanakitbAnimation = useScrollAnimation<HTMLDivElement>({
+    threshold: 0.2,
+  });
+  const gep2025Animation = useScrollAnimation<HTMLDivElement>({
+    threshold: 0.2,
+  });
+
   return (
     <>
       {/* Main Content - Reduced max-width and padding */}
       <div
+        ref={holaAnimation.elementRef}
         id="hola"
-        className="max-w-full mx-2 px-2 sm:mx-4 sm:px-4 lg:px-6 pt-16 sm:pt-24 md:pt-32 lg:pt-40"
+        className={`max-w-full mx-2 px-2 sm:mx-4 sm:px-4 lg:px-6 pt-16 sm:pt-24 md:pt-32 lg:pt-40 transition-all duration-1000 ease-out ${
+          holaAnimation.isVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-8"
+        }`}
       >
         <p
           className="mb-4 sm:mb-8 max-w-2xl leading-tight tracking-tighter text-[#575757]"
@@ -37,8 +62,13 @@ export default function Page() {
 
       {/* Projects - Reduced max-width and padding */}
       <section
+        ref={worksAnimation.elementRef}
         id="works"
-        className="max-w-full mx-2 px-2 sm:mx-8 sm:px-6 md:mx-16 lg:mx-24 lg:px-8 mb-8 sm:mb-16 mt-16 sm:mt-32"
+        className={`max-w-full mx-2 px-2 sm:mx-8 sm:px-6 md:mx-16 lg:mx-24 lg:px-8 mb-8 sm:mb-16 mt-16 sm:mt-32 transition-all duration-1000 ease-out ${
+          worksAnimation.isVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-8"
+        }`}
       >
         <h2
           className="font-semibold mb-2 text-center tracking-tighter"
@@ -58,7 +88,12 @@ export default function Page() {
         <div className="flex flex-col gap-8 sm:gap-16">
           <Link href="/works/draftanakitb">
             <div
-              className="bg-[#F5F5F5]/90 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-10 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15),0_15px_30px_-8px_rgba(0,0,0,0.12),inset_0_2px_0_rgba(255,255,255,0.9),inset_0_-1px_0_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-2 border border-gray-200/50 relative overflow-hidden group"
+              ref={draftanakitbAnimation.elementRef}
+              className={`bg-[#F5F5F5]/90 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-10 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15),0_15px_30px_-8px_rgba(0,0,0,0.12),inset_0_2px_0_rgba(255,255,255,0.9),inset_0_-1px_0_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-2 border border-gray-200/50 relative overflow-hidden group ${
+                draftanakitbAnimation.isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
               style={{ clipPath: "inset(0)" }}
             >
               {/* 3D Inner Glow Effect */}
@@ -160,8 +195,16 @@ export default function Page() {
 
           <Link href="/works/gep2025">
             <div
-              className="bg-[#F5F5F5]/90 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-10 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15),0_15px_30px_-8px_rgba(0,0,0,0.12),inset_0_2px_0_rgba(255,255,255,0.9),inset_0_-1px_0_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-2 border border-gray-200/50 relative overflow-hidden group"
-              style={{ clipPath: "inset(0)" }}
+              ref={gep2025Animation.elementRef}
+              className={`bg-[#F5F5F5]/90 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-10 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15),0_15px_30px_-8px_rgba(0,0,0,0.12),inset_0_2px_0_rgba(255,255,255,0.9),inset_0_-1px_0_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-2 border border-gray-200/50 relative overflow-hidden group ${
+                gep2025Animation.isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+              style={{
+                clipPath: "inset(0)",
+                transitionDelay: gep2025Animation.isVisible ? "200ms" : "0ms",
+              }}
             >
               {/* 3D Inner Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
@@ -260,8 +303,13 @@ export default function Page() {
       </section>
 
       <section
+        ref={experienceAnimation.elementRef}
         id="experience"
-        className="max-w-full mx-2 px-2 sm:mx-8 sm:px-6 md:mx-16 lg:mx-24 lg:px-8 mb-16"
+        className={`max-w-full mx-2 px-2 sm:mx-8 sm:px-6 md:mx-16 lg:mx-24 lg:px-8 mb-16 transition-all duration-1000 ease-out ${
+          experienceAnimation.isVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-8"
+        }`}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
           <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15),0_15px_30px_-8px_rgba(0,0,0,0.12),inset_0_2px_0_rgba(255,255,255,0.9),inset_0_-1px_0_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-2 border border-gray-200/50 relative overflow-hidden group flex flex-col">
@@ -327,9 +375,28 @@ export default function Page() {
       </section>
 
       {/* Spotify */}
-      <SpotiBar />
+      <div
+        ref={spotiAnimation.elementRef}
+        className={`transition-all duration-1000 ease-out ${
+          spotiAnimation.isVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-8"
+        }`}
+      >
+        <SpotiBar />
+      </div>
 
-      <Lanyard />
+      <div
+        ref={lanyardAnimation.elementRef}
+        id="connect"
+        className={`transition-all duration-1000 ease-out ${
+          lanyardAnimation.isVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-8"
+        }`}
+      >
+        <Lanyard />
+      </div>
     </>
   );
 }
