@@ -21,6 +21,10 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
+  // Configure server to show IP address
+  async rewrites() {
+    return [];
+  },
 }
 
 mergeConfig(nextConfig, userConfig)
