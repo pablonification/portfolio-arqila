@@ -56,10 +56,10 @@ export default function GEP2025Page() {
             <div className="relative w-full mx-auto">
               <div className="relative bg-gradient-to-b from-gray-300 to-gray-800 rounded-2xl shadow-2xl overflow-hidden aspect-[21/9]">
                 <Image
-                  src="/placeholder-works.png"
+                  src="/gep-cover.jpg"
                   alt="DraftAnakITB App Showcase"
-                  width={1200}
-                  height={510}
+                  width={3600}
+                  height={1530}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
@@ -148,84 +148,30 @@ export default function GEP2025Page() {
                 {/* Bottom Shadow */}
                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
                 <h2 className="text-2xl font-bold tracking-tighter mb-6 font-inter relative z-10">
-                  Process
+                  Gallery
                 </h2>
                 <div className="space-y-10">
                   <div>
-                    <h3 className="text-xl font-bold mb-3 font-inter tracking-tighter">
-                      1. Research & Discovery
-                    </h3>
                     <p className="text-gray-700 mb-4 font-inter tracking-tighter">
-                      Started with extensive research to understand student pain
-                      points. Conducted user interviews and competitive
-                      analysis.
+                      Here are some snapshots from the development process and
+                      the final app screens.
                     </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid gap-4">
                       <Image
-                        src="/user_interviews.png"
+                        src="/gep-slug.jpg"
                         alt="User Interviews"
-                        width={400}
-                        height={300}
-                        className="rounded-2xl w-full object-cover"
+                        width={3600}
+                        height={1530}
+                        className="rounded-2xl w-full object-cover relative z-20"
                       />
                       <Image
-                        src="/user_personas.png"
+                        src="/gep-slug2.jpg"
                         alt="User Personas"
-                        width={400}
-                        height={300}
-                        className="rounded-2xl w-full object-cover"
+                        width={3600}
+                        height={1530}
+                        className="rounded-2xl w-full object-cover relative z-20"
                       />
                     </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-3 font-inter tracking-tighter">
-                      2. Design & Prototyping
-                    </h3>
-                    <p className="text-gray-700 mb-4 font-inter tracking-tighter">
-                      Created multiple design iterations, focusing on a clean
-                      interface that prioritized content while maintaining
-                      anonymity. Conducted usability testing with 15 students.
-                    </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                      <Image
-                        src="/lofi.png"
-                        alt="Wireframes"
-                        width={250}
-                        height={400}
-                        className="rounded-2xl w-full object-cover"
-                      />
-                      <Image
-                        src="/hifi.png"
-                        alt="UI Iterations"
-                        width={250}
-                        height={400}
-                        className="rounded-2xl w-full object-cover"
-                      />
-                      <Image
-                        src="/app.png"
-                        alt="Final Prototype"
-                        width={250}
-                        height={400}
-                        className="rounded-2xl w-full object-cover"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-3 font-inter tracking-tighter">
-                      3. Development & Launch
-                    </h3>
-                    <p className="text-gray-700 mb-4 font-inter tracking-tighter">
-                      Led a team of 4 developers through an agile development
-                      process. Launched beta version to 100 students for initial
-                      feedback before campus-wide release.
-                    </p>
-                    <Image
-                      src="/timeline.png"
-                      alt="Development Timeline"
-                      width={800}
-                      height={250}
-                      className="rounded-2xl w-full object-cover mt-4"
-                    />
                   </div>
                 </div>
               </div>

@@ -56,10 +56,10 @@ export default function DraftAnakITBPage() {
             <div className="relative w-full mx-auto">
               <div className="relative bg-gradient-to-b from-gray-300 to-gray-800 rounded-2xl shadow-2xl overflow-hidden aspect-[21/9]">
                 <Image
-                  src="/placeholder-works.png"
+                  src="/cover_draftanakitb.jpg"
                   alt="DraftAnakITB App Showcase"
-                  width={1200}
-                  height={510}
+                  width={3600}
+                  height={1530}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
@@ -120,21 +120,32 @@ export default function DraftAnakITBPage() {
                   <RoleTag>Project Manager</RoleTag>
                 </div>
                 <p className="text-gray-700 leading-relaxed mb-4 font-inter tracking-tighter">
-                  I led the development team while also handling the UI/UX
-                  design of the platform. My responsibilities included:
+                  I owned the project end-to-end, from initial idea and
+                  research, to UI/UX design, full-stack development, and
+                  platform deployment. My responsibilities included:
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-gray-700 font-inter tracking-tighter">
                   <li>
-                    Designing the user interface with focus on anonymity and
-                    ease of use
+                    Conducting user research to understand pain points and
+                    behavior
+                  </li>
+                  <li>
+                    Designing the entire user experience (UX) and interface (UI)
+                    using Figma
                   </li>
                   <li>Developing the frontend using React and Tailwind CSS</li>
+                  <li>Building a secure backend using Node.js and MongoDB</li>
                   <li>
-                    Implementing secure authentication system with Firebase
+                    Integrating X (Twitter) API with moderation tools to ensure
+                    safety and anonymity
                   </li>
-                  <li>Managing team workflow and project timeline</li>
                   <li>
-                    Conducting user testing and iterating based on feedback
+                    Managing feature releases, user testing, and continuous
+                    iterations
+                  </li>
+                  <li>
+                    Monitoring performance and handling all deployment
+                    operations
                   </li>
                 </ul>
               </div>
@@ -147,84 +158,30 @@ export default function DraftAnakITBPage() {
                 {/* Bottom Shadow */}
                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
                 <h2 className="text-2xl font-bold tracking-tighter mb-6 font-inter relative z-10">
-                  Process
+                  Gallery
                 </h2>
                 <div className="space-y-10">
                   <div>
-                    <h3 className="text-xl font-bold mb-3 font-inter tracking-tighter">
-                      1. Research & Discovery
-                    </h3>
                     <p className="text-gray-700 mb-4 font-inter tracking-tighter">
-                      Started with extensive research to understand student pain
-                      points. Conducted user interviews and competitive
-                      analysis.
+                      Here are some snapshots from the development process and
+                      the final app screens.
                     </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid gap-4">
                       <Image
-                        src="/user_interviews.png"
+                        src="/draftanakitb-slug.jpg"
                         alt="User Interviews"
-                        width={400}
-                        height={300}
-                        className="rounded-2xl w-full object-cover"
+                        width={3600}
+                        height={1530}
+                        className="rounded-2xl w-full object-cover relative z-20"
                       />
                       <Image
-                        src="/user_personas.png"
+                        src="/draftanakitb-slug2.jpg"
                         alt="User Personas"
-                        width={400}
-                        height={300}
-                        className="rounded-2xl w-full object-cover"
+                        width={3600}
+                        height={1530}
+                        className="rounded-2xl w-full object-cover relative z-20"
                       />
                     </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-3 font-inter tracking-tighter">
-                      2. Design & Prototyping
-                    </h3>
-                    <p className="text-gray-700 mb-4 font-inter tracking-tighter">
-                      Created multiple design iterations, focusing on a clean
-                      interface that prioritized content while maintaining
-                      anonymity. Conducted usability testing with 15 students.
-                    </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                      <Image
-                        src="/lofi.png"
-                        alt="Wireframes"
-                        width={250}
-                        height={400}
-                        className="rounded-2xl w-full object-cover"
-                      />
-                      <Image
-                        src="/hifi.png"
-                        alt="UI Iterations"
-                        width={250}
-                        height={400}
-                        className="rounded-2xl w-full object-cover"
-                      />
-                      <Image
-                        src="/app.png"
-                        alt="Final Prototype"
-                        width={250}
-                        height={400}
-                        className="rounded-2xl w-full object-cover"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-3 font-inter tracking-tighter">
-                      3. Development & Launch
-                    </h3>
-                    <p className="text-gray-700 mb-4 font-inter tracking-tighter">
-                      Led a team of 4 developers through an agile development
-                      process. Launched beta version to 100 students for initial
-                      feedback before campus-wide release.
-                    </p>
-                    <Image
-                      src="/timeline.png"
-                      alt="Development Timeline"
-                      width={800}
-                      height={250}
-                      className="rounded-2xl w-full object-cover mt-4"
-                    />
                   </div>
                 </div>
               </div>
@@ -248,8 +205,8 @@ export default function DraftAnakITBPage() {
                     the platform
                   </li>
                   <li>
-                    Creating a moderation system that respected privacy while
-                    filtering inappropriate content
+                    Designing a moderation system that respects privacy but
+                    allows filtering
                   </li>
                   <li>
                     Scaling the platform quickly when it gained unexpected
@@ -286,26 +243,26 @@ export default function DraftAnakITBPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center mb-6">
                   <div>
                     <p className="text-5xl font-bold text-pink-600 font-inter tracking-tighter">
-                      10,000+
+                      20,000+
                     </p>
                     <p className="text-gray-600 mt-2 font-inter tracking-tighter">
-                      Active users
+                      Active followers
                     </p>
                   </div>
                   <div>
                     <p className="text-5xl font-bold text-pink-600 font-inter tracking-tighter">
-                      85%
+                      1,000,000+
                     </p>
                     <p className="text-gray-600 mt-2 font-inter tracking-tighter">
-                      User retention
+                      Weekly impressions
                     </p>
                   </div>
                   <div>
                     <p className="text-5xl font-bold text-pink-600 font-inter tracking-tighter">
-                      30K+
+                      7,000+
                     </p>
                     <p className="text-gray-600 mt-2 font-inter tracking-tighter">
-                      Monthly posts
+                      Total tweets
                     </p>
                   </div>
                 </div>
@@ -462,49 +419,78 @@ export default function DraftAnakITBPage() {
                   <li className="relative">
                     <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
                     <p className="font-bold font-inter tracking-tighter">
-                      Research & Planning
+                      Brainstorming & Planning
                     </p>
                     <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      March - April 2023
+                      August – September 2024
                     </p>
                     <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      User research, competitor analysis, planning
+                      Initial idea development, user research, concept
+                      validation
                     </p>
                   </li>
                   <li className="relative">
                     <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
                     <p className="font-bold font-inter tracking-tighter">
-                      Design Phase
+                      Chatbot Development (v1)
                     </p>
                     <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      May - June 2023
+                      September – October 2024
                     </p>
                     <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Wireframing, prototyping, user testing
+                      Built Telegram-based chatbot using command keywords for
+                      core actions
                     </p>
                   </li>
                   <li className="relative">
                     <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
                     <p className="font-bold font-inter tracking-tighter">
-                      Development
+                      Initial Release
                     </p>
                     <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      July - September 2023
+                      October 2024
                     </p>
                     <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Frontend & backend implementation
+                      Released chatbot version for users to send menfess to
+                      DraftAnakITB X's account
                     </p>
                   </li>
                   <li className="relative">
                     <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
                     <p className="font-bold font-inter tracking-tighter">
-                      Launch & Iterations
+                      Design Phase (Web App)
                     </p>
                     <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      October 2023 - Present
+                      December 2024 – January 2025
                     </p>
                     <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Beta launch, feedback collection, updates
+                      UI/UX design, wireframing, prototyping, and validation
+                    </p>
+                  </li>
+                  <li className="relative">
+                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
+                    <p className="font-bold font-inter tracking-tighter">
+                      Full Stack Development (Web)
+                    </p>
+                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
+                      January – February 2025
+                    </p>
+                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
+                      Developed web-based version with frontend and backend
+                      integration
+                    </p>
+                  </li>
+                  <li className="relative">
+                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
+                    <p className="font-bold font-inter tracking-tighter">
+                      Web Release & Iteration
+                    </p>
+                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
+                      February 2025 – Present
+                    </p>
+                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
+                      Public release of web version, feedback-based improvements
+                      and updates
                     </p>
                   </li>
                 </ul>
