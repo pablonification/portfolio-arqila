@@ -56,10 +56,10 @@ export default function DraftAnakITBPage() {
             <div className="relative w-full mx-auto">
               <div className="relative bg-gradient-to-b from-gray-300 to-gray-800 rounded-2xl shadow-2xl overflow-hidden aspect-[21/9]">
                 <Image
-                  src="/placeholder-works.png"
+                  src="/cover_draftanakitb.jpg"
                   alt="DraftAnakITB App Showcase"
-                  width={1200}
-                  height={510}
+                  width={3600}
+                  height={1530}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
@@ -79,8 +79,14 @@ export default function DraftAnakITBPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Kolom Kiri - Konten Utama */}
             <main className="lg:col-span-2 space-y-8">
-              <div className="bg-white rounded-xl p-6 md:p-8 shadow-md">
-                <h2 className="text-2xl font-bold tracking-tighter mb-4 font-inter">
+              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
+                {/* 3D Inner Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
+                {/* Top Highlight */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
+                {/* Bottom Shadow */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
+                <h2 className="text-2xl font-bold tracking-tighter mb-4 font-inter relative z-10">
                   Problem Overview
                 </h2>
                 <p className="text-gray-700 leading-relaxed space-y-4 font-inter tracking-tighter">
@@ -98,8 +104,14 @@ export default function DraftAnakITBPage() {
                 </p>
               </div>
 
-              <div className="bg-white rounded-xl p-6 md:p-8 shadow-md">
-                <h2 className="text-2xl font-bold tracking-tighter mb-4 font-inter">
+              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
+                {/* 3D Inner Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
+                {/* Top Highlight */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
+                {/* Bottom Shadow */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
+                <h2 className="text-2xl font-bold tracking-tighter mb-4 font-inter relative z-10">
                   My Role
                 </h2>
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -108,111 +120,80 @@ export default function DraftAnakITBPage() {
                   <RoleTag>Project Manager</RoleTag>
                 </div>
                 <p className="text-gray-700 leading-relaxed mb-4 font-inter tracking-tighter">
-                  I led the development team while also handling the UI/UX
-                  design of the platform. My responsibilities included:
+                  I owned the project end-to-end, from initial idea and
+                  research, to UI/UX design, full-stack development, and
+                  platform deployment. My responsibilities included:
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-gray-700 font-inter tracking-tighter">
                   <li>
-                    Designing the user interface with focus on anonymity and
-                    ease of use
+                    Conducting user research to understand pain points and
+                    behavior
+                  </li>
+                  <li>
+                    Designing the entire user experience (UX) and interface (UI)
+                    using Figma
                   </li>
                   <li>Developing the frontend using React and Tailwind CSS</li>
+                  <li>Building a secure backend using Node.js and MongoDB</li>
                   <li>
-                    Implementing secure authentication system with Firebase
+                    Integrating X (Twitter) API with moderation tools to ensure
+                    safety and anonymity
                   </li>
-                  <li>Managing team workflow and project timeline</li>
                   <li>
-                    Conducting user testing and iterating based on feedback
+                    Managing feature releases, user testing, and continuous
+                    iterations
+                  </li>
+                  <li>
+                    Monitoring performance and handling all deployment
+                    operations
                   </li>
                 </ul>
               </div>
 
-              <div className="bg-white rounded-xl p-6 md:p-8 shadow-md">
-                <h2 className="text-2xl font-bold tracking-tighter mb-6 font-inter">
-                  Process
+              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
+                {/* 3D Inner Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
+                {/* Top Highlight */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
+                {/* Bottom Shadow */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
+                <h2 className="text-2xl font-bold tracking-tighter mb-6 font-inter relative z-10">
+                  Gallery
                 </h2>
                 <div className="space-y-10">
                   <div>
-                    <h3 className="text-xl font-bold mb-3 font-inter tracking-tighter">
-                      1. Research & Discovery
-                    </h3>
                     <p className="text-gray-700 mb-4 font-inter tracking-tighter">
-                      Started with extensive research to understand student pain
-                      points. Conducted user interviews and competitive
-                      analysis.
+                      Here are some snapshots from the development process and
+                      the final app screens.
                     </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid gap-4">
                       <Image
-                        src="/user_interviews.png"
+                        src="/draftanakitb-slug.jpg"
                         alt="User Interviews"
-                        width={400}
-                        height={300}
-                        className="rounded-2xl w-full object-cover"
+                        width={3600}
+                        height={1530}
+                        className="rounded-2xl w-full object-cover relative z-20"
                       />
                       <Image
-                        src="/user_personas.png"
+                        src="/draftanakitb-slug2.jpg"
                         alt="User Personas"
-                        width={400}
-                        height={300}
-                        className="rounded-2xl w-full object-cover"
+                        width={3600}
+                        height={1530}
+                        className="rounded-2xl w-full object-cover relative z-20"
                       />
                     </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-3 font-inter tracking-tighter">
-                      2. Design & Prototyping
-                    </h3>
-                    <p className="text-gray-700 mb-4 font-inter tracking-tighter">
-                      Created multiple design iterations, focusing on a clean
-                      interface that prioritized content while maintaining
-                      anonymity. Conducted usability testing with 15 students.
-                    </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                      <Image
-                        src="/lofi.png"
-                        alt="Wireframes"
-                        width={250}
-                        height={400}
-                        className="rounded-2xl w-full object-cover"
-                      />
-                      <Image
-                        src="/hifi.png"
-                        alt="UI Iterations"
-                        width={250}
-                        height={400}
-                        className="rounded-2xl w-full object-cover"
-                      />
-                      <Image
-                        src="/app.png"
-                        alt="Final Prototype"
-                        width={250}
-                        height={400}
-                        className="rounded-2xl w-full object-cover"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-3 font-inter tracking-tighter">
-                      3. Development & Launch
-                    </h3>
-                    <p className="text-gray-700 mb-4 font-inter tracking-tighter">
-                      Led a team of 4 developers through an agile development
-                      process. Launched beta version to 100 students for initial
-                      feedback before campus-wide release.
-                    </p>
-                    <Image
-                      src="/timeline.png"
-                      alt="Development Timeline"
-                      width={800}
-                      height={250}
-                      className="rounded-2xl w-full object-cover mt-4"
-                    />
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 md:p-8 shadow-md">
-                <h2 className="text-2xl font-bold tracking-tighter mb-4 font-inter">
+              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
+                {/* 3D Inner Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
+                {/* Top Highlight */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
+                {/* Bottom Shadow */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
+                <h2 className="text-2xl font-bold tracking-tighter mb-4 font-inter relative z-10">
                   Challenges & Lessons
                 </h2>
                 <h3 className="font-bold text-lg mb-3 font-inter tracking-tighter">
@@ -224,8 +205,8 @@ export default function DraftAnakITBPage() {
                     the platform
                   </li>
                   <li>
-                    Creating a moderation system that respected privacy while
-                    filtering inappropriate content
+                    Designing a moderation system that respects privacy but
+                    allows filtering
                   </li>
                   <li>
                     Scaling the platform quickly when it gained unexpected
@@ -249,39 +230,39 @@ export default function DraftAnakITBPage() {
                 </div>
               </div>
 
-              <div
-                className="bg-white rounded-xl p-6 md:p-8 shadow-md"
-                style={{
-                  boxShadow:
-                    "0 10px 25px -5px rgba(236, 72, 153, 0.1), 0 8px 10px -6px rgba(236, 72, 153, 0.1)",
-                }}
-              >
-                <h2 className="text-2xl font-bold tracking-tighter mb-6 font-inter">
+              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
+                {/* 3D Inner Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
+                {/* Top Highlight */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
+                {/* Bottom Shadow */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
+                <h2 className="text-2xl font-bold tracking-tighter mb-6 font-inter relative z-10">
                   Results
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center mb-6">
                   <div>
                     <p className="text-5xl font-bold text-pink-600 font-inter tracking-tighter">
-                      10,000+
+                      20,000+
                     </p>
                     <p className="text-gray-600 mt-2 font-inter tracking-tighter">
-                      Active users
+                      Active followers
                     </p>
                   </div>
                   <div>
                     <p className="text-5xl font-bold text-pink-600 font-inter tracking-tighter">
-                      85%
+                      1,000,000+
                     </p>
                     <p className="text-gray-600 mt-2 font-inter tracking-tighter">
-                      User retention
+                      Weekly impressions
                     </p>
                   </div>
                   <div>
                     <p className="text-5xl font-bold text-pink-600 font-inter tracking-tighter">
-                      30K+
+                      7,000+
                     </p>
                     <p className="text-gray-600 mt-2 font-inter tracking-tighter">
-                      Monthly posts
+                      Total tweets
                     </p>
                   </div>
                 </div>
@@ -303,8 +284,14 @@ export default function DraftAnakITBPage() {
 
             {/* Kolom Kanan - Sidebar */}
             <aside className="lg:col-span-1 space-y-8 lg:sticky top-8 self-start">
-              <div className="bg-white rounded-xl p-6 shadow-md">
-                <h3 className="text-xl font-bold mb-4 font-inter tracking-tighter">
+              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
+                {/* 3D Inner Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
+                {/* Top Highlight */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
+                {/* Bottom Shadow */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
+                <h3 className="text-xl font-bold mb-4 font-inter tracking-tighter relative z-10">
                   Tech Stack
                 </h3>
                 <div className="grid grid-cols-2 gap-x-8 gap-y-4">
@@ -364,93 +351,146 @@ export default function DraftAnakITBPage() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-md">
-                <h3 className="text-xl font-bold mb-4 font-inter tracking-tighter">
+              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
+                {/* 3D Inner Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
+                {/* Top Highlight */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
+                {/* Bottom Shadow */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
+                <h3 className="text-xl font-bold mb-4 font-inter tracking-tighter relative z-10">
                   Project Links
                 </h3>
                 <div className="flex flex-col gap-3">
                   <Link
                     href="https://github.com/pablonification/draftanakitb-web/"
                     target="_blank"
-                    className="bg-black text-white text-center rounded-2xl py-3 font-medium hover:bg-gray-800 transition-colors font-inter tracking-tighter"
+                    className="bg-black text-white text-center rounded-2xl py-3 font-medium hover:bg-gray-800 transition-all duration-300 font-inter tracking-tighter shadow-[0_4px_8px_-2px_rgba(0,0,0,0.3),inset_0_2px_0_rgba(255,255,255,0.2),inset_0_-1px_0_rgba(0,0,0,0.2)] hover:shadow-[0_6px_12px_-3px_rgba(0,0,0,0.4),inset_0_2px_0_rgba(255,255,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.3)] hover:-translate-y-1 relative overflow-hidden group"
                   >
-                    <Image
-                      src="/github-white.svg"
-                      alt="GitHub"
-                      className="inline-block mr-1 -translate-y-[1px]"
-                      width={22}
-                      height={22}
-                    />
-                    GitHub Repository
+                    {/* Button inner glow */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/20 rounded-2xl pointer-events-none"></div>
+                    {/* Button top highlight */}
+                    <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-t-2xl"></div>
+                    <span className="relative z-10 flex items-center justify-center">
+                      <Image
+                        src="/github-white.svg"
+                        alt="GitHub"
+                        className="inline-block mr-1 -translate-y-[1px]"
+                        width={22}
+                        height={22}
+                      />
+                      GitHub Repository
+                    </span>
                   </Link>
                   <Link
                     href="https://draftanakitb.tech/"
                     target="_blank"
-                    className="bg-gradient-to-r from-[#ffbcc4] to-[#c1f0f1] text-gray-800 text-center rounded-2xl py-3 font-medium hover:opacity-90 transition-opacity font-inter tracking-tighter flex items-center justify-center"
+                    className="bg-gradient-to-r from-[#ffbcc4] to-[#c1f0f1] text-gray-800 text-center rounded-2xl py-3 font-medium hover:opacity-90 transition-all duration-300 font-inter tracking-tighter flex items-center justify-center shadow-[0_4px_8px_-2px_rgba(0,0,0,0.15),inset_0_2px_0_rgba(255,255,255,0.6),inset_0_-1px_0_rgba(0,0,0,0.1)] hover:shadow-[0_6px_12px_-3px_rgba(0,0,0,0.2),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.15)] hover:-translate-y-1 relative overflow-hidden group"
                   >
-                    <Image
-                      src="/globe.svg"
-                      alt="Globe"
-                      className="inline-block mr-1"
-                      width={20}
-                      height={20}
-                    />
-                    Live Demo
+                    {/* Button inner glow */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-transparent to-gray-200/20 rounded-2xl pointer-events-none"></div>
+                    {/* Button top highlight */}
+                    <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/60 to-transparent rounded-t-2xl"></div>
+                    <span className="relative z-10 flex items-center justify-center">
+                      <Image
+                        src="/globe.svg"
+                        alt="Globe"
+                        className="inline-block mr-1"
+                        width={20}
+                        height={20}
+                      />
+                      Live Demo
+                    </span>
                   </Link>
                 </div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 shadow-md">
-                <h3 className="text-xl font-bold mb-4 font-inter tracking-tighter">
+              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
+                {/* 3D Inner Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
+                {/* Top Highlight */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
+                {/* Bottom Shadow */}
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
+                <h3 className="text-xl font-bold mb-4 font-inter tracking-tighter relative z-10">
                   Project Timeline
                 </h3>
                 <ul className="space-y-4 border-l-2 border-gray-200 pl-4">
                   <li className="relative">
                     <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
                     <p className="font-bold font-inter tracking-tighter">
-                      Research & Planning
+                      Brainstorming & Planning
                     </p>
                     <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      March - April 2023
+                      August – September 2024
                     </p>
                     <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      User research, competitor analysis, planning
+                      Initial idea development, user research, concept
+                      validation
                     </p>
                   </li>
                   <li className="relative">
                     <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
                     <p className="font-bold font-inter tracking-tighter">
-                      Design Phase
+                      Chatbot Development (v1)
                     </p>
                     <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      May - June 2023
+                      September – October 2024
                     </p>
                     <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Wireframing, prototyping, user testing
+                      Built Telegram-based chatbot using command keywords for
+                      core actions
                     </p>
                   </li>
                   <li className="relative">
                     <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
                     <p className="font-bold font-inter tracking-tighter">
-                      Development
+                      Initial Release
                     </p>
                     <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      July - September 2023
+                      October 2024
                     </p>
                     <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Frontend & backend implementation
+                      Released chatbot version for users to send menfess to
+                      DraftAnakITB X's account
                     </p>
                   </li>
                   <li className="relative">
                     <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
                     <p className="font-bold font-inter tracking-tighter">
-                      Launch & Iterations
+                      Design Phase (Web App)
                     </p>
                     <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      October 2023 - Present
+                      December 2024 – January 2025
                     </p>
                     <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Beta launch, feedback collection, updates
+                      UI/UX design, wireframing, prototyping, and validation
+                    </p>
+                  </li>
+                  <li className="relative">
+                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
+                    <p className="font-bold font-inter tracking-tighter">
+                      Full Stack Development (Web)
+                    </p>
+                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
+                      January – February 2025
+                    </p>
+                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
+                      Developed web-based version with frontend and backend
+                      integration
+                    </p>
+                  </li>
+                  <li className="relative">
+                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
+                    <p className="font-bold font-inter tracking-tighter">
+                      Web Release & Iteration
+                    </p>
+                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
+                      February 2025 – Present
+                    </p>
+                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
+                      Public release of web version, feedback-based improvements
+                      and updates
                     </p>
                   </li>
                 </ul>

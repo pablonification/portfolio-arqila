@@ -33,13 +33,11 @@ const Navbar = () => {
     if (!target || !navRef.current || isAnimating.current) return;
 
     isAnimating.current = true;
-    const containerPadding = parseInt(
-      window.getComputedStyle(navRef.current as HTMLElement).paddingLeft
-    );
     const { offsetLeft, offsetWidth } = target;
 
+    // Align the highlight exactly with the target element without subtracting container padding.
     setHighlightStyle({
-      transform: `translateX(${offsetLeft - containerPadding}px)`,
+      transform: `translateX(${offsetLeft}px)`,
       width: `${offsetWidth}px`,
     });
 
@@ -73,9 +71,8 @@ const Navbar = () => {
         const element = document.getElementById(section);
         if (element) {
           const { offsetTop, offsetHeight } = element;
-          // Apply larger offset for connect section
-          const offset =
-            section === "connect" ? window.innerHeight * 0.3 : defaultOffset;
+          // Apply different offset for connect section
+          const offset = section === "connect" ? 80 : defaultOffset;
 
           if (
             scrollPosition >= offsetTop - offset &&
@@ -130,7 +127,7 @@ const Navbar = () => {
   if (isWorksPage) {
     return (
       <nav className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 p-3 font-inter">
-        <div className="bg-black text-white rounded-[20px] px-1.5 flex items-center relative overflow-hidden min-w-[320px] sm:min-w-[400px] md:min-w-[500px] lg:min-w-[460px]">
+        <div className="bg-black/90 backdrop-blur-sm text-white rounded-[20px] px-1.5 flex items-center relative overflow-hidden min-w-[320px] sm:min-w-[400px] md:min-w-[500px] lg:min-w-[460px] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3),0_10px_20px_-5px_rgba(0,0,0,0.2),inset_0_2px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(0,0,0,0.3)] border border-gray-700/50">
           {/* Back to works button */}
           <Link
             href="/#works"
@@ -159,8 +156,12 @@ const Navbar = () => {
 
           {/* Works button */}
           <div className="relative px-2 sm:px-3 md:px-4 py-1 sm:py-1.5">
-            <div className="bg-[#ffb7c3]/75 rounded-[16px] sm:rounded-[20px] px-3 py-1 font-medium">
-              <span className="text-[#FFD8DF] text-xs sm:text-sm md:text-base lg:text-lg">
+            <div className="bg-[#ffb7c3]/75 rounded-[16px] sm:rounded-[20px] px-3 py-1 font-medium shadow-[inset_0_2px_0_rgba(255,255,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.2)] relative overflow-hidden group">
+              {/* Button inner glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-pink-200/20 rounded-[16px] sm:rounded-[20px] pointer-events-none"></div>
+              {/* Button top highlight */}
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/40 to-transparent rounded-t-[16px] sm:rounded-t-[20px]"></div>
+              <span className="text-[#FFD8DF] text-xs sm:text-sm md:text-base lg:text-lg relative z-10">
                 Works
               </span>
             </div>
@@ -174,7 +175,7 @@ const Navbar = () => {
   if (isExperiencePage) {
     return (
       <nav className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 p-3 font-inter">
-        <div className="bg-black text-white rounded-[20px] px-1.5 flex items-center relative overflow-hidden min-w-[320px] sm:min-w-[400px] md:min-w-[500px] lg:min-w-[460px]">
+        <div className="bg-black/90 backdrop-blur-sm text-white rounded-[20px] px-1.5 flex items-center relative overflow-hidden min-w-[320px] sm:min-w-[400px] md:min-w-[500px] lg:min-w-[460px] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3),0_10px_20px_-5px_rgba(0,0,0,0.2),inset_0_2px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(0,0,0,0.3)] border border-gray-700/50">
           {/* Back to experience button */}
           <Link
             href="/#experience"
@@ -203,8 +204,12 @@ const Navbar = () => {
 
           {/* Experience button */}
           <div className="relative px-2 sm:px-3 md:px-4 py-1 sm:py-1.5">
-            <div className="bg-[#ffb7c3]/75 rounded-[16px] sm:rounded-[20px] px-3 py-1 font-medium">
-              <span className="text-[#FFD8DF] text-xs sm:text-sm md:text-base lg:text-lg">
+            <div className="bg-[#ffb7c3]/75 rounded-[16px] sm:rounded-[20px] px-3 py-1 font-medium shadow-[inset_0_2px_0_rgba(255,255,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.2)] relative overflow-hidden group">
+              {/* Button inner glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-pink-200/20 rounded-[16px] sm:rounded-[20px] pointer-events-none"></div>
+              {/* Button top highlight */}
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/40 to-transparent rounded-t-[16px] sm:rounded-t-[20px]"></div>
+              <span className="text-[#FFD8DF] text-xs sm:text-sm md:text-base lg:text-lg relative z-10">
                 Experience
               </span>
             </div>
@@ -219,10 +224,10 @@ const Navbar = () => {
     <nav className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 p-3 font-inter">
       <div
         ref={navRef}
-        className="bg-black text-white rounded-[20px] px-1.5 py-1 flex items-center relative overflow-hidden"
+        className="bg-black/90 backdrop-blur-sm text-white rounded-[20px] px-1.5 py-1 flex items-center justify-center relative overflow-hidden min-w-[320px] sm:min-w-[400px] md:min-w-[500px] lg:min-w-[460px] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3),0_10px_20px_-5px_rgba(0,0,0,0.2),inset_0_2px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(0,0,0,0.3)] border border-gray-700/50"
       >
         <div
-          className="absolute h-[85%] -translate-y-1/2 bg-[#ffb7c3] rounded-[16px] sm:rounded-[20px] transition-all duration-500 ease-out opacity-75"
+          className="absolute left-0 top-1 h-[85%] -translate-y-1/2 bg-[#ffb7c3] rounded-[16px] sm:rounded-[20px] transition-all duration-500 ease-out opacity-75 shadow-[inset_0_2px_0_rgba(255,255,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.2)]"
           style={highlightStyle}
         />
 
@@ -238,7 +243,7 @@ const Navbar = () => {
             width={96}
             height={96}
             quality={100}
-            className={`w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 relative z-10 transition-transform duration-500
+            className={`w-5 h-5 sm:w-5 sm:h-5 md:w-6 md:h-6 relative z-10 transition-transform duration-500
                       ${isIconSpinning ? "rotate-[360deg]" : ""}`}
           />
         </Link>
@@ -254,10 +259,13 @@ const Navbar = () => {
                 const sectionId = item.name.toLowerCase();
                 const section = document.getElementById(sectionId);
                 if (section) {
-                  const offset =
-                    sectionId === "connect"
-                      ? window.innerHeight * 0
-                      : window.innerHeight * 0.15;
+                  let offset;
+                  if (sectionId === "connect") {
+                    // For connect section, account for the negative top margin and navbar height
+                    offset = 80; // navbar height + some padding
+                  } else {
+                    offset = window.innerHeight * 0.15;
+                  }
                   window.scrollTo({
                     top: section.offsetTop - offset,
                     behavior: "smooth",

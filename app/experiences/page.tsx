@@ -90,44 +90,27 @@ const experiences = [
 ];
 
 const techColors: { [key: string]: string } = {
-  React:
-    "bg-gradient-to-r from-blue-500/20 to-blue-600/20 text-blue-300 border border-blue-500/30",
-  TypeScript:
-    "bg-gradient-to-r from-blue-600/20 to-blue-700/20 text-blue-200 border border-blue-600/30",
-  "Next.js":
-    "bg-gradient-to-r from-gray-600/20 to-gray-700/20 text-gray-300 border border-gray-600/30",
-  "Tailwind CSS":
-    "bg-gradient-to-r from-cyan-500/20 to-cyan-600/20 text-cyan-300 border border-cyan-500/30",
-  GraphQL:
-    "bg-gradient-to-r from-pink-500/20 to-pink-600/20 text-pink-300 border border-pink-500/30",
-  "Node.js":
-    "bg-gradient-to-r from-green-500/20 to-green-600/20 text-green-300 border border-green-500/30",
-  "Vue.js":
-    "bg-gradient-to-r from-green-600/20 to-green-700/20 text-green-200 border border-green-600/30",
-  Python:
-    "bg-gradient-to-r from-yellow-500/20 to-yellow-600/20 text-yellow-300 border border-yellow-500/30",
-  Django:
-    "bg-gradient-to-r from-green-600/20 to-green-700/20 text-green-200 border border-green-600/30",
-  PostgreSQL:
-    "bg-gradient-to-r from-blue-600/20 to-blue-700/20 text-blue-200 border border-blue-600/30",
-  Docker:
-    "bg-gradient-to-r from-blue-500/20 to-blue-600/20 text-blue-300 border border-blue-500/30",
-  AWS: "bg-gradient-to-r from-orange-500/20 to-orange-600/20 text-orange-300 border border-orange-500/30",
-  JavaScript:
-    "bg-gradient-to-r from-yellow-500/20 to-yellow-600/20 text-yellow-300 border border-yellow-500/30",
-  "D3.js":
-    "bg-gradient-to-r from-orange-500/20 to-orange-600/20 text-orange-300 border border-orange-500/30",
-  TensorFlow:
-    "bg-gradient-to-r from-orange-600/20 to-orange-700/20 text-orange-200 border border-orange-600/30",
-  Figma:
-    "bg-gradient-to-r from-purple-500/20 to-purple-600/20 text-purple-300 border border-purple-500/30",
-  Unity:
-    "bg-gradient-to-r from-gray-600/20 to-gray-700/20 text-gray-300 border border-gray-600/30",
-  SCSS: "bg-gradient-to-r from-pink-500/20 to-pink-600/20 text-pink-300 border border-pink-500/30",
-  Redux:
-    "bg-gradient-to-r from-purple-500/20 to-purple-600/20 text-purple-300 border border-purple-500/30",
-  Jest: "bg-gradient-to-r from-red-500/20 to-red-600/20 text-red-300 border border-red-500/30",
-  Git: "bg-gradient-to-r from-orange-500/20 to-orange-600/20 text-orange-300 border border-orange-500/30",
+  React: "bg-blue-100 text-blue-700",
+  TypeScript: "bg-blue-100 text-blue-800",
+  "Next.js": "bg-gray-100 text-gray-800",
+  "Tailwind CSS": "bg-cyan-100 text-cyan-700",
+  GraphQL: "bg-pink-100 text-pink-700",
+  "Node.js": "bg-green-100 text-green-700",
+  "Vue.js": "bg-green-100 text-green-800",
+  Python: "bg-yellow-100 text-yellow-800",
+  Django: "bg-green-100 text-green-800",
+  PostgreSQL: "bg-blue-100 text-blue-800",
+  Docker: "bg-blue-100 text-blue-700",
+  AWS: "bg-orange-100 text-orange-700",
+  JavaScript: "bg-yellow-100 text-yellow-700",
+  "D3.js": "bg-orange-100 text-orange-700",
+  TensorFlow: "bg-orange-100 text-orange-800",
+  Figma: "bg-purple-100 text-purple-700",
+  Unity: "bg-gray-100 text-gray-800",
+  SCSS: "bg-pink-100 text-pink-700",
+  Redux: "bg-purple-100 text-purple-700",
+  Jest: "bg-red-100 text-red-700",
+  Git: "bg-orange-100 text-orange-700",
 };
 
 export default function ExperiencePage() {
@@ -146,11 +129,11 @@ export default function ExperiencePage() {
     <div className="min-h-screen relative overflow-hidden font-inter tracking-tighter">
       {/* Year Navigation Sidebar */}
       <div className="fixed left-8 top-1/2 transform -translate-y-1/2 z-40 hidden lg:block">
-        <div className="bg-gradient-to-br from-gray-900/90 via-gray-800/90 to-gray-900/90 backdrop-blur-sm rounded-2xl p-4 shadow-[0_25px_50px_-15px_rgba(0,0,0,0.5),0_15px_30px_-8px_rgba(0,0,0,0.4),inset_0_2px_0_rgba(255,255,255,0.15),inset_0_-1px_0_rgba(0,0,0,0.3)] border border-gray-700/50 relative overflow-hidden">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-[0_25px_50px_-15px_rgba(0,0,0,0.15),0_15px_30px_-8px_rgba(0,0,0,0.1),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
           {/* 3D Inner Glow Effect */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/30 rounded-2xl pointer-events-none"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-200/30 rounded-2xl pointer-events-none"></div>
           {/* Top Highlight */}
-          <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-t-2xl"></div>
+          <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-2xl"></div>
           <div className="flex flex-col gap-2">
             {years.map((year) => (
               <button
@@ -158,8 +141,8 @@ export default function ExperiencePage() {
                 onClick={() => setActiveYear(year)}
                 className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 font-inter tracking-tighter relative overflow-hidden ${
                   activeYear === year
-                    ? "bg-black text-white shadow-[0_6px_12px_-3px_rgba(0,0,0,0.5),inset_0_2px_0_rgba(255,255,255,0.2),inset_0_-1px_0_rgba(0,0,0,0.3)]"
-                    : "text-gray-300 hover:bg-gray-700/50 hover:shadow-[0_4px_8px_-2px_rgba(0,0,0,0.4),inset_0_2px_0_rgba(255,255,255,0.15),inset_0_-1px_0_rgba(0,0,0,0.2)]"
+                    ? "bg-black text-white shadow-[0_6px_12px_-3px_rgba(0,0,0,0.3),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.2)]"
+                    : "text-gray-600 hover:bg-gray-100 hover:shadow-[0_4px_8px_-2px_rgba(0,0,0,0.15),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)]"
                 }`}
               >
                 {year}
@@ -221,20 +204,20 @@ export default function ExperiencePage() {
                     index % 2 === 0 ? "md:pr-1/2 md:pr-8" : "md:pl-1/2 md:pl-8"
                   }`}
                 >
-                  <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 backdrop-blur-sm rounded-3xl p-8 shadow-[0_35px_70px_-20px_rgba(0,0,0,0.5),0_20px_40px_-10px_rgba(0,0,0,0.4),inset_0_2px_0_rgba(255,255,255,0.15),inset_0_-1px_0_rgba(0,0,0,0.3)] hover:shadow-[0_45px_90px_-25px_rgba(0,0,0,0.6),0_25px_50px_-12px_rgba(0,0,0,0.5),inset_0_2px_0_rgba(255,255,255,0.2),inset_0_-1px_0_rgba(0,0,0,0.4)] transition-all duration-300 hover:-translate-y-4 border border-gray-700/50 font-inter tracking-tighter relative overflow-hidden group">
+                  <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-[0_35px_70px_-20px_rgba(0,0,0,0.15),0_20px_40px_-10px_rgba(0,0,0,0.1),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] hover:shadow-[0_45px_90px_-25px_rgba(0,0,0,0.2),0_25px_50px_-12px_rgba(0,0,0,0.15),inset_0_2px_0_rgba(255,255,255,0.9),inset_0_-1px_0_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-4 border border-gray-200/50 font-inter tracking-tighter relative overflow-hidden group">
                     {/* 3D Inner Glow Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/40 rounded-3xl pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-3xl pointer-events-none"></div>
                     {/* Top Highlight */}
-                    <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
+                    <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent"></div>
                     {/* Bottom Shadow */}
-                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-black/30 to-transparent"></div>
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent"></div>
                     {/* Header */}
                     <div className="flex items-start gap-4 mb-6">
-                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center shadow-[0_12px_24px_-6px_rgba(0,0,0,0.5),inset_0_2px_0_rgba(255,255,255,0.15),inset_0_-1px_0_rgba(0,0,0,0.3)] flex-shrink-0 border border-gray-600/50 relative overflow-hidden group-hover:shadow-[0_16px_32px_-8px_rgba(0,0,0,0.6),inset_0_2px_0_rgba(255,255,255,0.2),inset_0_-1px_0_rgba(0,0,0,0.4)] transition-all duration-300">
+                      <div className="w-16 h-16 rounded-2xl bg-gray-100 flex items-center justify-center shadow-[0_12px_24px_-6px_rgba(0,0,0,0.15),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] flex-shrink-0 border border-gray-200/50 relative overflow-hidden group-hover:shadow-[0_16px_32px_-8px_rgba(0,0,0,0.2),inset_0_2px_0_rgba(255,255,255,0.9),inset_0_-1px_0_rgba(0,0,0,0.15)] transition-all duration-300">
                         {/* Logo container inner glow */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/30 rounded-2xl pointer-events-none"></div>
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-200/30 rounded-2xl pointer-events-none"></div>
                         {/* Logo top highlight */}
-                        <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-t-2xl"></div>
+                        <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-2xl"></div>
                         <img
                           src={exp.logo || "/placeholder.svg"}
                           alt={`${exp.organization} logo`}
@@ -242,13 +225,13 @@ export default function ExperiencePage() {
                         />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold text-white mb-1 font-inter tracking-tighter">
+                        <h3 className="text-xl font-bold text-gray-900 mb-1 font-inter tracking-tighter">
                           {exp.role}
                         </h3>
-                        <p className="text-lg font-semibold text-gray-300 mb-2 font-inter tracking-tighter">
+                        <p className="text-lg font-semibold text-gray-700 mb-2 font-inter tracking-tighter">
                           {exp.organization}
                         </p>
-                        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400 font-inter tracking-tighter">
+                        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 font-inter tracking-tighter">
                           <div className="flex items-center gap-1">
                             <Calendar className="w-4 h-4" />
                             {exp.period}
@@ -262,20 +245,20 @@ export default function ExperiencePage() {
                     </div>
 
                     {/* Description */}
-                    <p className="text-gray-300 mb-6 leading-relaxed font-inter tracking-tighter">
+                    <p className="text-gray-700 mb-6 leading-relaxed font-inter tracking-tighter">
                       {exp.description}
                     </p>
 
                     {/* Achievements */}
                     <div className="mb-6">
-                      <h4 className="font-semibold text-white mb-3 font-inter tracking-tighter">
+                      <h4 className="font-semibold text-gray-900 mb-3 font-inter tracking-tighter">
                         Key Achievements
                       </h4>
                       <ul className="space-y-2">
                         {exp.achievements.map((achievement, i) => (
                           <li
                             key={i}
-                            className="flex items-start gap-2 text-gray-300 font-inter tracking-tighter"
+                            className="flex items-start gap-2 text-gray-700 font-inter tracking-tighter"
                           >
                             <div className="w-2 h-2 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full mt-2 flex-shrink-0 shadow-[0_3px_6px_-1px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.3)] relative">
                               {/* Bullet inner glow */}
@@ -291,22 +274,21 @@ export default function ExperiencePage() {
 
                     {/* Technologies */}
                     <div>
-                      <h4 className="font-semibold text-white mb-3 font-inter tracking-tighter">
+                      <h4 className="font-semibold text-gray-900 mb-3 font-inter tracking-tighter">
                         Technologies Used
                       </h4>
                       <div className="flex flex-wrap gap-2">
                         {exp.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className={`px-3 py-1.5 rounded-full text-xs font-medium font-inter tracking-tighter shadow-[0_4px_8px_-2px_rgba(0,0,0,0.4),inset_0_2px_0_rgba(255,255,255,0.15),inset_0_-1px_0_rgba(0,0,0,0.2)] hover:shadow-[0_6px_12px_-3px_rgba(0,0,0,0.5),inset_0_2px_0_rgba(255,255,255,0.2),inset_0_-1px_0_rgba(0,0,0,0.3)] transition-all duration-200 hover:-translate-y-1 relative overflow-hidden ${
-                              techColors[tech] ||
-                              "bg-gradient-to-r from-gray-600/20 to-gray-700/20 text-gray-300 border border-gray-600/30"
+                            className={`px-3 py-1.5 rounded-full text-xs font-medium font-inter tracking-tighter shadow-[0_4px_8px_-2px_rgba(0,0,0,0.15),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] hover:shadow-[0_6px_12px_-3px_rgba(0,0,0,0.2),inset_0_2px_0_rgba(255,255,255,0.9),inset_0_-1px_0_rgba(0,0,0,0.15)] transition-all duration-200 hover:-translate-y-1 relative overflow-hidden ${
+                              techColors[tech] || "bg-gray-100 text-gray-700"
                             }`}
                           >
                             {/* Tech badge inner glow */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/30 rounded-full pointer-events-none"></div>
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-200/30 rounded-full pointer-events-none"></div>
                             {/* Tech badge top highlight */}
-                            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/25 to-transparent rounded-t-full"></div>
+                            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-full"></div>
                             <span className="relative z-10">{tech}</span>
                           </span>
                         ))}
@@ -325,32 +307,37 @@ export default function ExperiencePage() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 backdrop-blur-sm rounded-3xl p-8 shadow-[0_35px_70px_-20px_rgba(0,0,0,0.5),0_20px_40px_-10px_rgba(0,0,0,0.4),inset_0_2px_0_rgba(255,255,255,0.15),inset_0_-1px_0_rgba(0,0,0,0.3)] max-w-2xl mx-auto font-inter tracking-tighter border border-gray-700/50 relative overflow-hidden">
+          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-[0_35px_70px_-20px_rgba(0,0,0,0.15),0_20px_40px_-10px_rgba(0,0,0,0.1),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] max-w-2xl mx-auto font-inter tracking-tighter border border-gray-200/50 relative overflow-hidden">
             {/* 3D Inner Glow Effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/40 rounded-3xl pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-3xl pointer-events-none"></div>
             {/* Top Highlight */}
-            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
+            <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent"></div>
             {/* Bottom Shadow */}
-            <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-black/30 to-transparent"></div>
-            <h3 className="text-2xl font-bold text-white mb-4 font-inter tracking-tighter">
+            <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent"></div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-4 font-inter tracking-tighter">
               Let's Work Together
             </h3>
-            <p className="text-gray-300 mb-6 leading-relaxed font-inter tracking-tighter">
+            <p className="text-gray-700 mb-6 leading-relaxed font-inter tracking-tighter">
               I'm always excited to take on new challenges and collaborate on
               innovative projects. Whether you have an idea to bring to life or
               need help with an existing project, let's connect and create
               something amazing together.
             </p>
-            <Button className="bg-black hover:bg-gray-800 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg font-inter tracking-tighter">
-              Get In Touch
-              <ExternalLink className="w-4 h-4 ml-2" />
+            <Button className="bg-black hover:bg-gray-800 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg font-inter tracking-tighter shadow-[0_6px_12px_-3px_rgba(0,0,0,0.3),inset_0_2px_0_rgba(255,255,255,0.2),inset_0_-1px_0_rgba(0,0,0,0.2)] hover:shadow-[0_8px_16px_-4px_rgba(0,0,0,0.4),inset_0_2px_0_rgba(255,255,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.3)] hover:-translate-y-1 relative overflow-hidden group">
+              {/* Button inner glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/20 rounded-full pointer-events-none"></div>
+              {/* Button top highlight */}
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-t-full"></div>
+              <span className="relative z-10 flex items-center">
+                Get In Touch
+                <ExternalLink className="w-4 h-4 ml-2" />
+              </span>
             </Button>
           </div>
         </div>
       </div>
 
       {/* Background Decorations */}
-
     </div>
   );
 }
