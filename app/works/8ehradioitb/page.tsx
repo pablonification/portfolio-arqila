@@ -68,7 +68,7 @@ export default function DraftAnakITBPage() {
                     8EH Radio ITB
                   </h1>
                   <p className="text-white/90 text-base md:text-lg mt-1 font-inter tracking-tighter">
-                    Radio for ITB students
+                    Modern radio streaming and content platform for ITB students
                   </p>
                 </div>
               </div>
@@ -91,15 +91,25 @@ export default function DraftAnakITBPage() {
                 </h2>
                 <p className="text-gray-700 leading-relaxed space-y-4 font-inter tracking-tighter">
                   <div>
-                    ITB students needed a safe space to express opinions, ask
-                    questions, and share experiences without fear of judgment or
-                    repercussion. Many students felt hesitant to speak openly in
-                    official channels.
+                    8EH Radio ITB is a campus-based student radio station that
+                    produces live broadcasts, podcasts, blogs, and music charts.
+                    However, the existing WordPress-based website suffered from
+                    extremely poor performance and outdated design, leading to a
+                    steep decline in user experience and listener engagement.
+                    The website had critical issues such as long loading times,
+                    broken links, unplayable radio streams on some devices,
+                    missing assets, and a UI/UX that was far from intuitive.
                   </div>
                   <div>
-                    DraftAnakITB was created as an anonymous platform where
-                    students could freely discuss academic challenges, campus
-                    life, and sensitive topics while maintaining their privacy.
+                    The goal of this project was to completely redesign and
+                    rebuild the platform from scratch to restore 8EH’s digital
+                    presence, enhance usability, and support future business
+                    development through better exposure for media partnerships
+                    and client agencies. We didn’t stop at the public-facing
+                    site, we also built a custom, intuitive admin dashboard
+                    accessible across devices to empower the operations team to
+                    easily manage podcasts, blog posts, announcer profiles, and
+                    partner content without needing technical knowledge.
                   </div>
                 </p>
               </div>
@@ -115,37 +125,39 @@ export default function DraftAnakITBPage() {
                   My Role
                 </h2>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <RoleTag>Lead Developer</RoleTag>
-                  <RoleTag>UI/UX Designer</RoleTag>
                   <RoleTag>Project Manager</RoleTag>
+                  <RoleTag>Full Stack Developer</RoleTag>
                 </div>
                 <p className="text-gray-700 leading-relaxed mb-4 font-inter tracking-tighter">
-                  I owned the project end-to-end, from initial idea and
-                  research, to UI/UX design, full-stack development, and
-                  platform deployment. My responsibilities included:
+                  As both the project manager and full stack developer, I was
+                  responsible for:
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-gray-700 font-inter tracking-tighter">
                   <li>
-                    Conducting user research to understand pain points and
-                    behavior
+                    Leading the full redesign and migration from WordPress to
+                    Next.js
                   </li>
                   <li>
-                    Designing the entire user experience (UX) and interface (UI)
-                    using Figma
-                  </li>
-                  <li>Developing the frontend using React and Tailwind CSS</li>
-                  <li>Building a secure backend using Node.js and MongoDB</li>
-                  <li>
-                    Integrating X (Twitter) API with moderation tools to ensure
-                    safety and anonymity
+                    Redesigning the information architecture and site layout
                   </li>
                   <li>
-                    Managing feature releases, user testing, and continuous
-                    iterations
+                    Rebuilding the entire platform using React and Next.js
                   </li>
                   <li>
-                    Monitoring performance and handling all deployment
-                    operations
+                    Implementing CMS-like features with Markdown and Remark GFM
+                    for easier content creation
+                  </li>
+                  <li>
+                    Integrating podcast audio streams, blog publishing, music
+                    chart updates, and announcer profiles
+                  </li>
+                  <li>
+                    Setting up scalable asset management using Cloudinary and
+                    Cloudflare R2
+                  </li>
+                  <li>
+                    Deploying and optimizing the site for fast load speeds and
+                    mobile responsiveness
                   </li>
                 </ul>
               </div>
@@ -311,10 +323,6 @@ export default function DraftAnakITBPage() {
                     Next.js
                   </div>
                   <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <StackIcon name="figma" className="w-6 h-6" />
-                    Figma
-                  </div>
-                  <div className="flex items-center gap-2 font-inter tracking-tighter">
                     <StackIcon name="tailwindcss" className="w-6 h-6" />
                     Tailwind CSS
                   </div>
@@ -328,32 +336,24 @@ export default function DraftAnakITBPage() {
                   </div>
                   {/* resend */}
                   <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <StackIcon name="resend" className="w-6 h-6" />
-                    Resend
+                    <StackIcon name="cloudinary" className="w-6 h-6" />
+                    Cloudinary
                   </div>
-                  {/* gcloud */}
                   <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <Image
-                      src="/gemini.png"
-                      alt="Google Gemini API"
-                      width={24}
-                      height={24}
-                    />
-                    Gemini API
+                    <StackIcon name="cloudflare" className="w-6 h-6" />
+                    Cloudflare R2
                   </div>
-                  {/* xendit */}
                   <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <Image
-                      src="/xendit.png"
-                      alt="Xendit"
-                      width={24}
-                      height={24}
-                    />
-                    Xendit
+                    <StackIcon name="markdown" className="w-6 h-6" />
+                    Remark.js
                   </div>
-                  {/* Twitter */}
                   <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <Image src="/x.png" alt="X" width={24} height={24} />X API
+                    <StackIcon name="js" className="w-6 h-6" />
+                    JavaScript
+                  </div>
+                  <div className="flex items-center gap-2 font-inter tracking-tighter">
+                    <StackIcon name="vercel" className="w-6 h-6" />
+                    Vercel
                   </div>
                 </div>
               </div>
