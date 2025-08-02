@@ -65,10 +65,10 @@ export default function DraftAnakITBPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
                 <div className="absolute bottom-5 left-6 text-white font-inter tracking-tighter">
                   <h1 className="text-3xl md:text-5xl font-bold tracking-tighter font-inter">
-                    MedDocs WJC
+                    Meddocs West Java Chapter
                   </h1>
                   <p className="text-white/90 text-base md:text-lg mt-1 font-inter tracking-tighter">
-                    Anonymous platform for ITB students
+                    All-in-one operational platform for motorcycle communities
                   </p>
                 </div>
               </div>
@@ -91,15 +91,19 @@ export default function DraftAnakITBPage() {
                 </h2>
                 <p className="text-gray-700 leading-relaxed space-y-4 font-inter tracking-tighter">
                   <div>
-                    ITB students needed a safe space to express opinions, ask
-                    questions, and share experiences without fear of judgment or
-                    repercussion. Many students felt hesitant to speak openly in
-                    official channels.
+                    Motorcycle communities often struggle with managing their
+                    operational workflows efficiently. In the case of Meddocs
+                    West Java Chapter, organizing events, handling membership
+                    data, processing payments, and disseminating information
+                    were all done manually leading to inefficiencies,
+                    miscommunication, and a lack of centralized access to
+                    important data.
                   </div>
                   <div>
-                    DraftAnakITB was created as an anonymous platform where
-                    students could freely discuss academic challenges, campus
-                    life, and sensitive topics while maintaining their privacy.
+                    This project aimed to develop a custom platform that
+                    automated their end-to-end operations from event
+                    registration and payment, to centralized information sharing
+                    and member documentation.
                   </div>
                 </p>
               </div>
@@ -115,37 +119,38 @@ export default function DraftAnakITBPage() {
                   My Role
                 </h2>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <RoleTag>Lead Developer</RoleTag>
-                  <RoleTag>UI/UX Designer</RoleTag>
+                  <RoleTag>Full Stack Developer</RoleTag>
                   <RoleTag>Project Manager</RoleTag>
                 </div>
                 <p className="text-gray-700 leading-relaxed mb-4 font-inter tracking-tighter">
-                  I owned the project end-to-end, from initial idea and
-                  research, to UI/UX design, full-stack development, and
-                  platform deployment. My responsibilities included:
+                  I led both the development and coordination of this project.
+                  My responsibilities included:
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-gray-700 font-inter tracking-tighter">
+                  <li>Defining system architecture and user workflows</li>
                   <li>
-                    Conducting user research to understand pain points and
-                    behavior
+                    Designing and developing the full-stack web platform using
+                    React and Next.js
                   </li>
                   <li>
-                    Designing the entire user experience (UX) and interface (UI)
-                    using Figma
-                  </li>
-                  <li>Developing the frontend using React and Tailwind CSS</li>
-                  <li>Building a secure backend using Node.js and MongoDB</li>
-                  <li>
-                    Integrating X (Twitter) API with moderation tools to ensure
-                    safety and anonymity
+                    Integrating payment gateway using Midtrans for seamless
+                    transactions
                   </li>
                   <li>
-                    Managing feature releases, user testing, and continuous
-                    iterations
+                    Building a cloud-based media system for event documentation
+                    using Cloudinary
                   </li>
                   <li>
-                    Monitoring performance and handling all deployment
-                    operations
+                    Managing database and backend structure using MongoDB and
+                    Prisma
+                  </li>
+                  <li>
+                    Implementing authentication and verification tools through
+                    WhatsApp using Twilio.
+                  </li>
+                  <li>
+                    Leading sprint planning, team coordination, and stakeholder
+                    communication
                   </li>
                 </ul>
               </div>
@@ -208,16 +213,17 @@ export default function DraftAnakITBPage() {
                 </h3>
                 <ul className="space-y-2 text-gray-700 mb-6 font-inter tracking-tighter list-disc list-inside">
                   <li>
-                    Balancing anonymity with accountability to prevent misuse of
-                    the platform
+                    Automating workflows that were previously done entirely
+                    offline, without overwhelming users who are not tech-savvy
                   </li>
                   <li>
-                    Designing a moderation system that respects privacy but
-                    allows filtering
+                    Integrating third-party services (Midtrans, Twilio,
+                    Cloudinary) with reliability and scalability in mind
                   </li>
                   <li>
-                    Scaling the platform quickly when it gained unexpected
-                    popularity
+                    Designing a platform architecture that could handle
+                    real-time operational updates while remaining maintainable
+                    by a small dev team
                   </li>
                 </ul>
                 <h3 className="font-bold text-lg mb-3 font-inter tracking-tighter">
@@ -225,14 +231,14 @@ export default function DraftAnakITBPage() {
                 </h3>
                 <div className="space-y-4">
                   <blockquote className="bg-red-50 border-l-4 border-red-300 text-red-800 p-4 rounded-r-lg font-inter tracking-tighter">
-                    "The most important feature wasn't the anonymity itself, but
-                    creating a sense of community where students felt safe to
-                    express themselves."
+                    "Building for communities requires deep empathy; we learned
+                    to strike a balance between automation and simplicity so
+                    users don’t feel alienated by the technology."
                   </blockquote>
                   <blockquote className="bg-blue-50 border-l-4 border-blue-300 text-blue-800 p-4 rounded-r-lg font-inter tracking-tighter">
-                    "User testing revealed that students valued simplicity over
-                    complex features. We ended up removing several 'cool'
-                    features that added unnecessary complexity."
+                    "Collaboration with non-technical stakeholders improved
+                    significantly when we built visual prototypes early in the
+                    process to align expectations."
                   </blockquote>
                 </div>
               </div>
@@ -250,40 +256,40 @@ export default function DraftAnakITBPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center mb-6">
                   <div>
                     <p className="text-5xl font-bold text-pink-600 font-inter tracking-tighter">
-                      20,000+
+                      100+
                     </p>
                     <p className="text-gray-600 mt-2 font-inter tracking-tighter">
-                      Active followers
+                      Members joined in first month
                     </p>
                   </div>
                   <div>
                     <p className="text-5xl font-bold text-pink-600 font-inter tracking-tighter">
-                      1,000,000+
+                      100%
                     </p>
                     <p className="text-gray-600 mt-2 font-inter tracking-tighter">
-                      Weekly impressions
+                      Event workflows online, hours saved
                     </p>
                   </div>
                   <div>
                     <p className="text-5xl font-bold text-pink-600 font-inter tracking-tighter">
-                      7,000+
+                      {">80%"}
                     </p>
                     <p className="text-gray-600 mt-2 font-inter tracking-tighter">
-                      Total tweets
+                      Adoption by non-technical members
                     </p>
                   </div>
                 </div>
                 <div className="text-gray-700 leading-relaxed space-y-4 font-inter tracking-tighter">
                   <p>
-                    DraftAnakITB became the go-to platform for ITB students to
-                    discuss campus issues, academic challenges, and share
-                    resources. The platform has been recognized by the
-                    university administration as a valuable feedback channel.
+                    Centralized platform is now used to store member data,
+                    announce events, handle payments, and share media from past
+                    activities
                   </p>
                   <p>
-                    The success of this project led to requests from other
-                    universities to implement similar platforms, creating
-                    opportunities for expansion.
+                    The success of this project led to interest from other
+                    regional chapters to implement a similar system, opening
+                    possibilities for a scalable multi-chapter platform in the
+                    future.
                   </p>
                 </div>
               </div>
@@ -311,10 +317,6 @@ export default function DraftAnakITBPage() {
                     Next.js
                   </div>
                   <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <StackIcon name="figma" className="w-6 h-6" />
-                    Figma
-                  </div>
-                  <div className="flex items-center gap-2 font-inter tracking-tighter">
                     <StackIcon name="tailwindcss" className="w-6 h-6" />
                     Tailwind CSS
                   </div>
@@ -326,34 +328,32 @@ export default function DraftAnakITBPage() {
                     <StackIcon name="nodejs" className="w-6 h-6" />
                     Node.js
                   </div>
-                  {/* resend */}
                   <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <StackIcon name="resend" className="w-6 h-6" />
-                    Resend
+                    <StackIcon name="prisma" className="w-6 h-6" />
+                    Prisma
                   </div>
-                  {/* gcloud */}
+                  <div className="flex items-center gap-2 font-inter tracking-tighter">
+                    <StackIcon name="cloudinary" className="w-6 h-6" />
+                    Cloudinary
+                  </div>
                   <div className="flex items-center gap-2 font-inter tracking-tighter">
                     <Image
-                      src="/gemini.png"
-                      alt="Google Gemini API"
+                      src="/midtrans.jpg"
+                      alt="Midtrans"
+                      width={24}
+                      height={24}
+                      className="rounded-full"
+                    />
+                    Midtrans
+                  </div>
+                  <div className="flex items-center gap-2 font-inter tracking-tighter">
+                    <Image
+                      src="/twilio.svg"
+                      alt="Twilio"
                       width={24}
                       height={24}
                     />
-                    Gemini API
-                  </div>
-                  {/* xendit */}
-                  <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <Image
-                      src="/xendit.png"
-                      alt="Xendit"
-                      width={24}
-                      height={24}
-                    />
-                    Xendit
-                  </div>
-                  {/* Twitter */}
-                  <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <Image src="/x.png" alt="X" width={24} height={24} />X API
+                    Twilio
                   </div>
                 </div>
               </div>
@@ -370,7 +370,7 @@ export default function DraftAnakITBPage() {
                 </h3>
                 <div className="flex flex-col gap-3">
                   <Link
-                    href="https://github.com/pablonification/draftanakitb-web/"
+                    href="https://github.com/pablonification/project-wjc/"
                     target="_blank"
                     className="bg-black text-white text-center rounded-2xl py-3 font-medium hover:bg-gray-800 transition-all duration-300 font-inter tracking-tighter shadow-[0_4px_8px_-2px_rgba(0,0,0,0.3),inset_0_2px_0_rgba(255,255,255,0.2),inset_0_-1px_0_rgba(0,0,0,0.2)] hover:shadow-[0_6px_12px_-3px_rgba(0,0,0,0.4),inset_0_2px_0_rgba(255,255,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.3)] hover:-translate-y-1 relative overflow-hidden group"
                   >
@@ -390,7 +390,7 @@ export default function DraftAnakITBPage() {
                     </span>
                   </Link>
                   <Link
-                    href="https://draftanakitb.tech/"
+                    href="https://meddocswjc.com/"
                     target="_blank"
                     className="bg-gradient-to-r from-[#ffbcc4] to-[#c1f0f1] text-gray-800 text-center rounded-2xl py-3 font-medium hover:opacity-90 transition-all duration-300 font-inter tracking-tighter flex items-center justify-center shadow-[0_4px_8px_-2px_rgba(0,0,0,0.15),inset_0_2px_0_rgba(255,255,255,0.6),inset_0_-1px_0_rgba(0,0,0,0.1)] hover:shadow-[0_6px_12px_-3px_rgba(0,0,0,0.2),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.15)] hover:-translate-y-1 relative overflow-hidden group"
                   >
@@ -410,97 +410,6 @@ export default function DraftAnakITBPage() {
                     </span>
                   </Link>
                 </div>
-              </div>
-
-              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
-                {/* 3D Inner Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
-                {/* Top Highlight */}
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
-                {/* Bottom Shadow */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
-                <h3 className="text-xl font-bold mb-4 font-inter tracking-tighter relative z-10">
-                  Project Timeline
-                </h3>
-                <ul className="space-y-4 border-l-2 border-gray-200 pl-4">
-                  <li className="relative">
-                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
-                    <p className="font-bold font-inter tracking-tighter">
-                      Brainstorming & Planning
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      August – September 2024
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Initial idea development, user research, concept
-                      validation
-                    </p>
-                  </li>
-                  <li className="relative">
-                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
-                    <p className="font-bold font-inter tracking-tighter">
-                      Chatbot Development (v1)
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      September – October 2024
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Built Telegram-based chatbot using command keywords for
-                      core actions
-                    </p>
-                  </li>
-                  <li className="relative">
-                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
-                    <p className="font-bold font-inter tracking-tighter">
-                      Initial Release
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      October 2024
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Released chatbot version for users to send menfess to
-                      DraftAnakITB X's account
-                    </p>
-                  </li>
-                  <li className="relative">
-                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
-                    <p className="font-bold font-inter tracking-tighter">
-                      Design Phase (Web App)
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      December 2024 – January 2025
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      UI/UX design, wireframing, prototyping, and validation
-                    </p>
-                  </li>
-                  <li className="relative">
-                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
-                    <p className="font-bold font-inter tracking-tighter">
-                      Full Stack Development (Web)
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      January – February 2025
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Developed web-based version with frontend and backend
-                      integration
-                    </p>
-                  </li>
-                  <li className="relative">
-                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
-                    <p className="font-bold font-inter tracking-tighter">
-                      Web Release & Iteration
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      February 2025 – Present
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Public release of web version, feedback-based improvements
-                      and updates
-                    </p>
-                  </li>
-                </ul>
               </div>
             </aside>
           </div>

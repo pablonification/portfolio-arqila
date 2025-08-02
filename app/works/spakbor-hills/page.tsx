@@ -68,7 +68,8 @@ export default function DraftAnakITBPage() {
                     Spakbor Hills
                   </h1>
                   <p className="text-white/90 text-base md:text-lg mt-1 font-inter tracking-tighter">
-                    Task management app
+                    A farming life simulation game inspired by Stardew Valley
+                    built with Java
                   </p>
                 </div>
               </div>
@@ -91,15 +92,19 @@ export default function DraftAnakITBPage() {
                 </h2>
                 <p className="text-gray-700 leading-relaxed space-y-4 font-inter tracking-tighter">
                   <div>
-                    ITB students needed a safe space to express opinions, ask
-                    questions, and share experiences without fear of judgment or
-                    repercussion. Many students felt hesitant to speak openly in
-                    official channels.
+                    Spakbor Hills is a 2D farming and life simulation game
+                    inspired by Stardew Valley. The goal was to create an
+                    immersive and nostalgic gameplay experience where players
+                    can grow crops, explore nature, and interact with various
+                    in-game characters.
                   </div>
                   <div>
-                    DraftAnakITB was created as an anonymous platform where
-                    students could freely discuss academic challenges, campus
-                    life, and sensitive topics while maintaining their privacy.
+                    The project was born from a desire to explore
+                    object-oriented design, event-based gameplay mechanics, and
+                    pixel-style UI development using only native Java tools. The
+                    challenge was to replicate the charm and complexity of
+                    simulation games within a custom engine built from scratch,
+                    without using popular game frameworks or engines.
                   </div>
                 </p>
               </div>
@@ -115,37 +120,31 @@ export default function DraftAnakITBPage() {
                   My Role
                 </h2>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <RoleTag>Lead Developer</RoleTag>
-                  <RoleTag>UI/UX Designer</RoleTag>
-                  <RoleTag>Project Manager</RoleTag>
+                  <RoleTag>Game Developer</RoleTag>
                 </div>
                 <p className="text-gray-700 leading-relaxed mb-4 font-inter tracking-tighter">
-                  I owned the project end-to-end, from initial idea and
-                  research, to UI/UX design, full-stack development, and
-                  platform deployment. My responsibilities included:
+                  As the main developer, I handled both the logic and interface
+                  side of the game. My responsibilities included:
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-gray-700 font-inter tracking-tighter">
                   <li>
-                    Conducting user research to understand pain points and
-                    behavior
+                    Designing game systems such as time cycles, player stats,
+                    and planting mechanics
                   </li>
                   <li>
-                    Designing the entire user experience (UX) and interface (UI)
-                    using Figma
+                    Implementing an in-game day-night system and seasonal
+                    changes
                   </li>
-                  <li>Developing the frontend using React and Tailwind CSS</li>
-                  <li>Building a secure backend using Node.js and MongoDB</li>
+                  <li>Creating UI elements using Java Swing</li>
                   <li>
-                    Integrating X (Twitter) API with moderation tools to ensure
-                    safety and anonymity
+                    Managing assets and animations for characters and objects
                   </li>
                   <li>
-                    Managing feature releases, user testing, and continuous
-                    iterations
+                    Structuring the codebase using Gradle and object-oriented
+                    principles
                   </li>
                   <li>
-                    Monitoring performance and handling all deployment
-                    operations
+                    Debugging player interactions, collision, and event triggers
                   </li>
                 </ul>
               </div>
@@ -269,31 +268,31 @@ export default function DraftAnakITBPage() {
                 </h3>
                 <ul className="space-y-2 text-gray-700 mb-6 font-inter tracking-tighter list-disc list-inside">
                   <li>
-                    Balancing anonymity with accountability to prevent misuse of
-                    the platform
+                    Building game logic and rendering from scratch without a
+                    game engine
                   </li>
                   <li>
-                    Designing a moderation system that respects privacy but
-                    allows filtering
+                    Simulating interactive elements such as inventory, weather,
+                    and time progression using basic Java components
                   </li>
                   <li>
-                    Scaling the platform quickly when it gained unexpected
-                    popularity
+                    Managing performance bottlenecks while rendering multiple
+                    elements in a lightweight environment
                   </li>
                 </ul>
                 <h3 className="font-bold text-lg mb-3 font-inter tracking-tighter">
                   Lessons Learned
                 </h3>
                 <div className="space-y-4">
-                  <blockquote className="bg-red-50 border-l-4 border-red-300 text-red-800 p-4 rounded-r-lg font-inter tracking-tighter">
-                    "The most important feature wasn't the anonymity itself, but
-                    creating a sense of community where students felt safe to
-                    express themselves."
+                  <blockquote className="bg-yellow-50 border-l-4 border-yellow-300 text-yellow-800 p-4 rounded-r-lg font-inter tracking-tighter">
+                    Game development taught me how to think in systems, from
+                    managing states and events to building reusable components
+                    in a clean architecture.
                   </blockquote>
-                  <blockquote className="bg-blue-50 border-l-4 border-blue-300 text-blue-800 p-4 rounded-r-lg font-inter tracking-tighter">
-                    "User testing revealed that students valued simplicity over
-                    complex features. We ended up removing several 'cool'
-                    features that added unnecessary complexity."
+                  <blockquote className="bg-green-50 border-l-4 border-green-300 text-green-800 p-4 rounded-r-lg font-inter tracking-tighter">
+                    Constraints from not using engines like Unity forced me to
+                    deeply understand how every part of the game actually works
+                    under the hood.
                   </blockquote>
                 </div>
               </div>
@@ -308,45 +307,20 @@ export default function DraftAnakITBPage() {
                 <h2 className="text-2xl font-bold tracking-tighter mb-6 font-inter relative z-10">
                   Results
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center mb-6">
-                  <div>
-                    <p className="text-5xl font-bold text-pink-600 font-inter tracking-tighter">
-                      20,000+
-                    </p>
-                    <p className="text-gray-600 mt-2 font-inter tracking-tighter">
-                      Active followers
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-5xl font-bold text-pink-600 font-inter tracking-tighter">
-                      1,000,000+
-                    </p>
-                    <p className="text-gray-600 mt-2 font-inter tracking-tighter">
-                      Weekly impressions
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-5xl font-bold text-pink-600 font-inter tracking-tighter">
-                      7,000+
-                    </p>
-                    <p className="text-gray-600 mt-2 font-inter tracking-tighter">
-                      Total tweets
-                    </p>
-                  </div>
-                </div>
-                <div className="text-gray-700 leading-relaxed space-y-4 font-inter tracking-tighter">
-                  <p>
-                    DraftAnakITB became the go-to platform for ITB students to
-                    discuss campus issues, academic challenges, and share
-                    resources. The platform has been recognized by the
-                    university administration as a valuable feedback channel.
-                  </p>
-                  <p>
-                    The success of this project led to requests from other
-                    universities to implement similar platforms, creating
-                    opportunities for expansion.
-                  </p>
-                </div>
+                <ul className="text-gray-700 leading-relaxed space-y-2 font-inter tracking-tighter list-disc list-inside mb-0 justify-normal">
+                  <li>
+                    Fully functional 2D farming sim prototype, playable on desktop.
+                  </li>
+                  <li>
+                    Served as a showcase for mastering fundamental game architecture and Java-based UI development.
+                  </li>
+                  <li>
+                    Opened opportunities for deeper exploration into pixel-based rendering, animation logic, and game feel design.
+                  </li>
+                  <li>
+                    Received positive feedback during internal demo sessions and continues to be iterated on for potential expansion.
+                  </li>
+                </ul>
               </div>
             </main>
 
@@ -364,57 +338,29 @@ export default function DraftAnakITBPage() {
                 </h3>
                 <div className="grid grid-cols-2 gap-x-8 gap-y-4">
                   <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <StackIcon name="react" className="w-6 h-6" />
-                    React
+                    <StackIcon name="java" className="w-6 h-6" />
+                    Java
                   </div>
                   <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <StackIcon name="nextjs" className="w-6 h-6" />
-                    Next.js
+                    <StackIcon name="java" className="w-6 h-6" />
+                    Java Swing
                   </div>
                   <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <StackIcon name="figma" className="w-6 h-6" />
-                    Figma
+                    <StackIcon name="java" className="w-6 h-6" />
+                    SLF4J
                   </div>
                   <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <StackIcon name="tailwindcss" className="w-6 h-6" />
-                    Tailwind CSS
+                    <StackIcon name="google" className="w-6 h-6" />
+                    GSON
                   </div>
-                  <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <StackIcon name="mongodb" className="w-6 h-6" />
-                    MongoDB
-                  </div>
-                  <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <StackIcon name="nodejs" className="w-6 h-6" />
-                    Node.js
-                  </div>
-                  {/* resend */}
-                  <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <StackIcon name="resend" className="w-6 h-6" />
-                    Resend
-                  </div>
-                  {/* gcloud */}
                   <div className="flex items-center gap-2 font-inter tracking-tighter">
                     <Image
-                      src="/gemini.png"
-                      alt="Google Gemini API"
+                      src="/junit.png"
+                      alt="JUnit"
                       width={24}
                       height={24}
                     />
-                    Gemini API
-                  </div>
-                  {/* xendit */}
-                  <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <Image
-                      src="/xendit.png"
-                      alt="Xendit"
-                      width={24}
-                      height={24}
-                    />
-                    Xendit
-                  </div>
-                  {/* Twitter */}
-                  <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <Image src="/x.png" alt="X" width={24} height={24} />X API
+                    JUnit
                   </div>
                 </div>
               </div>
@@ -431,7 +377,7 @@ export default function DraftAnakITBPage() {
                 </h3>
                 <div className="flex flex-col gap-3">
                   <Link
-                    href="https://github.com/pablonification/draftanakitb-web/"
+                    href="https://github.com/pablonification/repository-tugas-besar-oop-2025"
                     target="_blank"
                     className="bg-black text-white text-center rounded-2xl py-3 font-medium hover:bg-gray-800 transition-all duration-300 font-inter tracking-tighter shadow-[0_4px_8px_-2px_rgba(0,0,0,0.3),inset_0_2px_0_rgba(255,255,255,0.2),inset_0_-1px_0_rgba(0,0,0,0.2)] hover:shadow-[0_6px_12px_-3px_rgba(0,0,0,0.4),inset_0_2px_0_rgba(255,255,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.3)] hover:-translate-y-1 relative overflow-hidden group"
                   >
@@ -451,7 +397,7 @@ export default function DraftAnakITBPage() {
                     </span>
                   </Link>
                   <Link
-                    href="https://draftanakitb.tech/"
+                    href="https://github.com/pablonification/repository-tugas-besar-oop-2025/releases"
                     target="_blank"
                     className="bg-gradient-to-r from-[#ffbcc4] to-[#c1f0f1] text-gray-800 text-center rounded-2xl py-3 font-medium hover:opacity-90 transition-all duration-300 font-inter tracking-tighter flex items-center justify-center shadow-[0_4px_8px_-2px_rgba(0,0,0,0.15),inset_0_2px_0_rgba(255,255,255,0.6),inset_0_-1px_0_rgba(0,0,0,0.1)] hover:shadow-[0_6px_12px_-3px_rgba(0,0,0,0.2),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.15)] hover:-translate-y-1 relative overflow-hidden group"
                   >
@@ -461,107 +407,16 @@ export default function DraftAnakITBPage() {
                     <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/60 to-transparent rounded-t-2xl"></div>
                     <span className="relative z-10 flex items-center justify-center">
                       <Image
-                        src="/globe.svg"
-                        alt="Globe"
+                        src="/game.png"
+                        alt="Game"
                         className="inline-block mr-1"
                         width={20}
                         height={20}
                       />
-                      Live Demo
+                      Try the Game
                     </span>
                   </Link>
                 </div>
-              </div>
-
-              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
-                {/* 3D Inner Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
-                {/* Top Highlight */}
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
-                {/* Bottom Shadow */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
-                <h3 className="text-xl font-bold mb-4 font-inter tracking-tighter relative z-10">
-                  Project Timeline
-                </h3>
-                <ul className="space-y-4 border-l-2 border-gray-200 pl-4">
-                  <li className="relative">
-                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
-                    <p className="font-bold font-inter tracking-tighter">
-                      Brainstorming & Planning
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      August – September 2024
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Initial idea development, user research, concept
-                      validation
-                    </p>
-                  </li>
-                  <li className="relative">
-                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
-                    <p className="font-bold font-inter tracking-tighter">
-                      Chatbot Development (v1)
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      September – October 2024
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Built Telegram-based chatbot using command keywords for
-                      core actions
-                    </p>
-                  </li>
-                  <li className="relative">
-                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
-                    <p className="font-bold font-inter tracking-tighter">
-                      Initial Release
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      October 2024
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Released chatbot version for users to send menfess to
-                      DraftAnakITB X's account
-                    </p>
-                  </li>
-                  <li className="relative">
-                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
-                    <p className="font-bold font-inter tracking-tighter">
-                      Design Phase (Web App)
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      December 2024 – January 2025
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      UI/UX design, wireframing, prototyping, and validation
-                    </p>
-                  </li>
-                  <li className="relative">
-                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
-                    <p className="font-bold font-inter tracking-tighter">
-                      Full Stack Development (Web)
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      January – February 2025
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Developed web-based version with frontend and backend
-                      integration
-                    </p>
-                  </li>
-                  <li className="relative">
-                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
-                    <p className="font-bold font-inter tracking-tighter">
-                      Web Release & Iteration
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      February 2025 – Present
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Public release of web version, feedback-based improvements
-                      and updates
-                    </p>
-                  </li>
-                </ul>
               </div>
             </aside>
           </div>
