@@ -68,7 +68,7 @@ export default function GEP2025Page() {
                     Ganesha Exhibition Programme 2025
                   </h1>
                   <p className="text-white/90 text-base md:text-lg mt-1 font-inter tracking-tighter">
-                    Anonymous platform for ITB students
+                    Website for an annual student art exhibition by LFM ITB
                   </p>
                 </div>
               </div>
@@ -91,16 +91,20 @@ export default function GEP2025Page() {
                 </h2>
                 <p className="text-gray-700 leading-relaxed space-y-4 font-inter tracking-tighter">
                   <div>
-                    ITB students needed a safe space to express opinions, ask
-                    questions, and share experiences without fear of judgment or
-                    repercussion. Many students felt hesitant to speak openly in
-                    official channels.
+                    The Ganesha Exhibition Programme (GEP) is an annual
+                    exhibition hosted by Liga Film Mahasiswa ITB, aimed at
+                    showcasing explorative and boundary-pushing student
+                    artworks. The team needed a website that could convey the
+                    vibrant, playful, and experimental spirit of the exhibition
+                    while clearly communicating key information such as event
+                    date, location, agenda, and artworks.
                   </div>
                   <div>
-                    Ganesha Exhibition Programme 2025 was created as an
-                    anonymous platform where students could freely discuss
-                    academic challenges, campus life, and sensitive topics while
-                    maintaining their privacy.
+                    The primary challenge was to design a site that didn’t just
+                    inform, but also immerse visitors in the essence of the
+                    exhibition. We focused on bold, eye-catching UI/UX design
+                    that would reflect the visual energy of the event and
+                    attract the attention of online audiences.
                   </div>
                 </p>
               </div>
@@ -116,26 +120,26 @@ export default function GEP2025Page() {
                   My Role
                 </h2>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <RoleTag>Lead Developer</RoleTag>
-                  <RoleTag>UI/UX Designer</RoleTag>
-                  <RoleTag>Project Manager</RoleTag>
+                  <RoleTag>Frontend Engineer</RoleTag>
                 </div>
                 <p className="text-gray-700 leading-relaxed mb-4 font-inter tracking-tighter">
-                  I led the development team while also handling the UI/UX
-                  design of the platform. My responsibilities included:
+                  I was responsible for developing the frontend of the website,
+                  ensuring that the UI/UX vision was implemented with precision
+                  and interactivity. My responsibilities included:
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-gray-700 font-inter tracking-tighter">
+                  <li>Building responsive layouts based on design mockups</li>
                   <li>
-                    Designing the user interface with focus on anonymity and
-                    ease of use
+                    Implementing dynamic components using React and Next.js
                   </li>
-                  <li>Developing the frontend using React and Tailwind CSS</li>
                   <li>
-                    Implementing secure authentication system with Firebase
+                    Styling the website using Tailwind CSS for design
+                    consistency
                   </li>
-                  <li>Managing team workflow and project timeline</li>
+                  <li>Optimizing performance for mobile and desktop viewing</li>
                   <li>
-                    Conducting user testing and iterating based on feedback
+                    Collaborating closely with the design and content teams to
+                    maintain visual alignment
                   </li>
                 </ul>
               </div>
@@ -191,16 +195,16 @@ export default function GEP2025Page() {
                 </h3>
                 <ul className="space-y-2 text-gray-700 mb-6 font-inter tracking-tighter list-disc list-inside">
                   <li>
-                    Balancing anonymity with accountability to prevent misuse of
-                    the platform
+                    Translating an abstract and experimental design concept into
+                    responsive and accessible web components
                   </li>
                   <li>
-                    Creating a moderation system that respected privacy while
-                    filtering inappropriate content
+                    Ensuring smooth performance despite the use of heavy
+                    graphics and animation
                   </li>
                   <li>
-                    Scaling the platform quickly when it gained unexpected
-                    popularity
+                    Maintaining consistency in layout across different screen
+                    sizes while preserving visual impact
                   </li>
                 </ul>
                 <h3 className="font-bold text-lg mb-3 font-inter tracking-tighter">
@@ -208,14 +212,14 @@ export default function GEP2025Page() {
                 </h3>
                 <div className="space-y-4">
                   <blockquote className="bg-red-50 border-l-4 border-red-300 text-red-800 p-4 rounded-r-lg font-inter tracking-tighter">
-                    "The most important feature wasn't the anonymity itself, but
-                    creating a sense of community where students felt safe to
-                    express themselves."
+                    Clarity and aesthetics can co-exist, we learned to strike a
+                    balance between expressive visuals and functional layout to
+                    avoid overwhelming users.
                   </blockquote>
                   <blockquote className="bg-blue-50 border-l-4 border-blue-300 text-blue-800 p-4 rounded-r-lg font-inter tracking-tighter">
-                    "User testing revealed that students valued simplicity over
-                    complex features. We ended up removing several 'cool'
-                    features that added unnecessary complexity."
+                    This project sharpened my frontend implementation skills,
+                    especially in managing responsive design under unique
+                    artistic constraints.
                   </blockquote>
                 </div>
               </div>
@@ -230,46 +234,18 @@ export default function GEP2025Page() {
                 <h2 className="text-2xl font-bold tracking-tighter mb-6 font-inter relative z-10">
                   Results
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center mb-6">
-                  <div>
-                    <p className="text-5xl font-bold text-pink-600 font-inter tracking-tighter">
-                      10,000+
-                    </p>
-                    <p className="text-gray-600 mt-2 font-inter tracking-tighter">
-                      Active users
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-5xl font-bold text-pink-600 font-inter tracking-tighter">
-                      85%
-                    </p>
-                    <p className="text-gray-600 mt-2 font-inter tracking-tighter">
-                      User retention
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-5xl font-bold text-pink-600 font-inter tracking-tighter">
-                      30K+
-                    </p>
-                    <p className="text-gray-600 mt-2 font-inter tracking-tighter">
-                      Monthly posts
-                    </p>
-                  </div>
-                </div>
-                <div className="text-gray-700 leading-relaxed space-y-4 font-inter tracking-tighter">
-                  <p>
-                    Ganesha Exhibition Programme 2025 became the go-to platform
-                    for ITB students to discuss campus issues, academic
-                    challenges, and share resources. The platform has been
-                    recognized by the university administration as a valuable
-                    feedback channel.
-                  </p>
-                  <p>
-                    The success of this project led to requests from other
-                    universities to implement similar platforms, creating
-                    opportunities for expansion.
-                  </p>
-                </div>
+
+                <ul className="text-gray-700 leading-relaxed space-y-4 font-inter tracking-tighter list-disc list-inside mb-0">
+                  <li>
+                    Helped increase foot traffic to the exhibition by
+                    effectively setting audience expectations and building
+                    excitement through the digital platform.
+                  </li>
+                  <li>
+                    Received praise from both the exhibition team and visitors
+                    for the engaging and thematic web experience
+                  </li>
+                </ul>
               </div>
             </main>
 
@@ -295,49 +271,17 @@ export default function GEP2025Page() {
                     Next.js
                   </div>
                   <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <StackIcon name="figma" className="w-6 h-6" />
-                    Figma
-                  </div>
-                  <div className="flex items-center gap-2 font-inter tracking-tighter">
                     <StackIcon name="tailwindcss" className="w-6 h-6" />
                     Tailwind CSS
                   </div>
                   <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <StackIcon name="mongodb" className="w-6 h-6" />
-                    MongoDB
-                  </div>
-                  <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <StackIcon name="nodejs" className="w-6 h-6" />
-                    Node.js
+                    <StackIcon name="js" className="w-6 h-6" />
+                    JavaScript
                   </div>
                   {/* resend */}
                   <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <StackIcon name="resend" className="w-6 h-6" />
-                    Resend
-                  </div>
-                  {/* gcloud */}
-                  <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <Image
-                      src="/gemini.png"
-                      alt="Google Gemini API"
-                      width={24}
-                      height={24}
-                    />
-                    Gemini API
-                  </div>
-                  {/* xendit */}
-                  <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <Image
-                      src="/xendit.png"
-                      alt="Xendit"
-                      width={24}
-                      height={24}
-                    />
-                    Xendit
-                  </div>
-                  {/* Twitter */}
-                  <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <Image src="/x.png" alt="X" width={24} height={24} />X API
+                    <StackIcon name="vercel" className="w-6 h-6" />
+                    Vercel
                   </div>
                 </div>
               </div>
@@ -354,7 +298,7 @@ export default function GEP2025Page() {
                 </h3>
                 <div className="flex flex-col gap-3">
                   <Link
-                    href="https://github.com/pablonification/draftanakitb-web/"
+                    href="https://github.com/wisauce/GEP-Ludic-2025"
                     target="_blank"
                     className="bg-black text-white text-center rounded-2xl py-3 font-medium hover:bg-gray-800 transition-all duration-300 font-inter tracking-tighter shadow-[0_4px_8px_-2px_rgba(0,0,0,0.3),inset_0_2px_0_rgba(255,255,255,0.2),inset_0_-1px_0_rgba(0,0,0,0.2)] hover:shadow-[0_6px_12px_-3px_rgba(0,0,0,0.4),inset_0_2px_0_rgba(255,255,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.3)] hover:-translate-y-1 relative overflow-hidden group"
                   >
@@ -374,7 +318,7 @@ export default function GEP2025Page() {
                     </span>
                   </Link>
                   <Link
-                    href="https://draftanakitb.tech/"
+                    href="https://gep-ludic-2025.vercel.app/"
                     target="_blank"
                     className="bg-gradient-to-r from-[#ffbcc4] to-[#c1f0f1] text-gray-800 text-center rounded-2xl py-3 font-medium hover:opacity-90 transition-all duration-300 font-inter tracking-tighter flex items-center justify-center shadow-[0_4px_8px_-2px_rgba(0,0,0,0.15),inset_0_2px_0_rgba(255,255,255,0.6),inset_0_-1px_0_rgba(0,0,0,0.1)] hover:shadow-[0_6px_12px_-3px_rgba(0,0,0,0.2),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.15)] hover:-translate-y-1 relative overflow-hidden group"
                   >
@@ -394,68 +338,6 @@ export default function GEP2025Page() {
                     </span>
                   </Link>
                 </div>
-              </div>
-
-              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
-                {/* 3D Inner Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
-                {/* Top Highlight */}
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
-                {/* Bottom Shadow */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
-                <h3 className="text-xl font-bold mb-4 font-inter tracking-tighter relative z-10">
-                  Project Timeline
-                </h3>
-                <ul className="space-y-4 border-l-2 border-gray-200 pl-4">
-                  <li className="relative">
-                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
-                    <p className="font-bold font-inter tracking-tighter">
-                      Research & Planning
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      March - April 2023
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      User research, competitor analysis, planning
-                    </p>
-                  </li>
-                  <li className="relative">
-                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
-                    <p className="font-bold font-inter tracking-tighter">
-                      Design Phase
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      May - June 2023
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Wireframing, prototyping, user testing
-                    </p>
-                  </li>
-                  <li className="relative">
-                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
-                    <p className="font-bold font-inter tracking-tighter">
-                      Development
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      July - September 2023
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Frontend & backend implementation
-                    </p>
-                  </li>
-                  <li className="relative">
-                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
-                    <p className="font-bold font-inter tracking-tighter">
-                      Launch & Iterations
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      October 2023 - Present
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Beta launch, feedback collection, updates
-                    </p>
-                  </li>
-                </ul>
               </div>
             </aside>
           </div>
