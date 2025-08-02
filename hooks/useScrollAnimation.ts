@@ -9,11 +9,7 @@ interface UseScrollAnimationOptions {
 export const useScrollAnimation = <T extends HTMLElement = HTMLElement>(
   options: UseScrollAnimationOptions = {}
 ) => {
-  const {
-    threshold = 0.1,
-    rootMargin = "0px 0px -50px 0px",
-    triggerOnce = true,
-  } = options;
+  const { threshold = 0.1, rootMargin = "0px", triggerOnce = true } = options;
 
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef<T>(null);
@@ -23,9 +19,6 @@ export const useScrollAnimation = <T extends HTMLElement = HTMLElement>(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          if (triggerOnce && elementRef.current) {
-            observer.unobserve(elementRef.current);
-          }
         } else if (!triggerOnce) {
           setIsVisible(false);
         }
@@ -42,9 +35,7 @@ export const useScrollAnimation = <T extends HTMLElement = HTMLElement>(
     }
 
     return () => {
-      if (currentElement) {
-        observer.unobserve(currentElement);
-      }
+      observer.disconnect();
     };
   }, [threshold, rootMargin, triggerOnce]);
 

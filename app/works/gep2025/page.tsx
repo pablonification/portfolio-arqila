@@ -235,7 +235,7 @@ export default function GEP2025Page() {
                   Results
                 </h2>
 
-                <ul className="text-gray-700 leading-relaxed space-y-4 font-inter tracking-tighter list-disc list-inside mb-0">
+                <ul className="text-gray-700 leading-relaxed space-y-2 font-inter tracking-tighter list-disc list-inside mb-0">
                   <li>
                     Helped increase foot traffic to the exhibition by
                     effectively setting audience expectations and building
