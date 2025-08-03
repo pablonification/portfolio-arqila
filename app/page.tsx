@@ -142,7 +142,7 @@ export default function Page() {
                               group-hover:-rotate-3"
                   >
                     <Image
-                      src="/draftanakitb_pic1.png"
+                      src="/draftanakitb_pic1.webp"
                       alt="DraftAnakITB Interface 1"
                       width={1200}
                       height={900}
@@ -164,7 +164,7 @@ export default function Page() {
                               group-hover:rotate-2"
                   >
                     <Image
-                      src="/draftanakitb_pic2.png"
+                      src="/draftanakitb_pic2.webp"
                       alt="DraftAnakITB Interface 2"
                       width={1200}
                       height={900}
@@ -240,7 +240,7 @@ export default function Page() {
                               group-hover:-rotate-3"
                   >
                     <Image
-                      src="/ludic_pic1.png"
+                      src="/ludic_pic1.webp"
                       alt="Ludic Interface 1"
                       width={1200}
                       height={900}
@@ -263,7 +263,7 @@ export default function Page() {
                               group-hover:rotate-2"
                   >
                     <Image
-                      src="/ludic_pic4.png"
+                      src="/ludic_pic4.webp"
                       alt="Ludic Interface 2"
                       width={1600}
                       height={1200}
@@ -295,7 +295,7 @@ export default function Page() {
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex items-center gap-2 sm:gap-3">
                     <Image
-                      src="/8eh.png"
+                      src="/8eh.webp"
                       alt="8EH Radio ITB icon"
                       width={96}
                       height={96}
@@ -333,7 +333,7 @@ export default function Page() {
                 <div className="flex flex-col md:flex-row gap-4 mt-2 -mb-16 sm:-mb-24 justify-center items-center">
                   <div className="relative w-full md:w-1/2 transform translate-x-0 rotate-0 transition-all duration-300 group-hover:-translate-y-2 group-hover:-rotate-3">
                     <Image
-                      src="/8eh-card1.png"
+                      src="/8eh-card1.webp"
                       alt="8EH Interface 1"
                       width={3840}
                       height={2880}
@@ -345,7 +345,7 @@ export default function Page() {
                   </div>
                   <div className="hidden md:block relative w-full md:w-1/2 transform translate-y-4 rotate-0 transition-all duration-300 group-hover:translate-y-8 group-hover:rotate-2">
                     <Image
-                      src="/8eh-card2.png"
+                      src="/8eh-card2.webp"
                       alt="8EH Interface 2"
                       width={2400}
                       height={1800}
@@ -372,7 +372,7 @@ export default function Page() {
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex items-center gap-2 sm:gap-3">
                     <Image
-                      src="/meddocs.png"
+                      src="/meddocs.webp"
                       alt="Meddocs icon"
                       width={96}
                       height={96}
@@ -408,7 +408,7 @@ export default function Page() {
                 <div className="flex flex-col md:flex-row gap-4 mt-2 -mb-16 sm:-mb-24 justify-center items-center">
                   <div className="relative w-full md:w-1/2 transform translate-x-0 rotate-0 transition-all duration-300 group-hover:-translate-y-2 group-hover:-rotate-3">
                     <Image
-                      src="/wjc-card1.png"
+                      src="/wjc-card1.webp"
                       alt="Meddocs Interface 1"
                       width={3840}
                       height={2880}
@@ -420,7 +420,7 @@ export default function Page() {
                   </div>
                   <div className="hidden md:block relative w-full md:w-1/2 transform translate-y-4 rotate-0 transition-all duration-300 group-hover:translate-y-8 group-hover:rotate-2">
                     <Image
-                      src="/wjc-card2.png"
+                      src="/wjc-card2.webp"
                       alt="Meddocs Interface 2"
                       width={3840}
                       height={2880}
@@ -449,7 +449,7 @@ export default function Page() {
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex items-center gap-2 sm:gap-3">
                     <Image
-                      src="/taskly.png"
+                      src="/taskly.webp"
                       alt="Taskly icon"
                       width={96}
                       height={96}
@@ -486,7 +486,7 @@ export default function Page() {
                 <div className="flex flex-col md:flex-row gap-4 mt-2 -mb-16 sm:-mb-24 justify-center items-center">
                   <div className="relative w-full md:w-1/2 transform translate-x-0 rotate-0 transition-all duration-300 group-hover:-translate-y-2 group-hover:-rotate-3">
                     <Image
-                      src="/taskly-card1.png"
+                      src="/taskly-card1.webp"
                       alt="Taskly Interface 1"
                       width={3840}
                       height={2880}
@@ -498,7 +498,7 @@ export default function Page() {
                   </div>
                   <div className="hidden md:block relative w-full md:w-1/2 transform translate-y-4 rotate-0 transition-all duration-300 group-hover:translate-y-8 group-hover:rotate-2">
                     <Image
-                      src="/taskly-card2.png"
+                      src="/taskly-card2.webp"
                       alt="Taskly Interface 2"
                       width={3840}
                       height={2880}
@@ -527,7 +527,7 @@ export default function Page() {
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex items-center gap-2 sm:gap-3">
                     <Image
-                      src="/spakbor.png"
+                      src="/spakbor.webp"
                       alt="Spakbor Hills icon"
                       width={96}
                       height={96}
@@ -564,7 +564,7 @@ export default function Page() {
                 <div className="flex flex-col md:flex-row gap-4 mt-2 -mb-16 sm:-mb-24 justify-center items-center">
                   <div className="relative w-full md:w-1/2 transform translate-x-0 rotate-0 transition-all duration-300 group-hover:-translate-y-2 group-hover:-rotate-3">
                     <Image
-                      src="/spakbor-card1.png"
+                      src="/spakbor-card1.webp"
                       alt="Spakbor Hills Interface 1"
                       width={3840}
                       height={2880}
@@ -576,7 +576,7 @@ export default function Page() {
                   </div>
                   <div className="hidden md:block relative w-full md:w-1/2 transform translate-y-4 rotate-0 transition-all duration-300 group-hover:translate-y-8 group-hover:rotate-2">
                     <Image
-                      src="/spakbor-card2.png"
+                      src="/spakbor-card2.webp"
                       alt="Spakbor Hills Interface 2"
                       width={3840}
                       height={2880}
@@ -636,7 +636,7 @@ export default function Page() {
                 className="rounded-lg w-auto h-auto"
               />
               <Image
-                src="/ludic_logo.png"
+                src="/ludic_logo.webp"
                 alt="Ludic Logo"
                 width={332}
                 height={160}

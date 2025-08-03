@@ -56,7 +56,7 @@ export default function DraftAnakITBPage() {
             <div className="relative w-full mx-auto">
               <div className="relative bg-gradient-to-b from-gray-300 to-gray-800 rounded-2xl shadow-2xl overflow-hidden aspect-[21/9]">
                 <Image
-                  src="/cover_draftanakitb.jpg"
+                  src="/cover_draftanakitb.webp"
                   alt="DraftAnakITB App Showcase"
                   width={3600}
                   height={1530}
@@ -168,14 +168,14 @@ export default function DraftAnakITBPage() {
                     </p>
                     <div className="grid gap-4">
                       <Image
-                        src="/draftanakitb-slug.jpg"
+                        src="/draftanakitb-slug.webp"
                         alt="User Interviews"
                         width={3600}
                         height={1530}
                         className="rounded-2xl w-full object-cover relative z-20"
                       />
                       <Image
-                        src="/draftanakitb-slug2.jpg"
+                        src="/draftanakitb-slug2.webp"
                         alt="User Personas"
                         width={3600}
                         height={1530}
@@ -327,7 +327,7 @@ export default function DraftAnakITBPage() {
                   {/* gcloud */}
                   <div className="flex items-center gap-2 font-inter tracking-tighter">
                     <Image
-                      src="/gemini.png"
+                      src="/gemini.webp"
                       alt="Google Gemini API"
                       width={24}
                       height={24}
@@ -337,7 +337,7 @@ export default function DraftAnakITBPage() {
                   {/* xendit */}
                   <div className="flex items-center gap-2 font-inter tracking-tighter">
                     <Image
-                      src="/xendit.png"
+                      src="/xendit.webp"
                       alt="Xendit"
                       width={24}
                       height={24}
@@ -346,7 +346,7 @@ export default function DraftAnakITBPage() {
                   </div>
                   {/* Twitter */}
                   <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <Image src="/x.png" alt="X" width={24} height={24} />X API
+                    <Image src="/x.webp" alt="X" width={24} height={24} />X API
                   </div>
                 </div>
               </div>

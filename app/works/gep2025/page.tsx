@@ -56,7 +56,7 @@ export default function GEP2025Page() {
             <div className="relative w-full mx-auto">
               <div className="relative bg-gradient-to-b from-gray-300 to-gray-800 rounded-2xl shadow-2xl overflow-hidden aspect-[21/9]">
                 <Image
-                  src="/gep-cover.jpg"
+                  src="/gep-cover.webp"
                   alt="DraftAnakITB App Showcase"
                   width={3600}
                   height={1530}
@@ -162,14 +162,14 @@ export default function GEP2025Page() {
                     </p>
                     <div className="grid gap-4">
                       <Image
-                        src="/gep-slug.jpg"
+                        src="/gep-slug.webp"
                         alt="User Interviews"
                         width={3600}
                         height={1530}
                         className="rounded-2xl w-full object-cover relative z-20"
                       />
                       <Image
-                        src="/gep-slug2.jpg"
+                        src="/gep-slug2.webp"
                         alt="User Personas"
                         width={3600}
                         height={1530}

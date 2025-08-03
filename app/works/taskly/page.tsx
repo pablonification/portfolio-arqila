@@ -56,7 +56,7 @@ export default function DraftAnakITBPage() {
             <div className="relative w-full mx-auto">
               <div className="relative bg-gradient-to-b from-gray-300 to-gray-800 rounded-2xl shadow-2xl overflow-hidden aspect-[21/9]">
                 <Image
-                  src="/taskly-slug.jpg"
+                  src="/taskly-slug.webp"
                   alt="DraftAnakITB App Showcase"
                   width={3600}
                   height={1530}
@@ -164,7 +164,7 @@ export default function DraftAnakITBPage() {
                     </p>
                     <div className="grid gap-4">
                       <Image
-                        src="/taskly-slug2.jpg"
+                        src="/taskly-slug2.webp"
                         alt="User Interviews"
                         width={3600}
                         height={1530}
@@ -254,7 +254,7 @@ export default function DraftAnakITBPage() {
                     JavaScript
                   </div>
                   <div className="flex items-center gap-2 font-inter tracking-tighter">
-                    <Image src="/expo.png" alt="Expo" width={24} height={24} />
+                    <Image src="/expo.webp" alt="Expo" width={24} height={24} />
                     Expo
                   </div>
                 </div>
