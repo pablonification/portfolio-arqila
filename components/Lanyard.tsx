@@ -29,7 +29,7 @@ import * as THREE from "three";
 import { useSpring, animated, to } from "@react-spring/three";
 
 import cardGLB from "@/public/card/card.glb";
-import lanyard from "@/public/card/lanyard.png";
+import lanyard from "@/public/card/lanyard.webp";
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 

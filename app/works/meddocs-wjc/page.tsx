@@ -56,7 +56,7 @@ export default function DraftAnakITBPage() {
             <div className="relative w-full mx-auto">
               <div className="relative bg-gradient-to-b from-gray-300 to-gray-800 rounded-2xl shadow-2xl overflow-hidden aspect-[21/9]">
                 <Image
-                  src="/meddocs-wjc-slug.jpg"
+                  src="/meddocs-wjc-slug.webp"
                   alt="DraftAnakITB App Showcase"
                   width={3600}
                   height={1530}
@@ -173,21 +173,21 @@ export default function DraftAnakITBPage() {
                     </p>
                     <div className="grid gap-4">
                       <Image
-                        src="/meddocs-wjc-slug2.jpg"
+                        src="/meddocs-wjc-slug2.webp"
                         alt="User Interviews"
                         width={3600}
                         height={1530}
                         className="rounded-2xl w-full object-cover relative z-20"
                       />
                       <Image
-                        src="/meddocs-wjc-slug3.jpg"
+                        src="/meddocs-wjc-slug3.webp"
                         alt="User Personas"
                         width={3600}
                         height={1530}
                         className="rounded-2xl w-full object-cover relative z-20"
                       />
                       <Image
-                        src="/meddocs-wjc-slug4.jpg"
+                        src="/meddocs-wjc-slug4.webp"
                         alt="User Personas"
                         width={3600}
                         height={1530}
@@ -338,7 +338,7 @@ export default function DraftAnakITBPage() {
                   </div>
                   <div className="flex items-center gap-2 font-inter tracking-tighter">
                     <Image
-                      src="/midtrans.jpg"
+                      src="/midtrans.webp"
                       alt="Midtrans"
                       width={24}
                       height={24}

@@ -56,7 +56,7 @@ export default function DraftAnakITBPage() {
             <div className="relative w-full mx-auto">
               <div className="relative bg-gradient-to-b from-gray-300 to-gray-800 rounded-2xl shadow-2xl overflow-hidden aspect-[21/9]">
                 <Image
-                  src="/spakbor-slug.jpg"
+                  src="/spakbor-slug.webp"
                   alt="Spakbor Hills App Showcase"
                   width={3600}
                   height={1530}
@@ -167,70 +167,70 @@ export default function DraftAnakITBPage() {
                     </p>
                     <div className="grid gap-4">
                       <Image
-                        src="/spakbor-1.jpg"
+                        src="/spakbor-1.webp"
                         alt="User Interviews"
                         width={3000}
                         height={1530}
                         className="rounded-2xl w-full object-cover relative z-20"
                       />
                       <Image
-                        src="/spakbor-2.jpg"
+                        src="/spakbor-2.webp"
                         alt="User Interviews"
                         width={3000}
                         height={1530}
                         className="rounded-2xl w-full object-cover relative z-20"
                       />
                       <Image
-                        src="/spakbor-3.jpg"
+                        src="/spakbor-3.webp"
                         alt="User Interviews"
                         width={3000}
                         height={1530}
                         className="rounded-2xl w-full object-cover relative z-20"
                       />
                       <Image
-                        src="/spakbor-4.jpg"
+                        src="/spakbor-4.webp"
                         alt="User Interviews"
                         width={3000}
                         height={1530}
                         className="rounded-2xl w-full object-cover relative z-20"
                       />
                       <Image
-                        src="/spakbor-5.jpg"
+                        src="/spakbor-5.webp"
                         alt="User Interviews"
                         width={3000}
                         height={1530}
                         className="rounded-2xl w-full object-cover relative z-20"
                       />
                       <Image
-                        src="/spakbor-6.jpg"
+                        src="/spakbor-6.webp"
                         alt="User Interviews"
                         width={3000}
                         height={1530}
                         className="rounded-2xl w-full object-cover relative z-20"
                       />
                       <Image
-                        src="/spakbor-7.jpg"
+                        src="/spakbor-7.webp"
                         alt="User Interviews"
                         width={3000}
                         height={1530}
                         className="rounded-2xl w-full object-cover relative z-20"
                       />
                       <Image
-                        src="/spakbor-8.jpg"
+                        src="/spakbor-8.webp"
                         alt="User Interviews"
                         width={3000}
                         height={1530}
                         className="rounded-2xl w-full object-cover relative z-20"
                       />
                       <Image
-                        src="/spakbor-9.jpg"
+                        src="/spakbor-9.webp"
                         alt="User Interviews"
                         width={3000}
                         height={1530}
                         className="rounded-2xl w-full object-cover relative z-20"
                       />
                       <Image
-                        src="/spakbor-10.jpg"
+                        src="/spakbor-10.webp"
                         alt="User Interviews"
                         width={3000}
                         height={1530}
@@ -355,7 +355,7 @@ export default function DraftAnakITBPage() {
                   </div>
                   <div className="flex items-center gap-2 font-inter tracking-tighter">
                     <Image
-                      src="/junit.png"
+                      src="/junit.webp"
                       alt="JUnit"
                       width={24}
                       height={24}
@@ -407,7 +407,7 @@ export default function DraftAnakITBPage() {
                     <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/60 to-transparent rounded-t-2xl"></div>
                     <span className="relative z-10 flex items-center justify-center">
                       <Image
-                        src="/game.png"
+                        src="/game.webp"
                         alt="Game"
                         className="inline-block mr-1"
                         width={20}

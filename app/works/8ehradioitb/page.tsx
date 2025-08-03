@@ -56,7 +56,7 @@ export default function DraftAnakITBPage() {
             <div className="relative w-full mx-auto">
               <div className="relative bg-gradient-to-b from-gray-300 to-gray-800 rounded-2xl shadow-2xl overflow-hidden aspect-[21/9]">
                 <Image
-                  src="/8eh-slug.png"
+                  src="/8eh-slug.webp"
                   alt="8EH Radio ITB App Showcase"
                   width={3600}
                   height={1530}
@@ -180,21 +180,21 @@ export default function DraftAnakITBPage() {
                     </p>
                     <div className="grid gap-4">
                       <Image
-                        src="/8eh-slug2.jpg"
+                        src="/8eh-slug2.webp"
                         alt="User Interviews"
                         width={3600}
                         height={1530}
                         className="rounded-2xl w-full object-cover relative z-20"
                       />
                       <Image
-                        src="/8eh-slug3.jpg"
+                        src="/8eh-slug3.webp"
                         alt="User Personas"
                         width={3600}
                         height={1530}
                         className="rounded-2xl w-full object-cover relative z-20"
                       />
                       <Image
-                        src="/8eh-slug4.jpg"
+                        src="/8eh-slug4.webp"
                         alt="User Personas"
                         width={3600}
                         height={1530}
