@@ -338,7 +338,7 @@ export default function Page() {
                       width={3840}
                       height={2880}
                       quality={100}
-                      className="rounded-lg w-full object-cover -translate-x-2 translate-y-10"
+                      className="rounded-lg w-full object-cover translate-x-0 md:-translate-x-2 translate-y-10"
                       priority
                       sizes="(min-width: 1024px) 900px, 100vw"
                     />
@@ -413,7 +413,7 @@ export default function Page() {
                       width={3840}
                       height={2880}
                       quality={100}
-                      className="rounded-lg w-full object-cover translate-x-5 translate-y-10"
+                      className="rounded-lg w-full object-cover translate-x-0 md:translate-x-5 translate-y-10"
                       priority
                       sizes="(min-width: 1024px) 900px, 100vw"
                     />
@@ -425,7 +425,7 @@ export default function Page() {
                       width={3840}
                       height={2880}
                       quality={100}
-                      className="rounded-lg w-full object-cover -translate-x-10 scale-105"
+                      className="rounded-lg w-full object-cover translate-x-0 md:-translate-x-10 scale-105"
                       priority
                       sizes="(min-width: 1024px) 900px, 100vw"
                     />
@@ -491,7 +491,7 @@ export default function Page() {
                       width={3840}
                       height={2880}
                       quality={100}
-                      className="rounded-lg w-full object-cover translate-x-5 translate-y-10 scale-95"
+                      className="rounded-lg w-full object-cover translate-x-0 md:translate-x-5 translate-y-10 scale-95"
                       priority
                       sizes="(min-width: 1024px) 900px, 100vw"
                     />
@@ -569,7 +569,7 @@ export default function Page() {
                       width={3840}
                       height={2880}
                       quality={100}
-                      className="rounded-lg w-full object-cover translate-x-5 translate-y-10"
+                      className="rounded-lg w-full object-cover translate-x-0 md:translate-x-5 translate-y-10"
                       priority
                       sizes="(min-width: 1024px) 900px, 100vw"
                     />
@@ -653,12 +653,39 @@ export default function Page() {
               />
             </div>
             <div className="mt-auto pt-6 relative z-10">
-              <Link
-                href="/experiences"
-                className="text-lg tracking-tighter text-gray-600 hover:underline transition-all duration-300 hover:text-gray-800"
+              <button
+                onClick={() => {
+                  const link = document.createElement("a");
+                  link.href = "/portfolio.pdf";
+                  link.download = "portfolio.pdf";
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }}
+                className="w-full bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg font-inter tracking-tighter shadow-[0_6px_12px_-3px_rgba(0,0,0,0.3),inset_0_2px_0_rgba(255,255,255,0.2),inset_0_-1px_0_rgba(0,0,0,0.2)] hover:shadow-[0_8px_16px_-4px_rgba(0,0,0,0.4),inset_0_2px_0_rgba(255,255,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.3)] hover:-translate-y-1 relative overflow-hidden group cursor-pointer flex justify-center items-center text-center"
               >
-                View full experience →
-              </Link>
+                {/* Button inner glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/20 rounded-full pointer-events-none"></div>
+                {/* Button top highlight */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-t-full"></div>
+                <span className="relative z-10 flex items-center gap-2">
+                  Download Resume
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                </span>
+              </button>
             </div>
           </div>
           <TechStackCard />
