@@ -638,10 +638,10 @@ export default function Page() {
               <Image
                 src="/ludic_logo.webp"
                 alt="Ludic Logo"
-                width={332}
-                height={160}
+                width={97}
+                height={51}
                 quality={100}
-                className="rounded-lg w-auto h-auto transform scale-75"
+                className="rounded-lg scale-75"
               />
               <Image
                 src="/gsis_logo.svg"

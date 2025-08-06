@@ -231,14 +231,14 @@ export default function DraftAnakITBPage() {
                 </h3>
                 <div className="space-y-4">
                   <blockquote className="bg-red-50 border-l-4 border-red-300 text-red-800 p-4 rounded-r-lg font-inter tracking-tighter">
-                    "Building for communities requires deep empathy; we learned
+                    Building for communities requires deep empathy; we learned
                     to strike a balance between automation and simplicity so
-                    users don’t feel alienated by the technology."
+                    users don’t feel alienated by the technology.
                   </blockquote>
                   <blockquote className="bg-blue-50 border-l-4 border-blue-300 text-blue-800 p-4 rounded-r-lg font-inter tracking-tighter">
-                    "Collaboration with non-technical stakeholders improved
+                    Collaboration with non-technical stakeholders improved
                     significantly when we built visual prototypes early in the
-                    process to align expectations."
+                    process to align expectations.
                   </blockquote>
                 </div>
               </div>
@@ -283,10 +283,7 @@ export default function DraftAnakITBPage() {
                   <p>
                     Centralized platform is now used to store member data,
                     announce events, handle payments, and share media from past
-                    activities
-                  </p>
-                  <p>
-                    The success of this project led to interest from other
+                    activities. The success of this project led to interest from other
                     regional chapters to implement a similar system, opening
                     possibilities for a scalable multi-chapter platform in the
                     future.

@@ -243,7 +243,7 @@ export default function DraftAnakITBPage() {
                   </blockquote>
                   <blockquote className="bg-blue-50 border-l-4 border-blue-300 text-blue-800 p-4 rounded-r-lg font-inter tracking-tighter">
                     Combining developer efficiency with content editor
-                    flexibility taught us how important maintainability is in a
+                    flexibility taught me how important maintainability is in a
                     content-heavy platform.
                   </blockquote>
                 </div>
@@ -261,7 +261,7 @@ export default function DraftAnakITBPage() {
                 </h2>
                 <ul className="text-gray-700 leading-relaxed space-y-2 font-inter tracking-tighter list-disc list-inside mb-0 justify-normal">
                   <li>
-                    Load speed improved by <strong>over 10×</strong>, leading to higher engagement rates.
+                    Load speed improved by <strong>over 10 times</strong>, leading to higher engagement rates.
                   </li>
                   <li>
                     Streaming compatibility fixed across all major browsers and devices.
@@ -271,9 +271,6 @@ export default function DraftAnakITBPage() {
                   </li>
                   <li>
                     Platform now supports weekly updates, allowing announcers to independently upload content.
-                  </li>
-                  <li>
-                    8EH is now actively pitching to media clients through the new business-focused sections of the site.
                   </li>
                 </ul>
               </div>

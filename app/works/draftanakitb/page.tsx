@@ -218,14 +218,14 @@ export default function DraftAnakITBPage() {
                 </h3>
                 <div className="space-y-4">
                   <blockquote className="bg-red-50 border-l-4 border-red-300 text-red-800 p-4 rounded-r-lg font-inter tracking-tighter">
-                    "The most important feature wasn't the anonymity itself, but
+                    The most important feature wasn't the anonymity itself, but
                     creating a sense of community where students felt safe to
-                    express themselves."
+                    express themselves.
                   </blockquote>
                   <blockquote className="bg-blue-50 border-l-4 border-blue-300 text-blue-800 p-4 rounded-r-lg font-inter tracking-tighter">
-                    "User testing revealed that students valued simplicity over
+                    User testing revealed that students valued simplicity over
                     complex features. We ended up removing several 'cool'
-                    features that added unnecessary complexity."
+                    features that added unnecessary complexity.
                   </blockquote>
                 </div>
               </div>
@@ -270,11 +270,7 @@ export default function DraftAnakITBPage() {
                   <p>
                     DraftAnakITB became the go-to platform for ITB students to
                     discuss campus issues, academic challenges, and share
-                    resources. The platform has been recognized by the
-                    university administration as a valuable feedback channel.
-                  </p>
-                  <p>
-                    The success of this project led to requests from other
+                    resources. The success of this project led to requests from other
                     universities to implement similar platforms, creating
                     opportunities for expansion.
                   </p>
