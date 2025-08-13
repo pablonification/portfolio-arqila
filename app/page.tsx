@@ -709,8 +709,8 @@ export default function Page() {
         id="connect"
         className={`transition-all duration-1000 ease-out ${
           lanyardAnimation.isVisible
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-8"
+            ? "opacity-100 sm:translate-y-0 translate-y-16"
+            : "opacity-0 sm:translate-y-8 translate-y-24"
         }`}
       >
         <Lanyard />
