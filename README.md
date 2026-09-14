@@ -1,42 +1,63 @@
 # portfolio-arqila
 
-[Live portfolio](https://arqilasp.com) · [Vercel deployment](https://portfolio-arqila.vercel.app)
+[Live site](https://arqilasp.com) · [Vercel deployment](https://portfolio-arqila.vercel.app)
 
-The source code for Arqila Surya Putra's personal portfolio and project showcase. The site combines interactive presentation, selected project case studies, technical experience, and small product experiments.
+The source code for Arqila Surya Putra's personal portfolio website. The application presents project case studies, experience, technical interests, and interactive experiments through a responsive Next.js interface.
 
-## What it contains
+## Features
 
-- Interactive landing page with scroll animations, dynamic gradients, and a 3D lanyard experience.
-- Case-study pages for web platforms, mobile applications, a student exhibition website, and a Java game.
-- Project-specific galleries, technology lists, roles, and implementation notes.
-- A chatbot route connected to an external RAG demo.
-- A protected URL shortener with click statistics and optional persistent storage.
-- Responsive navigation, dark and light presentation components, and reusable UI primitives.
+- Animated landing page with scroll-based transitions and dynamic background effects.
+- Interactive 3D lanyard component and technology presentation cards.
+- Case-study pages with project descriptions, roles, technology details, galleries, and media.
+- Responsive navigation, theme components, and reusable UI primitives.
+- `/chatbot` route for the external RAG chatbot demo.
+- Protected `/shortener` tool for creating short links and viewing click statistics.
+- Redirect and analytics routes for generated short links.
 
-## Featured case studies
+## Case-study routes
 
-| Case study | Description |
+| Route | Project |
 | --- | --- |
-| [8EH Radio ITB](https://arqilasp.com/works/8ehradioitb) | Radio streaming and content platform with public media pages and an editorial dashboard |
-| [DraftAnakITB](https://arqilasp.com/works/draftanakitb) | Anonymous platform for ITB students with web, chatbot, and content workflows |
-| [Ganesha Exhibition Programme 2025](https://arqilasp.com/works/gep2025) | Frontend experience for LFM ITB's annual student art exhibition |
-| [Spakbor Hills](https://arqilasp.com/works/spakbor-hills) | Pixel-style game built with Java and a custom game architecture |
-| [Taskly](https://arqilasp.com/works/taskly) | Cross-platform task, reminder, and notes application built with React Native and Expo |
+| `/works/8ehradioitb` | 8EH Radio ITB streaming and content platform |
+| `/works/draftanakitb` | Anonymous platform for ITB students |
+| `/works/gep2025` | LFM ITB Ganesha Exhibition Programme website |
+| `/works/spakbor-hills` | Java-based pixel-style game |
+| `/works/taskly` | React Native and Expo task and notes application |
+
+Each case study is implemented as a route under `app/works/` and uses the shared layout, navigation, image assets, and UI components from the rest of the application.
+
+## Application structure
+
+```text
+app/
+  page.tsx              landing page
+  works/                project case-study routes
+  chatbot/              external RAG chatbot redirect
+  shortener/            protected URL shortener interface
+  s/[id]/               public short-link route
+  api/                  short-link and analytics handlers
+components/             navigation, animation, 3D, and UI components
+hooks/                  shared client hooks
+lib/                    utilities and storage adapters
+public/                 project media, icons, and case-study assets
+```
 
 ## Technology
 
 - **Framework:** Next.js 14 App Router, React 18, TypeScript
-- **UI:** Tailwind CSS, Radix UI, Framer Motion, Motion, React Spring
+- **Styling and UI:** Tailwind CSS, Radix UI, Framer Motion, Motion, React Spring
 - **3D and interaction:** Three.js, React Three Fiber, React Three Drei, Matter.js, OGL
-- **Data and services:** Upstash Redis, local storage fallback, external RAG chatbot
+- **Storage:** Upstash Redis with an in-memory fallback for local development
 - **Deployment:** Vercel
 
-## Run locally
+## Local development
 
 Requirements:
 
 - Node.js 20 or newer
 - npm
+
+Install dependencies and start the development server:
 
 ```bash
 npm install
@@ -53,22 +74,17 @@ npm run start
 npm run lint
 ```
 
-The URL shortener works with an in-memory development fallback. Configure `KV_REST_API_URL` and `KV_REST_API_TOKEN` to use Upstash Redis for persistent short links and click statistics.
+## Optional URL shortener storage
 
-## Project structure
+The shortener uses an in-memory store when Upstash is not configured. For persistent short links and click statistics, set:
 
-```text
-app/
-  page.tsx              landing page
-  works/                project case studies
-  chatbot/              RAG chatbot redirect
-  shortener/            protected URL shortener
-  api/                  short-link and analytics routes
-components/             navigation, animation, 3D, and UI components
-lib/                    shared utilities and storage adapters
-public/                 project media, icons, and case-study assets
+```env
+KV_REST_API_URL=https://your-upstash-endpoint
+KV_REST_API_TOKEN=your-upstash-token
 ```
+
+The shortener interface is protected by the application's password gate. Do not commit credentials or production tokens.
 
 ## Deployment
 
-The application is configured for Vercel. Set the required environment variables for the shortener before enabling persistent analytics in production.
+The project is configured for Vercel. Set the Upstash variables before enabling persistent short-link analytics in production. The rest of the portfolio can run without external storage.
