@@ -11,7 +11,7 @@ The source code for Arqila Surya Putra's personal portfolio website. The applica
 - Case-study pages with project descriptions, roles, technology details, galleries, and media.
 - Responsive navigation, theme components, and reusable UI primitives.
 - `/chatbot` route for the external RAG chatbot demo.
-- Protected `/shortener` tool for creating short links and viewing click statistics.
+- Password-gated `/shortener` tool for creating short links and viewing click statistics.
 - Redirect and analytics routes for generated short links.
 
 ## Application structure
@@ -71,7 +71,7 @@ KV_REST_API_URL=https://your-upstash-endpoint
 KV_REST_API_TOKEN=your-upstash-token
 ```
 
-The shortener interface is protected by the application's password gate. Do not commit credentials or production tokens.
+The shortener interface uses the application's password gate. Do not commit credentials or production tokens.
 
 ## Deployment
 
