@@ -14,18 +14,6 @@ The source code for Arqila Surya Putra's personal portfolio website. The applica
 - Protected `/shortener` tool for creating short links and viewing click statistics.
 - Redirect and analytics routes for generated short links.
 
-## Case-study routes
-
-| Route | Project |
-| --- | --- |
-| `/works/8ehradioitb` | 8EH Radio ITB streaming and content platform |
-| `/works/draftanakitb` | Anonymous platform for ITB students |
-| `/works/gep2025` | LFM ITB Ganesha Exhibition Programme website |
-| `/works/spakbor-hills` | Java-based pixel-style game |
-| `/works/taskly` | React Native and Expo task and notes application |
-
-Each case study is implemented as a route under `app/works/` and uses the shared layout, navigation, image assets, and UI components from the rest of the application.
-
 ## Application structure
 
 ```text
