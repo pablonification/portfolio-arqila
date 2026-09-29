@@ -1,60 +1,262 @@
 "use client";
-import { useEffect, useState } from "react";
+
+import { useEffect, useRef, useState } from "react";
+import type { CSSProperties } from "react";
+import {
+  GRADUATION_THEME_EVENT,
+  type GraduationThemeDetail,
+} from "@/lib/graduation-theme";
+
+const REVEAL_DURATION = 4000;
+const COVER_FADE_DURATION = 650;
+
+// The moving blob needs to cover the viewport even if its source reaches an edge.
+const revealRadius = () => Math.hypot(window.innerWidth, window.innerHeight) + 160;
+
+const visiblePlayerCenter = (player: HTMLElement | null) => {
+  if (!player || !player.isConnected) return null;
+  const rect = player.getBoundingClientRect();
+  if (rect.width === 0 || rect.height === 0) return null;
+  const x = rect.left + rect.width / 2;
+  const y = rect.top + rect.height / 2;
+  // An offscreen player has no honest on-screen origin.
+  return x >= 0 && x <= window.innerWidth && y >= 0 && y <= window.innerHeight
+    ? { x, y }
+    : null;
+};
+
+const scrollProgress = () => {
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  return maxScroll > 0 ? window.scrollY / maxScroll : 0;
+};
+
+const randomBlobShape = () => {
+  const corner = () => `${Math.round(22 + Math.random() * 56)}%`;
+  return `${Array.from({ length: 4 }, corner).join(" ")} / ${Array.from({ length: 4 }, corner).join(" ")}`;
+};
 
 const DynamicGradient = () => {
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const [pageScrollProgress, setPageScrollProgress] = useState(0);
+  const [coverVisible, setCoverVisible] = useState(false);
+  const [blobVisible, setBlobVisible] = useState(false);
+  const [reveal, setReveal] = useState({
+    playing: false,
+    x: 0,
+    y: 0,
+    radius: 0,
+    shape: "44% 56% 52% 48% / 53% 47% 59% 41%",
+  });
+  const playingRef = useRef(false);
+  const playerRef = useRef<HTMLElement | null>(null);
+  const modeRef = useRef<"idle" | "revealing" | "collapsing" | "covered">("idle");
+  const blobVisibleRef = useRef(false);
+  const coverFadeUntilRef = useRef(0);
+  const revealElementRef = useRef<HTMLDivElement | null>(null);
+  const positionFrame = useRef<number | null>(null);
+  const revealTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const blurTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const scrollHeight = document.documentElement.scrollHeight;
-      const viewportHeight = window.innerHeight;
-      
-      // Prevent division by zero if content is shorter than the viewport
-      const maxScroll = scrollHeight - viewportHeight;
-      if (maxScroll <= 0) {
-        setScrollProgress(0);
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const duration = () => (reducedMotion.matches ? 0 : REVEAL_DURATION);
+    const fadeDuration = () => (reducedMotion.matches ? 0 : COVER_FADE_DURATION);
+
+    const clearTimers = () => {
+      if (revealTimer.current) clearTimeout(revealTimer.current);
+      if (hideTimer.current) clearTimeout(hideTimer.current);
+      if (blurTimer.current) clearTimeout(blurTimer.current);
+    };
+
+    const hideBlob = () => {
+      blobVisibleRef.current = false;
+      setBlobVisible(false);
+      setReveal((previous) => ({ ...previous, playing: false }));
+      if (!playingRef.current) {
+        modeRef.current = "idle";
+        playerRef.current = null;
+        setPageScrollProgress(scrollProgress());
+      }
+      hideTimer.current = null;
+    };
+
+    const startBlurWindow = (milliseconds: number) => {
+      if (blurTimer.current) clearTimeout(blurTimer.current);
+      if (milliseconds === 0) {
+        document.documentElement.classList.remove("graduation-transitioning");
+        return;
+      }
+      document.documentElement.classList.add("graduation-transitioning");
+      blurTimer.current = setTimeout(() => {
+        document.documentElement.classList.remove("graduation-transitioning");
+        blurTimer.current = null;
+      }, milliseconds);
+    };
+
+    const settleTheme = () => {
+      if (!playingRef.current) return;
+      modeRef.current = "covered";
+      setCoverVisible(true);
+      hideTimer.current = setTimeout(hideBlob, fadeDuration());
+      revealTimer.current = null;
+    };
+
+    const updatePosition = () => {
+      positionFrame.current = null;
+      if (modeRef.current !== "revealing" && modeRef.current !== "collapsing") return;
+      const center = visiblePlayerCenter(playerRef.current);
+      if (!center) {
+        if (modeRef.current === "collapsing") {
+          if (hideTimer.current) clearTimeout(hideTimer.current);
+          hideBlob();
+          return;
+        }
+        if (revealTimer.current) clearTimeout(revealTimer.current);
+        settleTheme();
+        startBlurWindow(fadeDuration());
+        return;
+      }
+      if (revealElementRef.current) {
+        revealElementRef.current.style.translate = `${center.x}px ${center.y}px`;
+      }
+    };
+
+    const handleScrollOrResize = () => {
+      if (!playingRef.current && modeRef.current !== "collapsing") {
+        setPageScrollProgress(scrollProgress());
+      }
+      if ((modeRef.current === "revealing" || modeRef.current === "collapsing") &&
+          positionFrame.current === null) {
+        positionFrame.current = requestAnimationFrame(updatePosition);
+      }
+    };
+
+    const handleResize = () => {
+      if (modeRef.current !== "revealing" && modeRef.current !== "collapsing") return;
+      const center = visiblePlayerCenter(playerRef.current);
+      if (center) {
+        setReveal((previous) => ({ ...previous, ...center, radius: revealRadius() }));
+      }
+    };
+
+    const handleThemeChange = (event: Event) => {
+      const { playing, player } = (event as CustomEvent<GraduationThemeDetail>).detail;
+      if (playingRef.current === playing) return;
+      clearTimers();
+      const previousPlayer = playerRef.current;
+      playingRef.current = playing;
+      playerRef.current = playing ? player : previousPlayer;
+
+      if (playing) {
+        const center = visiblePlayerCenter(player);
+        if (!center) {
+          // Fade the full screen when playback starts out of view.
+          modeRef.current = "covered";
+          hideBlob();
+          setCoverVisible(true);
+          startBlurWindow(fadeDuration());
+          return;
+        }
+
+        if (performance.now() < coverFadeUntilRef.current) {
+          // A quick resume should keep the already completed theme in place.
+          coverFadeUntilRef.current = 0;
+          modeRef.current = "covered";
+          hideBlob();
+          setCoverVisible(true);
+          startBlurWindow(fadeDuration());
+          return;
+        }
+
+        coverFadeUntilRef.current = 0;
+        modeRef.current = "revealing";
+        blobVisibleRef.current = true;
+        // Scroll tracking writes this property directly. Reset it explicitly;
+        // React may skip an unchanged value from its previous render.
+        if (revealElementRef.current) {
+          revealElementRef.current.style.translate = `${center.x}px ${center.y}px`;
+        }
+        setBlobVisible(true);
+        setCoverVisible(false);
+        setReveal({
+          playing: true,
+          ...center,
+          radius: revealRadius(),
+          shape: randomBlobShape(),
+        });
+        startBlurWindow(duration());
+        revealTimer.current = setTimeout(settleTheme, duration());
         return;
       }
 
-      const progress = scrollTop / maxScroll;
-      setScrollProgress(progress);
+      setPageScrollProgress(scrollProgress());
+      setCoverVisible(false);
+      coverFadeUntilRef.current = modeRef.current === "covered"
+        ? performance.now() + fadeDuration()
+        : 0;
+      const shouldCollapse = modeRef.current === "revealing" &&
+        blobVisibleRef.current && visiblePlayerCenter(previousPlayer) !== null;
+      if (shouldCollapse) {
+        modeRef.current = "collapsing";
+        setReveal((previous) => ({ ...previous, playing: false }));
+        hideTimer.current = setTimeout(hideBlob, duration());
+        startBlurWindow(duration());
+      } else {
+        modeRef.current = "idle";
+        playerRef.current = null;
+        hideBlob();
+        startBlurWindow(fadeDuration());
+      }
     };
 
-    // Add listeners
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll);
+    window.addEventListener("scroll", handleScrollOrResize, { passive: true });
+    window.addEventListener("resize", handleScrollOrResize);
+    window.addEventListener("resize", handleResize);
+    window.addEventListener(GRADUATION_THEME_EVENT, handleThemeChange);
+    handleScrollOrResize();
 
-    // Initial calculation
-    handleScroll();
-
-    // Cleanup listeners
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
+      window.removeEventListener("scroll", handleScrollOrResize);
+      window.removeEventListener("resize", handleScrollOrResize);
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener(GRADUATION_THEME_EVENT, handleThemeChange);
+      if (positionFrame.current !== null) cancelAnimationFrame(positionFrame.current);
+      clearTimers();
+      document.documentElement.classList.remove("graduation-transitioning");
     };
   }, []);
 
-  // --- NEW LOGIC ---
-  // Instead of moving the div, we move the gradient's color stops.
-  // This makes the gradient appear to "scroll up" with the page.
-  const gradientShift = scrollProgress * 100;
-  const fromColor = "#FFB7C3"; // Pink
-  const toColor = "#BCF4F5";   // Blue
-
-  // The start color begins at 0% and moves up to -100%.
-  // The end color begins at 100% and moves up to 0%.
-  const startPercent = 0 - gradientShift;
+  // Keep the base gradient still while the theme is active to avoid scroll repaints.
+  const gradientShift = pageScrollProgress * 100;
+  const startPercent = -gradientShift;
   const endPercent = 100 - gradientShift;
 
+  const revealStyle = {
+    translate: `${reveal.x}px ${reveal.y}px`,
+    borderRadius: reveal.shape,
+    transform: `translate(-50%, -50%) scale(${reveal.playing ? reveal.radius / 110 : 0})`,
+  } as CSSProperties;
+
   return (
-    <div
-      className="fixed inset-0 -z-10"
-      style={{
-        background: `linear-gradient(to bottom, ${fromColor} ${startPercent}%, ${toColor} ${endPercent}%)`,
-        // No transform or manual height is needed. The div perfectly covers the viewport.
-      }}
-    />
+    <>
+      <div
+        className="fixed inset-0 -z-10 pointer-events-none"
+        style={{
+          background: `linear-gradient(to bottom, #FFB7C3 ${startPercent}%, #BCF4F5 ${endPercent}%)`,
+        }}
+      />
+      <div
+        aria-hidden="true"
+        ref={revealElementRef}
+        className={`graduation-reveal fixed -z-10 pointer-events-none ${blobVisible ? "" : "is-hidden"}`}
+        style={revealStyle}
+      />
+      <div
+        aria-hidden="true"
+        className="graduation-cover fixed inset-0 -z-10 pointer-events-none"
+        style={{ opacity: coverVisible ? 1 : 0 }}
+      />
+    </>
   );
 };
 

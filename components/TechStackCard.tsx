@@ -192,8 +192,8 @@ const TechStackCard: React.FC = () => {
     if (!engine || !render || !inView || bodiesAdded.current) return;
     bodiesAdded.current = true;
 
-    const bodyWidth = 80;
-    const bodyHeight = 80;
+    const bodyWidth = 48;
+    const bodyHeight = 48;
     const logoBodies = techStack.map((item, idx) => {
       const x = (render.options.width as number) / 2 + Math.random() * 20 - 10;
       const y = 50 + idx * 1.5;
@@ -308,7 +308,7 @@ const TechStackCard: React.FC = () => {
       </h2>
       <div
         ref={containerRef}
-        className="relative w-full h-[400px] relative z-10"
+        className="relative w-full h-[clamp(300px,20.833vw,400px)] relative z-10"
       >
         <canvas
           ref={canvasRef}

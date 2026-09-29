@@ -633,7 +633,7 @@ export default function Page() {
                 width={160}
                 height={160}
                 quality={100}
-                className="rounded-lg w-auto h-auto"
+                className="rounded-lg w-[clamp(43px,2.99vw,57px)] h-auto"
               />
               <Image
                 src="/ludic_logo.webp"
@@ -641,7 +641,7 @@ export default function Page() {
                 width={97}
                 height={51}
                 quality={100}
-                className="rounded-lg scale-75"
+                className="rounded-lg w-[clamp(66px,4.58vw,88px)] h-auto scale-75"
               />
               <Image
                 src="/gsis_logo.svg"
@@ -649,7 +649,7 @@ export default function Page() {
                 width={160}
                 height={160}
                 quality={100}
-                className="rounded-lg w-auto h-auto"
+                className="rounded-lg w-[clamp(43px,2.99vw,57px)] h-auto"
               />
             </div>
             <div className="mt-auto pt-6 relative z-10">

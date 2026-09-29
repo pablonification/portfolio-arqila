@@ -127,7 +127,7 @@ const Navbar = () => {
   if (isWorksPage) {
     return (
       <nav className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 p-3 font-inter">
-        <div className="bg-black/90 backdrop-blur-sm text-white rounded-[20px] px-1.5 flex items-center relative overflow-hidden min-w-[320px] sm:min-w-[400px] md:min-w-[500px] lg:min-w-[460px] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3),0_10px_20px_-5px_rgba(0,0,0,0.2),inset_0_2px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(0,0,0,0.3)] border border-gray-700/50">
+        <div className="bg-black/90 backdrop-blur-sm text-white rounded-[20px] px-1.5 flex items-center relative overflow-hidden min-w-[320px] sm:min-w-[400px] lg:min-w-[clamp(345px,23.958vw,460px)] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3),0_10px_20px_-5px_rgba(0,0,0,0.2),inset_0_2px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(0,0,0,0.3)] border border-gray-700/50">
           {/* Back to works button */}
           <Link
             href="/#works"
@@ -175,7 +175,7 @@ const Navbar = () => {
   if (isExperiencePage) {
     return (
       <nav className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 p-3 font-inter">
-        <div className="bg-black/90 backdrop-blur-sm text-white rounded-[20px] px-1.5 flex items-center relative overflow-hidden min-w-[320px] sm:min-w-[400px] md:min-w-[500px] lg:min-w-[460px] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3),0_10px_20px_-5px_rgba(0,0,0,0.2),inset_0_2px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(0,0,0,0.3)] border border-gray-700/50">
+        <div className="bg-black/90 backdrop-blur-sm text-white rounded-[20px] px-1.5 flex items-center relative overflow-hidden min-w-[320px] sm:min-w-[400px] lg:min-w-[clamp(345px,23.958vw,460px)] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3),0_10px_20px_-5px_rgba(0,0,0,0.2),inset_0_2px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(0,0,0,0.3)] border border-gray-700/50">
           {/* Back to experience button */}
           <Link
             href="/#experience"
@@ -224,7 +224,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 p-3 font-inter">
       <div
         ref={navRef}
-        className="bg-black/90 backdrop-blur-sm text-white rounded-[20px] px-1.5 py-1 flex items-center justify-center relative overflow-hidden min-w-[320px] sm:min-w-[400px] md:min-w-[500px] lg:min-w-[460px] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3),0_10px_20px_-5px_rgba(0,0,0,0.2),inset_0_2px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(0,0,0,0.3)] border border-gray-700/50"
+        className="bg-black/90 backdrop-blur-sm text-white rounded-[20px] px-1.5 py-1 flex items-center justify-center relative overflow-hidden min-w-[320px] sm:min-w-[400px] lg:min-w-[clamp(345px,23.958vw,460px)] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3),0_10px_20px_-5px_rgba(0,0,0,0.2),inset_0_2px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(0,0,0,0.3)] border border-gray-700/50"
       >
         <div
           className="absolute left-0 top-1 h-[85%] -translate-y-1/2 bg-[#ffb7c3] rounded-[16px] sm:rounded-[20px] transition-all duration-500 ease-out opacity-75 shadow-[inset_0_2px_0_rgba(255,255,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.2)]"

@@ -17,6 +17,58 @@ body {
   font-family: var(--font-inter);
 }
 
+/* Keep laptop sizing close to the intended 75% view without changing the layout. */
+@media (min-width: 768px) and (max-width: 1439px) {
+  html {
+    font-size: clamp(12px, calc(20.57px - 0.595vw), 16px);
+  }
+}
+
+@media (min-width: 1440px) {
+  html {
+    font-size: clamp(12px, 0.8333vw, 16px);
+  }
+}
+
+.graduation-reveal {
+  left: 0;
+  top: 0;
+  width: 320px;
+  height: 320px;
+  background:
+    radial-gradient(ellipse at 18% 78%, #ffdcc8 0%, transparent 36%),
+    radial-gradient(ellipse at 78% 16%, #afd9f5 0%, transparent 43%),
+    linear-gradient(135deg, #fbc6da 4%, #d2baf0 54%, #b8e2ed 100%);
+  will-change: transform, translate;
+  transition: transform 4000ms cubic-bezier(.45, 0, .55, 1);
+}
+
+.graduation-reveal.is-hidden {
+  visibility: hidden;
+  transition: none;
+  will-change: auto;
+}
+
+.graduation-cover {
+  background:
+    radial-gradient(ellipse at 23% 77%, #ffdcc8 0%, transparent 42%),
+    radial-gradient(ellipse at 76% 19%, #afd9f5 0%, transparent 46%),
+    linear-gradient(135deg, #fbc6da 4%, #d2baf0 54%, #b8e2ed 100%);
+  transition: opacity 650ms ease;
+}
+
+.graduation-transitioning .backdrop-blur-sm {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .graduation-reveal,
+  .graduation-cover {
+    transition-duration: 0ms;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

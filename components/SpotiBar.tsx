@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { GRADUATION_THEME_EVENT } from "@/lib/graduation-theme";
 
 interface Lyric {
   start: number;
@@ -231,6 +232,7 @@ const PlayPauseButton = ({
 
 export default function SpotiBar() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const playerRef = useRef<HTMLDivElement | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [currentLyricIndex, setCurrentLyricIndex] = useState<number>(-1);
   const [prevLyricIndex, setPrevLyricIndex] = useState<number>(-1);
@@ -240,12 +242,46 @@ export default function SpotiBar() {
     if (!audioRef.current) return;
     if (isPlaying) {
       audioRef.current.pause();
-      setIsPlaying(false);
     } else {
-      audioRef.current.play();
-      setIsPlaying(true);
+      void audioRef.current.play().catch(() => {
+        // Playback can be rejected by the browser; the play event owns the UI state.
+      });
     }
   };
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const announceTheme = (playing: boolean) => {
+      window.dispatchEvent(
+        new CustomEvent(GRADUATION_THEME_EVENT, {
+          detail: {
+            playing,
+            player: playerRef.current,
+          },
+        })
+      );
+      setIsPlaying(playing);
+    };
+
+    const handlePlay = () => announceTheme(true);
+    const handlePause = () => announceTheme(false);
+    audio.addEventListener("play", handlePlay);
+    audio.addEventListener("pause", handlePause);
+    audio.addEventListener("ended", handlePause);
+
+    return () => {
+      audio.removeEventListener("play", handlePlay);
+      audio.removeEventListener("pause", handlePause);
+      audio.removeEventListener("ended", handlePause);
+      window.dispatchEvent(
+        new CustomEvent(GRADUATION_THEME_EVENT, {
+          detail: { playing: false, player: null },
+        })
+      );
+    };
+  }, []);
 
   // Single useEffect for the audio event listener
   useEffect(() => {
@@ -288,7 +324,8 @@ export default function SpotiBar() {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div
-        className={`relative bg-gradient-to-r from-[#B14A9E] to-[#C1986E] rounded-xl p-3 sm:p-4 flex items-center min-h-[60px] sm:min-h-[80px] text-white transition-transform duration-300 ease-out ${
+        ref={playerRef}
+        className={`relative bg-gradient-to-r from-[#B14A9E] to-[#C1986E] rounded-xl p-3 sm:p-4 flex items-center min-h-[60px] sm:min-h-[clamp(60px,4.167vw,80px)] text-white transition-transform duration-300 ease-out ${
           isHovered ? "scale-[1.02]" : "scale-100"
         } shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15),0_10px_20px_-5px_rgba(0,0,0,0.1),inset_0_2px_0_rgba(255,255,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.2)] border border-white/20 relative overflow-hidden`}
       >
@@ -333,15 +370,15 @@ export default function SpotiBar() {
             className="w-8 h-8 sm:w-12 sm:h-12 opacity-80 hover:opacity-100 transition-opacity duration-200"
           />
         </div>
-        {/* Lyrics overlay - Hidden below 900px, shown at 900px and above */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden hidden min-[1600px]:block">
+        {/* Keep the original overlay visible at laptop widths. */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden hidden min-[1280px]:block">
           {currentLyricIndex !== -1 && (
             <p
               key={`curr-${currentLyricIndex}`}
               className="absolute inset-0 flex justify-center items-center text-3xl tracking-tight px-12"
             >
               <span
-                className="fadeIn text-center max-w-[70%]"
+                className="fadeIn text-center max-w-[60%] leading-tight"
                 onAnimationEnd={() => handleAnimationEnd(currentLyricIndex)}
               >
                 {formatLyric(lyricsData[currentLyricIndex].text)}
@@ -354,7 +391,7 @@ export default function SpotiBar() {
               className="absolute inset-0 flex justify-center items-center text-3xl tracking-tight px-12"
             >
               <span
-                className="fadeOut text-center max-w-[70%]"
+                className="fadeOut text-center max-w-[60%] leading-tight"
                 onAnimationEnd={() => handleAnimationEnd(prevLyricIndex)}
               >
                 {formatLyric(lyricsData[prevLyricIndex].text)}
