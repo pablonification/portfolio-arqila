@@ -76,7 +76,7 @@ export default function DraftAnakITBPage() {
           </section>
 
           {/* Konten Utama & Sidebar */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
             {/* Kolom Kiri - Konten Utama */}
             <main className="lg:col-span-2 space-y-8">
               <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
@@ -162,122 +162,10 @@ export default function DraftAnakITBPage() {
                 </ul>
               </div>
 
-              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
-                {/* 3D Inner Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
-                {/* Top Highlight */}
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
-                {/* Bottom Shadow */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
-                <h2 className="text-2xl font-bold tracking-tighter mb-6 font-inter relative z-10">
-                  Gallery
-                </h2>
-                <div className="space-y-10">
-                  <div>
-                    <p className="text-gray-700 mb-4 font-inter tracking-tighter">
-                      Here are some snapshots from the development process and
-                      the final app screens.
-                    </p>
-                    <div className="grid gap-4">
-                      <Image
-                        src="/8eh-slug2.webp"
-                        alt="User Interviews"
-                        width={3600}
-                        height={1530}
-                        className="rounded-2xl w-full object-cover relative z-20"
-                      />
-                      <Image
-                        src="/8eh-slug3.webp"
-                        alt="User Personas"
-                        width={3600}
-                        height={1530}
-                        className="rounded-2xl w-full object-cover relative z-20"
-                      />
-                      <Image
-                        src="/8eh-slug4.webp"
-                        alt="User Personas"
-                        width={3600}
-                        height={1530}
-                        className="rounded-2xl w-full object-cover relative z-20"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
-                {/* 3D Inner Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
-                {/* Top Highlight */}
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
-                {/* Bottom Shadow */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
-                <h2 className="text-2xl font-bold tracking-tighter mb-4 font-inter relative z-10">
-                  Challenges & Lessons
-                </h2>
-                <h3 className="font-bold text-lg mb-3 font-inter tracking-tighter">
-                  Key Challenges
-                </h3>
-                <ul className="space-y-2 text-gray-700 mb-6 font-inter tracking-tighter list-disc list-inside">
-                  <li>
-                    Rebuilding a high-performance site while preserving existing
-                    user data and legacy content
-                  </li>
-                  <li>
-                    Designing a layout that balanced creativity, performance,
-                    and accessibility across devices
-                  </li>
-                  <li>
-                    Handling asynchronous content such as music streams, blog
-                    updates, and live podcast integration in a seamless
-                    experience
-                  </li>
-                </ul>
-                <h3 className="font-bold text-lg mb-3 font-inter tracking-tighter">
-                  Lessons Learned
-                </h3>
-                <div className="space-y-4">
-                  <blockquote className="bg-red-50 border-l-4 border-red-300 text-red-800 p-4 rounded-r-lg font-inter tracking-tighter">
-                    Performance is product, even the most creative ideas won’t
-                    matter if the platform isn’t fast or responsive.
-                  </blockquote>
-                  <blockquote className="bg-blue-50 border-l-4 border-blue-300 text-blue-800 p-4 rounded-r-lg font-inter tracking-tighter">
-                    Combining developer efficiency with content editor
-                    flexibility taught me how important maintainability is in a
-                    content-heavy platform.
-                  </blockquote>
-                </div>
-              </div>
-
-              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
-                {/* 3D Inner Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
-                {/* Top Highlight */}
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
-                {/* Bottom Shadow */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
-                <h2 className="text-2xl font-bold tracking-tighter mb-6 font-inter relative z-10">
-                  Results
-                </h2>
-                <ul className="text-gray-700 leading-relaxed space-y-2 font-inter tracking-tighter list-disc list-inside mb-0 justify-normal">
-                  <li>
-                    Load speed improved by <strong>over 10 times</strong>, leading to higher engagement rates.
-                  </li>
-                  <li>
-                    Streaming compatibility fixed across all major browsers and devices.
-                  </li>
-                  <li>
-                    Re-established brand credibility with a new, cohesive visual identity.
-                  </li>
-                  <li>
-                    Platform now supports weekly updates, allowing announcers to independently upload content.
-                  </li>
-                </ul>
-              </div>
             </main>
 
             {/* Kolom Kanan - Sidebar */}
-            <aside className="lg:col-span-1 space-y-8 lg:sticky top-8 self-start">
+            <aside className="lg:col-span-1 space-y-8">
               <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
                 {/* 3D Inner Glow Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>

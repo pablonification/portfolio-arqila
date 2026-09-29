@@ -76,7 +76,7 @@ export default function DraftAnakITBPage() {
           </section>
 
           {/* Konten Utama & Sidebar */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
             {/* Kolom Kiri - Konten Utama */}
             <main className="lg:col-span-2 space-y-8">
               <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
@@ -150,136 +150,10 @@ export default function DraftAnakITBPage() {
                 </ul>
               </div>
 
-              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
-                {/* 3D Inner Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
-                {/* Top Highlight */}
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
-                {/* Bottom Shadow */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
-                <h2 className="text-2xl font-bold tracking-tighter mb-6 font-inter relative z-10">
-                  Gallery
-                </h2>
-                <div className="space-y-10">
-                  <div>
-                    <p className="text-gray-700 mb-4 font-inter tracking-tighter">
-                      Here are some snapshots from the development process and
-                      the final app screens.
-                    </p>
-                    <div className="grid gap-4">
-                      <Image
-                        src="/draftanakitb-slug.webp"
-                        alt="User Interviews"
-                        width={3600}
-                        height={1530}
-                        className="rounded-2xl w-full object-cover relative z-20"
-                      />
-                      <Image
-                        src="/draftanakitb-slug2.webp"
-                        alt="User Personas"
-                        width={3600}
-                        height={1530}
-                        className="rounded-2xl w-full object-cover relative z-20"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
-                {/* 3D Inner Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
-                {/* Top Highlight */}
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
-                {/* Bottom Shadow */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
-                <h2 className="text-2xl font-bold tracking-tighter mb-4 font-inter relative z-10">
-                  Challenges & Lessons
-                </h2>
-                <h3 className="font-bold text-lg mb-3 font-inter tracking-tighter">
-                  Key Challenges
-                </h3>
-                <ul className="space-y-2 text-gray-700 mb-6 font-inter tracking-tighter list-disc list-inside">
-                  <li>
-                    Balancing anonymity with accountability to prevent misuse of
-                    the platform
-                  </li>
-                  <li>
-                    Designing a moderation system that respects privacy but
-                    allows filtering
-                  </li>
-                  <li>
-                    Scaling the platform quickly when it gained unexpected
-                    popularity
-                  </li>
-                </ul>
-                <h3 className="font-bold text-lg mb-3 font-inter tracking-tighter">
-                  Lessons Learned
-                </h3>
-                <div className="space-y-4">
-                  <blockquote className="bg-red-50 border-l-4 border-red-300 text-red-800 p-4 rounded-r-lg font-inter tracking-tighter">
-                    The most important feature wasn't the anonymity itself, but
-                    creating a sense of community where students felt safe to
-                    express themselves.
-                  </blockquote>
-                  <blockquote className="bg-blue-50 border-l-4 border-blue-300 text-blue-800 p-4 rounded-r-lg font-inter tracking-tighter">
-                    User testing revealed that students valued simplicity over
-                    complex features. We ended up removing several 'cool'
-                    features that added unnecessary complexity.
-                  </blockquote>
-                </div>
-              </div>
-
-              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
-                {/* 3D Inner Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
-                {/* Top Highlight */}
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
-                {/* Bottom Shadow */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
-                <h2 className="text-2xl font-bold tracking-tighter mb-6 font-inter relative z-10">
-                  Results
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center mb-6">
-                  <div>
-                    <p className="text-5xl font-bold text-pink-600 font-inter tracking-tighter">
-                      20,000+
-                    </p>
-                    <p className="text-gray-600 mt-2 font-inter tracking-tighter">
-                      Active followers
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-5xl font-bold text-pink-600 font-inter tracking-tighter">
-                      1,000,000+
-                    </p>
-                    <p className="text-gray-600 mt-2 font-inter tracking-tighter">
-                      Weekly impressions
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-5xl font-bold text-pink-600 font-inter tracking-tighter">
-                      7,000+
-                    </p>
-                    <p className="text-gray-600 mt-2 font-inter tracking-tighter">
-                      Total tweets
-                    </p>
-                  </div>
-                </div>
-                <div className="text-gray-700 leading-relaxed space-y-4 font-inter tracking-tighter">
-                  <p>
-                    DraftAnakITB became the go-to platform for ITB students to
-                    discuss campus issues, academic challenges, and share
-                    resources. The success of this project led to requests from other
-                    universities to implement similar platforms, creating
-                    opportunities for expansion.
-                  </p>
-                </div>
-              </div>
             </main>
 
             {/* Kolom Kanan - Sidebar */}
-            <aside className="lg:col-span-1 space-y-8 lg:sticky top-8 self-start">
+            <aside className="lg:col-span-1 space-y-8">
               <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
                 {/* 3D Inner Glow Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
@@ -401,96 +275,6 @@ export default function DraftAnakITBPage() {
                 </div>
               </div>
 
-              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden">
-                {/* 3D Inner Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
-                {/* Top Highlight */}
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
-                {/* Bottom Shadow */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
-                <h3 className="text-xl font-bold mb-4 font-inter tracking-tighter relative z-10">
-                  Project Timeline
-                </h3>
-                <ul className="space-y-4 border-l-2 border-gray-200 pl-4">
-                  <li className="relative">
-                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
-                    <p className="font-bold font-inter tracking-tighter">
-                      Brainstorming & Planning
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      August – September 2024
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Initial idea development, user research, concept
-                      validation
-                    </p>
-                  </li>
-                  <li className="relative">
-                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
-                    <p className="font-bold font-inter tracking-tighter">
-                      Chatbot Development (v1)
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      September – October 2024
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Built Telegram-based chatbot using command keywords for
-                      core actions
-                    </p>
-                  </li>
-                  <li className="relative">
-                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
-                    <p className="font-bold font-inter tracking-tighter">
-                      Initial Release
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      October 2024
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Released chatbot version for users to send menfess to
-                      DraftAnakITB X's account
-                    </p>
-                  </li>
-                  <li className="relative">
-                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
-                    <p className="font-bold font-inter tracking-tighter">
-                      Design Phase (Web App)
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      December 2024 – January 2025
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      UI/UX design, wireframing, prototyping, and validation
-                    </p>
-                  </li>
-                  <li className="relative">
-                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
-                    <p className="font-bold font-inter tracking-tighter">
-                      Full Stack Development (Web)
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      January – February 2025
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Developed web-based version with frontend and backend
-                      integration
-                    </p>
-                  </li>
-                  <li className="relative">
-                    <div className="absolute w-4 h-4 bg-pink-500 rounded-full -left-[26px] top-1 border-4 border-white"></div>
-                    <p className="font-bold font-inter tracking-tighter">
-                      Web Release & Iteration
-                    </p>
-                    <p className="text-sm text-gray-500 font-inter tracking-tighter">
-                      February 2025 – Present
-                    </p>
-                    <p className="text-sm text-gray-600 mt-1 font-inter tracking-tighter">
-                      Public release of web version, feedback-based improvements
-                      and updates
-                    </p>
-                  </li>
-                </ul>
-              </div>
             </aside>
           </div>
         </div>
