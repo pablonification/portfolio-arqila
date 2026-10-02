@@ -1,5 +1,6 @@
 "use client";
 import { ganesaSpaceMockups } from "@/lib/ganesa-space-mockups";
+import { otherWorks } from "@/lib/other-works";
 import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -600,6 +601,52 @@ export default function Page() {
       </section>
 
       <section
+        id="other-works"
+        aria-labelledby="other-works-heading"
+        className="max-w-full mx-2 px-2 sm:mx-8 sm:px-6 md:mx-16 lg:mx-24 lg:px-8 mb-16"
+      >
+        <div className="rounded-xl border border-gray-200/50 bg-white/90 p-6 font-inter tracking-tight md:p-10">
+          <h2 id="other-works-heading" className="mb-6 text-2xl font-semibold tracking-tighter sm:text-3xl">
+            Other works
+          </h2>
+          <div className="divide-y divide-gray-200">
+            {otherWorks.map((work) => (
+              <article key={work.name} className="py-5 first:pt-0 last:pb-0">
+                <div className="mb-2 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                  <h3 className="text-lg font-semibold">
+                    <Link
+                      href={work.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 underline decoration-gray-300 underline-offset-4 hover:decoration-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+                    >
+                      {work.name}
+                      <svg
+                        aria-hidden="true"
+                        className="h-3.5 w-3.5 shrink-0"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M7 17L17 7M7 7h10v10" />
+                      </svg>
+                    </Link>
+                  </h3>
+                  <p className="text-sm text-gray-500">{work.period}</p>
+                </div>
+                <ul className="list-disc pl-5 text-sm leading-relaxed text-gray-700 sm:text-base">
+                  <li>{work.point}</li>
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
         ref={experienceAnimation.elementRef}
         id="experience"
         className={`max-w-full mx-2 px-2 sm:mx-8 sm:px-6 md:mx-16 lg:mx-24 lg:px-8 mb-16 transition-all duration-1000 ease-out ${
@@ -639,7 +686,7 @@ export default function Page() {
                 width={160}
                 height={160}
                 quality={100}
-                className="brightness-0 w-[clamp(43px,2.99vw,57px)] h-auto"
+                className="w-[clamp(43px,2.99vw,57px)] h-auto"
               />
               <Image
                 src="/ludic_logo.webp"
@@ -659,15 +706,10 @@ export default function Page() {
               />
             </div>
             <div className="mt-auto pt-6 relative z-10">
-              <button
-                onClick={() => {
-                  const link = document.createElement("a");
-                  link.href = "/portfolio.pdf";
-                  link.download = "portfolio.pdf";
-                  document.body.appendChild(link);
-                  link.click();
-                  document.body.removeChild(link);
-                }}
+              <Link
+                href="/portfolio.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full bg-black hover:bg-gray-800 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg font-inter tracking-tighter shadow-[0_6px_12px_-3px_rgba(0,0,0,0.3),inset_0_2px_0_rgba(255,255,255,0.2),inset_0_-1px_0_rgba(0,0,0,0.2)] hover:shadow-[0_8px_16px_-4px_rgba(0,0,0,0.4),inset_0_2px_0_rgba(255,255,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.3)] hover:-translate-y-1 relative overflow-hidden group cursor-pointer flex justify-center items-center text-center"
               >
                 {/* Button inner glow */}
@@ -675,7 +717,7 @@ export default function Page() {
                 {/* Button top highlight */}
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-t-full"></div>
                 <span className="relative z-10 flex items-center gap-2">
-                  Download Resume
+                  View Resume
                   <svg
                     className="w-5 h-5"
                     fill="none"
@@ -687,11 +729,11 @@ export default function Page() {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
-                      d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      d="M15 3h6v6m0-6L10 14M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"
                     />
                   </svg>
                 </span>
-              </button>
+              </Link>
             </div>
           </div>
           <TechStackCard />
