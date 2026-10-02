@@ -184,6 +184,119 @@ export default function Page() {
             </div>
           </Link>
 
+          {/* Taleka Card */}
+          <Link href="/works/taleka">
+            <div
+              className="bg-[#F5F5F5]/90 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-10 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15),0_15px_30px_-8px_rgba(0,0,0,0.12),inset_0_2px_0_rgba(255,255,255,0.9),inset_0_-1px_0_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-2 border border-gray-200/50 relative overflow-hidden group"
+              style={{ clipPath: "inset(0)" }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
+              <div className="absolute inset-0 bg-[linear-gradient(45deg,_#FDF3EF_60%,_#CBF88A_90%)] opacity-0 rounded-xl transition-opacity duration-500 ease-in-out group-hover:opacity-100" />
+              <div className="relative z-20">
+                <div className="flex justify-between items-start mb-4">
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div
+                      className="relative shrink-0 overflow-hidden"
+                      style={{
+                        width: "clamp(2rem, 2.5vw, 3rem)",
+                        height: "clamp(2rem, 2.5vw, 3rem)",
+                      }}
+                    >
+                      <svg className="absolute h-0 w-0" aria-hidden="true">
+                        <defs>
+                          <filter id="taleka-logo-monochrome" colorInterpolationFilters="sRGB">
+                            <feColorMatrix
+                              type="matrix"
+                              values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -0.2126 -0.7152 -0.0722 0 1"
+                            />
+                            <feComponentTransfer>
+                              <feFuncA type="linear" slope="4" intercept="-0.3" />
+                            </feComponentTransfer>
+                          </filter>
+                        </defs>
+                      </svg>
+                      <Image
+                        src="/taleka-logo.png"
+                        alt="Taleka icon"
+                        width={1024}
+                        height={1024}
+                        quality={100}
+                        className="absolute left-1/2 top-1/2 h-[150%] w-[150%] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain"
+                        style={{ filter: "url(#taleka-logo-monochrome)" }}
+                      />
+                    </div>
+                    <span
+                      className="font-medium tracking-tighter"
+                      style={{ fontSize: "clamp(1.2rem, 1.8vw, 1.875rem)" }}
+                    >
+                      Taleka
+                    </span>
+                  </div>
+                  <svg
+                    className="w-6 h-6 sm:w-8 sm:h-8"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
+                <p
+                  className="max-w-2xl font-medium text-gray-600 mb-4 sm:mb-6 tracking-tighter"
+                  style={{ fontSize: "clamp(1rem, 1.3vw, 1.5rem)" }}
+                >
+                  A mobile platform for preserving Semai through elder voice
+                  recordings, community stories, and AI-guided language learning
+                </p>
+                <div className="flex flex-col md:flex-row gap-4 mt-2 -mb-16 sm:-mb-24 justify-center items-center">
+                  <div className="relative w-full md:w-[calc(50%-0.5rem)] shrink-0 transform translate-x-0 rotate-0 transition-all duration-300 group-hover:-translate-y-2 group-hover:-rotate-3">
+                    <Image
+                      src="/taleka-card1.png"
+                      alt="Taleka welcome screen on a handheld phone"
+                      width={1254}
+                      height={1254}
+                      quality={100}
+                      className="rounded-lg w-full object-cover translate-x-0 md:translate-x-2 translate-y-10 scale-90"
+                      style={{
+                        aspectRatio: "4 / 3",
+                        height: "auto",
+                        objectPosition: "center top",
+                        borderRadius: "1.5rem",
+                        outline: "4px solid white",
+                        rotate: "-3deg",
+                      }}
+                      priority
+                      sizes="(min-width: 1024px) 900px, 100vw"
+                    />
+                  </div>
+                  <div className="hidden md:block relative w-full md:w-[calc(50%-0.5rem)] shrink-0 transform translate-y-4 rotate-0 transition-all duration-300 group-hover:translate-y-8 group-hover:rotate-2">
+                    <Image
+                      src="/taleka-card2.png"
+                      alt="Taleka community stories and reading dashboard"
+                      width={1254}
+                      height={1254}
+                      quality={100}
+                      className="rounded-lg w-full object-cover translate-y-16 scale-95 md:-translate-x-2"
+                      style={{
+                        aspectRatio: "4 / 3",
+                        height: "auto",
+                        objectPosition: "center top",
+                        borderRadius: "1.5rem",
+                        outline: "4px solid white",
+                        rotate: "3deg",
+                      }}
+                      priority
+                      sizes="(min-width: 1024px) 900px, 100vw"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
+
           <Link href="/works/gep2025">
             <div
               className="bg-[#F5F5F5]/90 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-10 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15),0_15px_30px_-8px_rgba(0,0,0,0.12),inset_0_2px_0_rgba(255,255,255,0.9),inset_0_-1px_0_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-2 border border-gray-200/50 relative overflow-hidden group"
@@ -442,84 +555,6 @@ export default function Page() {
             </div>
           </Link>
 
-          {/* Taskly Card */}
-          <Link href="/works/taskly">
-            <div
-              className="bg-[#F5F5F5]/90 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-10 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15),0_15px_30px_-8px_rgba(0,0,0,0.12),inset_0_2px_0_rgba(255,255,255,0.9),inset_0_-1px_0_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-2 border border-gray-200/50 relative overflow-hidden group"
-              style={{ clipPath: "inset(0)" }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-xl"></div>
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent rounded-b-xl"></div>
-              <div className="absolute inset-0 bg-[linear-gradient(45deg,_#FDF3EF_60%,_#CBF88A_90%)] opacity-0 rounded-xl transition-opacity duration-500 ease-in-out group-hover:opacity-100" />
-              <div className="relative z-20">
-                <div className="flex justify-between items-start mb-4">
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <Image
-                      src="/taskly.webp"
-                      alt="Taskly icon"
-                      width={96}
-                      height={96}
-                      quality={100}
-                      style={{
-                        width: "clamp(2rem, 2.5vw, 3rem)",
-                        height: "clamp(2rem, 2.5vw, 3rem)",
-                      }}
-                    />
-                    <span
-                      className="font-medium tracking-tighter"
-                      style={{ fontSize: "clamp(1.2rem, 1.8vw, 1.875rem)" }}
-                    >
-                      Taskly
-                    </span>
-                  </div>
-                  <svg
-                    className="w-6 h-6 sm:w-8 sm:h-8"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M7 17L17 7M17 7H7M17 7V17" />
-                  </svg>
-                </div>
-                <p
-                  className="max-w-2xl font-medium text-gray-600 mb-4 sm:mb-6 tracking-tighter"
-                  style={{ fontSize: "clamp(1rem, 1.3vw, 1.5rem)" }}
-                >
-                  A minimalist productivity app for managing recurring tasks,
-                  tracking habits, and storing quick ideas
-                </p>
-                <div className="flex flex-col md:flex-row gap-4 mt-2 -mb-16 sm:-mb-24 justify-center items-center">
-                  <div className="relative w-full md:w-1/2 transform translate-x-0 rotate-0 transition-all duration-300 group-hover:-translate-y-2 group-hover:-rotate-3">
-                    <Image
-                      src="/taskly-card1.webp"
-                      alt="Taskly Interface 1"
-                      width={3840}
-                      height={2880}
-                      quality={100}
-                      className="rounded-lg w-full object-cover translate-x-0 md:translate-x-5 translate-y-10 scale-95"
-                      priority
-                      sizes="(min-width: 1024px) 900px, 100vw"
-                    />
-                  </div>
-                  <div className="hidden md:block relative w-full md:w-1/2 transform translate-y-4 rotate-0 transition-all duration-300 group-hover:translate-y-8 group-hover:rotate-2">
-                    <Image
-                      src="/taskly-card2.webp"
-                      alt="Taskly Interface 2"
-                      width={3840}
-                      height={2880}
-                      quality={100}
-                      className="rounded-lg w-full object-cover translate-y-16 scale-105 -translate-x-5"
-                      priority
-                      sizes="(min-width: 1024px) 900px, 100vw"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Link>
-
           {/* Spakbor Hills Card */}
           <Link href="/works/spakbor-hills">
             <div
@@ -607,7 +642,7 @@ export default function Page() {
       >
         <div className="rounded-xl border border-gray-200/50 bg-white/90 p-6 font-inter tracking-tight md:p-10">
           <h2 id="other-works-heading" className="mb-6 text-2xl font-semibold tracking-tighter sm:text-3xl">
-            Other works
+            Other works...
           </h2>
           <div className="divide-y divide-gray-200">
             {otherWorks.map((work) => (
@@ -618,11 +653,11 @@ export default function Page() {
                       href={work.href}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`${work.name} GitHub repository`}
                       className="inline-flex items-center gap-1 underline decoration-gray-300 underline-offset-4 hover:decoration-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
                     >
                       {work.name}
                       <svg
-                        aria-hidden="true"
                         className="h-3.5 w-3.5 shrink-0"
                         viewBox="0 0 24 24"
                         fill="none"
@@ -630,6 +665,7 @@ export default function Page() {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
+                        aria-hidden="true"
                       >
                         <path d="M7 17L17 7M7 7h10v10" />
                       </svg>
@@ -640,20 +676,6 @@ export default function Page() {
                 <ul className="list-disc pl-5 text-sm leading-relaxed text-gray-700 sm:text-base">
                   <li>{work.point}</li>
                 </ul>
-                <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm">
-                  {work.links.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${work.name} ${link.label}`}
-                      className="font-medium underline decoration-gray-300 underline-offset-4 hover:decoration-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
               </article>
             ))}
           </div>
