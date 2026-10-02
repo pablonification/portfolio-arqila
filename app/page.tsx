@@ -1,4 +1,5 @@
 "use client";
+import { ganesaSpaceMockups } from "@/lib/ganesa-space-mockups";
 import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -75,7 +76,7 @@ export default function Page() {
         </p>
 
         <div className="flex flex-col gap-8 sm:gap-16">
-          <Link href="/works/draftanakitb">
+          <Link href="/works/ganesa-space">
             <div
               className="bg-[#F5F5F5]/90 backdrop-blur-sm rounded-xl p-4 sm:p-6 md:p-10 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.15),0_15px_30px_-8px_rgba(0,0,0,0.12),inset_0_2px_0_rgba(255,255,255,0.9),inset_0_-1px_0_rgba(0,0,0,0.15)] transition-all duration-300 hover:-translate-y-2 border border-gray-200/50 relative overflow-hidden group"
               style={{ clipPath: "inset(0)" }}
@@ -94,11 +95,12 @@ export default function Page() {
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex items-center gap-2 sm:gap-3">
                     <Image
-                      src="/draftanakitb_black1.svg"
-                      alt="DraftAnakITB icon"
+                      src="/ganesa-space-logo-transparent.png"
+                      alt="Ganesa Space icon"
                       width={96}
                       height={96}
                       quality={100}
+                      className="brightness-0"
                       style={{
                         width: "clamp(2rem, 2.5vw, 3rem)",
                         height: "clamp(2rem, 2.5vw, 3rem)",
@@ -108,7 +110,7 @@ export default function Page() {
                       className="font-medium tracking-tighter"
                       style={{ fontSize: "clamp(1.2rem, 1.8vw, 1.875rem)" }}
                     >
-                      DraftAnakITB
+                      Ganesa Space
                     </span>
                   </div>
                   <svg
@@ -126,50 +128,54 @@ export default function Page() {
                   className="max-w-2xl font-medium text-gray-600 mb-4 sm:mb-6 tracking-tighter"
                   style={{ fontSize: "clamp(1rem, 1.3vw, 1.5rem)" }}
                 >
-                  Where ITB students share their unfiltered thoughts
-                  anonymously, freely, and for everyone to see on @DraftAnakITB.
+                  A community platform for ITB students, bringing together
+                  anonymous posts, AnonChat matchmaking, token wallets
+                  and rewards, and DelVote community moderation.
                 </p>
                 {/* Single image on mobile, two images on larger screens */}
-                <div className="flex flex-col md:flex-row gap-4 mt-2 -mb-16 sm:-mb-24 justify-center items-center">
+                <div className="flex flex-col md:flex-row gap-6 mt-2 -mb-16 sm:-mb-24 justify-center items-start">
                   <div
-                    className="relative w-full md:w-1/2 
-                              transform 
+                    className="relative w-full md:w-1/2 aspect-[4/3]
+                              transform
                               translate-x-0
                               rotate-0
-                              transition-all 
-                              duration-300 
-                              group-hover:-translate-y-2 
+                              transition-all
+                              duration-300
+                              group-hover:-translate-y-2
                               group-hover:-rotate-3"
                   >
                     <Image
-                      src="/draftanakitb_pic1.webp"
-                      alt="DraftAnakITB Interface 1"
-                      width={1200}
-                      height={900}
+                      src="/ganesa-space-partnership.png"
+                      alt="Ganesa Space partnership website on desktop"
+                      width={1448}
+                      height={1086}
                       quality={100}
-                      className="rounded-lg w-full object-cover scale-100"
+                      style={{ clipPath: ganesaSpaceMockups.desktop }}
+                      className="w-full h-auto object-contain"
                     />
                   </div>
                   <div
-                    className="hidden md:block 
-                              relative 
-                              w-full 
+                    className="hidden md:block
+                              relative
+                              w-full
                               md:w-1/2
+                              aspect-[4/3]
                               transform
-                              translate-y-4
+                              translate-y-16
                               rotate-0
                               transition-all
-                              duration-300 
-                              group-hover:translate-y-8 
+                              duration-300
+                              group-hover:translate-y-14
                               group-hover:rotate-2"
                   >
                     <Image
-                      src="/draftanakitb_pic2.webp"
-                      alt="DraftAnakITB Interface 2"
-                      width={1200}
-                      height={900}
+                      src="/ganesa-space-dashboard.png"
+                      alt="Ganesa Space mobile dashboard with menfess, AnonChat, and token wallet"
+                      width={1527}
+                      height={1030}
                       quality={100}
-                      className="rounded-lg w-full object-cover scale-110"
+                      style={{ clipPath: ganesaSpaceMockups.mobile }}
+                      className="w-full h-auto object-contain"
                     />
                   </div>
                 </div>
@@ -235,8 +241,8 @@ export default function Page() {
                               translate-x-0
                               rotate-0
                               transition-all
-                              duration-300 
-                              group-hover:translate-y-4 
+                              duration-300
+                              group-hover:translate-y-4
                               group-hover:-rotate-3"
                   >
                     <Image
@@ -249,17 +255,17 @@ export default function Page() {
                     />
                   </div>
                   <div
-                    className="hidden md:block 
-                              relative 
-                              w-full 
+                    className="hidden md:block
+                              relative
+                              w-full
                               md:w-1/2
                               transform
                               -translate-x-8
                               translate-y-6
                               rotate-0
                               transition-all
-                              duration-300 
-                              group-hover:translate-y-8 
+                              duration-300
+                              group-hover:translate-y-8
                               group-hover:rotate-2"
                   >
                     <Image
@@ -628,12 +634,12 @@ export default function Page() {
             </p>
             <div className="flex gap-2 justify-center relative z-10">
               <Image
-                src="/draftanakitb_logo.svg"
-                alt="DraftAnakITB Logo"
+                src="/ganesa-space-logo-transparent.png"
+                alt="Ganesa Space logo"
                 width={160}
                 height={160}
                 quality={100}
-                className="rounded-lg w-[clamp(43px,2.99vw,57px)] h-auto"
+                className="brightness-0 w-[clamp(43px,2.99vw,57px)] h-auto"
               />
               <Image
                 src="/ludic_logo.webp"
