@@ -640,6 +640,20 @@ export default function Page() {
                 <ul className="list-disc pl-5 text-sm leading-relaxed text-gray-700 sm:text-base">
                   <li>{work.point}</li>
                 </ul>
+                <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+                  {work.links.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${work.name} ${link.label}`}
+                      className="font-medium underline decoration-gray-300 underline-offset-4 hover:decoration-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
               </article>
             ))}
           </div>
@@ -679,31 +693,37 @@ export default function Page() {
               scalable systems, optimizing performance, or crafting seamless UI,
               I love turning challenges into functional solutions.
             </p>
-            <div className="flex gap-2 justify-center relative z-10">
-              <Image
-                src="/ganesa-space-logo-transparent.png"
-                alt="Ganesa Space logo"
-                width={160}
-                height={160}
-                quality={100}
-                className="w-[clamp(43px,2.99vw,57px)] h-auto"
-              />
-              <Image
-                src="/ludic_logo.webp"
-                alt="Ludic Logo"
-                width={97}
-                height={51}
-                quality={100}
-                className="rounded-lg w-[clamp(66px,4.58vw,88px)] h-auto scale-75"
-              />
-              <Image
-                src="/gsis_logo.svg"
-                alt="GSIS Logo"
-                width={160}
-                height={160}
-                quality={100}
-                className="rounded-lg w-[clamp(43px,2.99vw,57px)] h-auto"
-              />
+            <div className="relative z-10 flex items-center justify-center gap-6">
+              <div className="relative h-[clamp(43px,2.99vw,57px)] w-[clamp(43px,2.99vw,57px)] shrink-0 overflow-hidden">
+                <Image
+                  src="/ganesa-space-logo-transparent.png"
+                  alt="Ganesa Space logo"
+                  width={500}
+                  height={500}
+                  quality={100}
+                  className="absolute left-1/2 top-[54%] h-[157%] w-[157%] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain"
+                />
+              </div>
+              <div className="h-[clamp(43px,2.99vw,57px)] w-[clamp(43px,2.99vw,57px)] shrink-0 overflow-hidden rounded-lg">
+                <Image
+                  src="/pakuwon-logo.png"
+                  alt="Pakuwon Group logo"
+                  width={201}
+                  height={197}
+                  quality={100}
+                  className="h-full w-full object-contain"
+                />
+              </div>
+              <div className="relative h-[clamp(43px,2.99vw,57px)] w-[clamp(43px,2.99vw,57px)] shrink-0 overflow-hidden rounded-lg">
+                <Image
+                  src="/containder-symbol-source.png"
+                  alt="Containder Indonesia logo"
+                  width={1772}
+                  height={1772}
+                  quality={100}
+                  className="absolute -left-[66.6%] -top-[42.5%] h-[233.2%] w-[233.2%] max-w-none"
+                />
+              </div>
             </div>
             <div className="mt-auto pt-6 relative z-10">
               <Link
