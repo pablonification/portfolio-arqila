@@ -1,296 +1,286 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import type { MouseEvent } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useReducedMotion } from "framer-motion";
+import { animate, spring } from "@motionone/dom";
 
-interface NavItem {
-  name: string;
-}
+const navItems = [
+  { id: "hola", name: "Hola" },
+  { id: "works", name: "Works" },
+  { id: "experience", name: "Experience" },
+  { id: "connect", name: "Connect" },
+] as const;
 
-interface HighlightStyle {
-  transform: string;
-  width: string;
-}
+type Section = (typeof navItems)[number]["id"];
+
+// Share the same spring across the shell and selection so they settle together.
+const islandSpring = { stiffness: 360, damping: 30, mass: 1 };
+
+// Native animations keep running independently of the page's 3D render loop.
+const useIslandAnimation = <T extends HTMLElement>(
+  target: Record<string, number | string>,
+  reducedMotion: boolean | null,
+) => {
+  const ref = useRef<T | null>(null);
+  const keyframes = JSON.stringify(target);
+  useLayoutEffect(() => {
+    if (!ref.current) return;
+    const animation = animate(ref.current, JSON.parse(keyframes), {
+      easing: reducedMotion ? "linear" : spring(islandSpring),
+      ...(reducedMotion ? { duration: 0 } : {}),
+    });
+    return () => animation.stop();
+  }, [keyframes, reducedMotion]);
+  return ref;
+};
+
+const IslandLabel = ({ children, reducedMotion }: { children: string; reducedMotion: boolean | null }) => {
+  const ref = useIslandAnimation<HTMLSpanElement>({ opacity: 1, y: 0 }, reducedMotion);
+  return <span ref={ref} className="inline-block" style={{ opacity: 0 }}>{children}</span>;
+};
 
 const Navbar = () => {
   const pathname = usePathname();
-  const [activeTab, setActiveTab] = useState("hola");
-  const [isIconSpinning, setIsIconSpinning] = useState(false);
-  const [highlightStyle, setHighlightStyle] = useState<HighlightStyle>({
-    transform: "translateX(0)",
-    width: "0",
-  });
-  const navRef = useRef<HTMLDivElement | null>(null);
-  const isAnimating = useRef(false);
+  const reducedMotion = useReducedMotion();
+  const [activeTab, setActiveTab] = useState<Section>("hola");
+  const [isRevealed, setIsRevealed] = useState(false);
+  const [iconTurns, setIconTurns] = useState(0);
+  const [size, setSize] = useState({ width: 0, height: 0 });
+  const [highlight, setHighlight] = useState({ x: 0, y: 0, width: 0, height: 0 });
+  const sectionsRef = useRef<HTMLDivElement | null>(null);
+  const detailRef = useRef<HTMLDivElement | null>(null);
+  const pendingScrollRef = useRef<{ section: Section; top: number } | null>(null);
 
-  // Check if we're on a works page or experience page
-  const isWorksPage = pathname?.startsWith("/works");
-  const isExperiencePage = pathname?.startsWith("/experiences");
+  const isHome = pathname === "/";
+  const mode = pathname?.startsWith("/works")
+    ? "works"
+    : pathname?.startsWith("/experiences")
+      ? "experience"
+      : "sections";
+  const isDetail = mode !== "sections";
+  const detailLabel = mode === "experience" ? "Experience" : "Works";
+  const detailVisible = isRevealed && isDetail;
+  const sectionsVisible = isRevealed && !isDetail;
 
-  // Modified updateHighlight to prevent rapid clicking issues
-  const updateHighlight = (target: HTMLElement | null) => {
-    if (!target || !navRef.current || isAnimating.current) return;
+  const shellRef = useIslandAnimation<HTMLDivElement>({
+    width: `${isRevealed ? size.width : 36}px`,
+    height: `${isRevealed ? size.height : 12}px`,
+    opacity: isRevealed ? 1 : 0,
+    y: isRevealed ? 0 : -18,
+    scale: isRevealed ? 1 : 0.8,
+  }, reducedMotion);
+  const highlightRef = useIslandAnimation<HTMLDivElement>({
+    x: highlight.x,
+    y: highlight.y,
+    width: `${highlight.width}px`,
+    height: `${highlight.height}px`,
+    opacity: isRevealed ? 1 : 0,
+  }, reducedMotion);
+  const detailAnimationRef = useIslandAnimation<HTMLDivElement>({
+    opacity: detailVisible ? 1 : 0,
+    y: detailVisible ? 0 : -5,
+    filter: detailVisible || reducedMotion ? "blur(0px)" : "blur(5px)",
+  }, reducedMotion);
+  const sectionsAnimationRef = useIslandAnimation<HTMLDivElement>({
+    opacity: sectionsVisible ? 1 : 0,
+    y: sectionsVisible ? 0 : 5,
+    filter: sectionsVisible || reducedMotion ? "blur(0px)" : "blur(5px)",
+  }, reducedMotion);
+  const iconRef = useIslandAnimation<HTMLSpanElement>({
+    rotate: reducedMotion ? 0 : iconTurns * 360,
+  }, reducedMotion);
 
-    isAnimating.current = true;
-    const { offsetLeft, offsetWidth } = target;
-
-    // Align the highlight exactly with the target element without subtracting container padding.
-    setHighlightStyle({
-      transform: `translateX(${offsetLeft}px)`,
-      width: `${offsetWidth}px`,
-    });
-
-    // Reset animation lock after transition
-    setTimeout(() => {
-      isAnimating.current = false;
-    }, 500);
-  };
-
-  // Initialize highlight position
+  // The shared root layout keeps this state alive during client-side navigation.
   useEffect(() => {
-    const activeElement = navRef.current?.querySelector(
-      `[data-tab="${activeTab}"]`
-    ) as HTMLElement;
-    if (activeElement) {
-      updateHighlight(activeElement);
-    }
-  }, [activeTab]);
+    const timer = window.setTimeout(() => setIsRevealed(true), reducedMotion ? 0 : 180);
+    return () => window.clearTimeout(timer);
+  }, [reducedMotion]);
 
-  // Modified scroll handling with better offset and special connect section handling
-  useEffect(() => {
-    // Don't handle scroll on works pages or experience pages
-    if (isWorksPage || isExperiencePage) return;
+  useLayoutEffect(() => {
+    // Keep both layers mounted so fast route changes never replace measured nodes.
+    if (sectionsRef.current) sectionsRef.current.inert = !isRevealed || isDetail;
+    if (detailRef.current) detailRef.current.inert = !isRevealed || !isDetail;
+    const content = isDetail ? detailRef.current : sectionsRef.current;
+    if (!content) return;
+    let disposed = false;
 
-    const handleScroll = () => {
-      const sections = ["hola", "works", "experience", "connect"];
-      const scrollPosition = window.scrollY;
-      const defaultOffset = window.innerHeight * 0.15; // Dynamic offset based on viewport height
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          // Apply different offset for connect section
-          const offset = section === "connect" ? 80 : defaultOffset;
-
-          if (
-            scrollPosition >= offsetTop - offset &&
-            scrollPosition < offsetTop + offsetHeight - offset
-          ) {
-            if (activeTab !== section) {
-              setActiveTab(section);
-              const target = navRef.current?.querySelector(
-                `[data-tab="${section}"]`
-              ) as HTMLElement;
-              updateHighlight(target);
-            }
-            break;
-          }
-        }
+    const measure = () => {
+      if (disposed) return;
+      // Read layout sizes, not transformed bounds: the content can be mid-animation.
+      setSize({ width: content.offsetWidth, height: content.offsetHeight });
+      const target = content.querySelector<HTMLElement>("[data-active='true']");
+      if (target) {
+        setHighlight({
+          x: target.offsetLeft,
+          y: target.offsetTop,
+          width: target.offsetWidth,
+          height: target.offsetHeight,
+        });
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [activeTab, isWorksPage]);
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(content);
+    window.addEventListener("resize", measure);
+    return () => {
+      disposed = true;
+      observer.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+  }, [mode, isDetail, activeTab, isRevealed]);
 
-  const navItems: NavItem[] = [
-    { name: "Hola" },
-    { name: "Works" },
-    { name: "Experience" },
-    { name: "Connect" },
-  ];
+  useEffect(() => {
+    if (!isHome) return;
+    let frame = 0;
 
-  const handleIconClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (!isAnimating.current) {
-      setIsIconSpinning(true);
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-      setActiveTab("hola");
-      const holaElement = navRef.current?.querySelector(
-        '[data-tab="hola"]'
-      ) as HTMLElement;
-      updateHighlight(holaElement);
+    const syncSection = () => {
+      const pending = pendingScrollRef.current;
+      if (pending) {
+        // Scroll events pass through earlier sections on the way to a clicked tab.
+        if (Math.abs(window.scrollY - pending.top) <= 1) {
+          pendingScrollRef.current = null;
+          setActiveTab(pending.section);
+        }
+        return;
+      }
+      let current: Section = "hola";
+      for (const { id } of navItems) {
+        const section = document.getElementById(id);
+        const offset = id === "connect" ? 80 : window.innerHeight * 0.15;
+        if (section && section.getBoundingClientRect().top <= offset + 1) {
+          current = id;
+        }
+      }
+      setActiveTab(current);
+    };
 
-      // Reset spinning after animation
-      setTimeout(() => {
-        setIsIconSpinning(false);
-      }, 500);
-    }
+    const scheduleSync = () => {
+      window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(syncSection);
+    };
+
+    const resumeScrollTracking = () => {
+      pendingScrollRef.current = null;
+      scheduleSync();
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "].includes(event.key)) {
+        resumeScrollTracking();
+      }
+    };
+
+    syncSection();
+    window.addEventListener("scroll", scheduleSync, { passive: true });
+    window.addEventListener("scrollend", resumeScrollTracking);
+    window.addEventListener("wheel", resumeScrollTracking, { passive: true });
+    window.addEventListener("touchstart", resumeScrollTracking, { passive: true });
+    window.addEventListener("pointerdown", resumeScrollTracking, { passive: true });
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("resize", resumeScrollTracking);
+    return () => {
+      pendingScrollRef.current = null;
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", scheduleSync);
+      window.removeEventListener("scrollend", resumeScrollTracking);
+      window.removeEventListener("wheel", resumeScrollTracking);
+      window.removeEventListener("touchstart", resumeScrollTracking);
+      window.removeEventListener("pointerdown", resumeScrollTracking);
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("resize", resumeScrollTracking);
+    };
+  }, [isHome]);
+
+  const scrollToSection = (event: MouseEvent<HTMLAnchorElement>, sectionId: Section) => {
+    if (!isHome || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    event.preventDefault();
+    const offset = sectionId === "connect" ? 80 : window.innerHeight * 0.15;
+    const targetTop = sectionId === "hola" ? 0 : section.getBoundingClientRect().top + window.scrollY - offset;
+    const top = Math.max(0, Math.min(targetTop, document.documentElement.scrollHeight - window.innerHeight));
+    pendingScrollRef.current = { section: sectionId, top };
+    setActiveTab(sectionId);
+    window.scrollTo({
+      top,
+      behavior: reducedMotion ? "instant" : "smooth",
+    });
   };
 
-  // Works page navbar style
-  if (isWorksPage) {
-    return (
-      <nav className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 p-3 font-inter">
-        <div className="bg-black/90 backdrop-blur-sm text-white rounded-[20px] px-1.5 flex items-center relative overflow-hidden min-w-[320px] sm:min-w-[400px] lg:min-w-[clamp(345px,23.958vw,460px)] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3),0_10px_20px_-5px_rgba(0,0,0,0.2),inset_0_2px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(0,0,0,0.3)] border border-gray-700/50">
-          {/* Back to works button */}
-          <Link
-            href="/#works"
-            className="relative px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 text-gray-300 hover:text-white transition-colors duration-200 flex items-center gap-1"
-          >
-            <svg
-              className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-            <span className="text-xs sm:text-sm md:text-base font-medium">
-              Back
-            </span>
-          </Link>
 
-          {/* Empty space */}
-          <div className="flex-1"></div>
-
-          {/* Works button */}
-          <div className="relative px-2 sm:px-3 md:px-4 py-1 sm:py-1.5">
-            <div className="bg-[#ffb7c3]/75 rounded-[16px] sm:rounded-[20px] px-3 py-1 font-medium shadow-[inset_0_2px_0_rgba(255,255,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.2)] relative overflow-hidden group">
-              {/* Button inner glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-pink-200/20 rounded-[16px] sm:rounded-[20px] pointer-events-none"></div>
-              {/* Button top highlight */}
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/40 to-transparent rounded-t-[16px] sm:rounded-t-[20px]"></div>
-              <span className="text-[#FFD8DF] text-xs sm:text-sm md:text-base lg:text-lg relative z-10">
-                Works
-              </span>
-            </div>
-          </div>
-        </div>
-      </nav>
-    );
-  }
-
-  // Experience page navbar style
-  if (isExperiencePage) {
-    return (
-      <nav className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 p-3 font-inter">
-        <div className="bg-black/90 backdrop-blur-sm text-white rounded-[20px] px-1.5 flex items-center relative overflow-hidden min-w-[320px] sm:min-w-[400px] lg:min-w-[clamp(345px,23.958vw,460px)] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3),0_10px_20px_-5px_rgba(0,0,0,0.2),inset_0_2px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(0,0,0,0.3)] border border-gray-700/50">
-          {/* Back to experience button */}
-          <Link
-            href="/#experience"
-            className="relative px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 text-gray-300 hover:text-white transition-colors duration-200 flex items-center gap-1"
-          >
-            <svg
-              className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-            <span className="text-xs sm:text-sm md:text-base font-medium">
-              Back
-            </span>
-          </Link>
-
-          {/* Empty space */}
-          <div className="flex-1"></div>
-
-          {/* Experience button */}
-          <div className="relative px-2 sm:px-3 md:px-4 py-1 sm:py-1.5">
-            <div className="bg-[#ffb7c3]/75 rounded-[16px] sm:rounded-[20px] px-3 py-1 font-medium shadow-[inset_0_2px_0_rgba(255,255,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.2)] relative overflow-hidden group">
-              {/* Button inner glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-pink-200/20 rounded-[16px] sm:rounded-[20px] pointer-events-none"></div>
-              {/* Button top highlight */}
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/40 to-transparent rounded-t-[16px] sm:rounded-t-[20px]"></div>
-              <span className="text-[#FFD8DF] text-xs sm:text-sm md:text-base lg:text-lg relative z-10">
-                Experience
-              </span>
-            </div>
-          </div>
-        </div>
-      </nav>
-    );
-  }
-
-  // Regular navbar style
   return (
-    <nav className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 p-3 font-inter">
+    <nav aria-label="Main navigation" className="island-nav font-inter">
       <div
-        ref={navRef}
-        className="bg-black/90 backdrop-blur-sm text-white rounded-[20px] px-1.5 py-1 flex items-center justify-center relative overflow-hidden min-w-[320px] sm:min-w-[400px] lg:min-w-[clamp(345px,23.958vw,460px)] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3),0_10px_20px_-5px_rgba(0,0,0,0.2),inset_0_2px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(0,0,0,0.3)] border border-gray-700/50"
+        ref={shellRef}
+        className="island-shell"
+        style={{ width: 36, height: 12, opacity: 0, pointerEvents: isRevealed ? "auto" : "none" }}
       >
         <div
-          className="absolute left-0 top-1 h-[85%] -translate-y-1/2 bg-[#ffb7c3] rounded-[16px] sm:rounded-[20px] transition-all duration-500 ease-out opacity-75 shadow-[inset_0_2px_0_rgba(255,255,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.2)]"
-          style={highlightStyle}
+          ref={highlightRef}
+          aria-hidden="true"
+          className="island-highlight"
         />
 
-        {/* Separate Icon Link */}
-        <Link
-          href="#hola"
-          onClick={handleIconClick}
-          className="relative px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 group"
+        <div
+          ref={(element) => { detailRef.current = element; detailAnimationRef.current = element; }}
+          className="island-content island-content-detail"
+          aria-hidden={!detailVisible}
+          style={{ opacity: 0, pointerEvents: detailVisible ? "auto" : "none" }}
         >
-          <Image
-            src="/iconamoon_confused-face-fill.svg"
-            alt="Navigation icon"
-            width={96}
-            height={96}
-            quality={100}
-            className={`w-5 h-5 sm:w-5 sm:h-5 md:w-6 md:h-6 relative z-10 transition-transform duration-500
-                      ${isIconSpinning ? "rotate-[360deg]" : ""}`}
-          />
-        </Link>
-
-        {navItems.map((item) => (
           <Link
-            key={item.name}
-            href={`#${item.name.toLowerCase()}`}
-            data-tab={item.name.toLowerCase()}
-            onClick={(e) => {
-              e.preventDefault();
-              if (!isAnimating.current) {
-                const sectionId = item.name.toLowerCase();
-                const section = document.getElementById(sectionId);
-                if (section) {
-                  let offset;
-                  if (sectionId === "connect") {
-                    // For connect section, account for the negative top margin and navbar height
-                    offset = 80; // navbar height + some padding
-                  } else {
-                    offset = window.innerHeight * 0.15;
-                  }
-                  window.scrollTo({
-                    top: section.offsetTop - offset,
-                    behavior: "smooth",
-                  });
-                }
-                setActiveTab(item.name.toLowerCase());
-                updateHighlight(e.currentTarget);
-              }
-            }}
-            className={`relative px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 text-xs sm:text-sm md:text-base lg:text-lg font-medium 
-                     whitespace-nowrap transition-colors duration-300
-                     hover:text-white`}
+            href={`/#${mode === "experience" ? "experience" : "works"}`}
+            className="island-link island-back"
+            aria-label={`Back to ${detailLabel.toLowerCase()}`}
           >
-            <span
-              className={`relative z-10 transition-colors duration-300 
-                          ${
-                            activeTab === item.name.toLowerCase()
-                              ? "text-[#FFD8DF]"
-                              : "text-white/90"
-                          }`}
-            >
-              {item.name}
+            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            <span>Back</span>
+          </Link>
+          <span className="island-link island-current" data-active="true" aria-current="page">
+            <IslandLabel key={detailLabel} reducedMotion={reducedMotion}>
+              {detailLabel}
+            </IslandLabel>
+          </span>
+        </div>
+        <div
+          ref={(element) => { sectionsRef.current = element; sectionsAnimationRef.current = element; }}
+          className="island-content island-content-sections"
+          aria-hidden={!sectionsVisible}
+          style={{ opacity: 0, pointerEvents: sectionsVisible ? "auto" : "none" }}
+        >
+          <Link
+            href="/#hola"
+            aria-label="Back to top"
+            className="island-link island-icon"
+            onClick={(event) => {
+              scrollToSection(event, "hola");
+              setIconTurns((turns) => turns + 1);
+            }}
+          >
+            <span ref={iconRef}>
+              <Image src="/iconamoon_confused-face-fill.svg" alt="" width={24} height={24} />
             </span>
           </Link>
-        ))}
+          {navItems.map(({ id, name }) => (
+            <Link
+              key={id}
+              href={`/#${id}`}
+              data-active={activeTab === id}
+              aria-current={isHome && activeTab === id ? "location" : undefined}
+              onClick={(event) => scrollToSection(event, id)}
+              className="island-link"
+            >
+              {name}
+            </Link>
+          ))}
+        </div>
       </div>
     </nav>
   );

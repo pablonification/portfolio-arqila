@@ -17,6 +17,142 @@ body {
   font-family: var(--font-inter);
 }
 
+.island-nav {
+  position: fixed;
+  top: max(12px, env(safe-area-inset-top));
+  left: 12px;
+  right: 12px;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.island-shell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 999px;
+  color: white;
+  background: rgb(8 8 10 / 92%);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  box-shadow:
+    0 20px 40px -10px rgb(0 0 0 / 30%),
+    0 8px 18px -6px rgb(0 0 0 / 22%),
+    inset 0 1px 0 rgb(255 255 255 / 14%),
+    inset 0 0 0 1px rgb(255 255 255 / 10%);
+}
+
+.island-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  padding: 6px;
+  gap: 2px;
+}
+
+.island-content-detail {
+  min-width: 240px;
+  justify-content: space-between;
+}
+
+.island-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-height: 40px;
+  padding: 0 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgb(255 255 255 / 85%);
+  transition: color 180ms ease;
+}
+
+.island-link:hover {
+  color: white;
+}
+
+.island-link:focus-visible {
+  outline: 2px solid #ffd8df;
+  outline-offset: -2px;
+}
+
+.island-link[data-active="true"] {
+  color: #ffd8df;
+}
+
+.island-icon {
+  padding: 0 9px;
+}
+
+.island-icon span {
+  display: flex;
+}
+
+.island-icon img {
+  width: 22px;
+  height: 22px;
+}
+
+.island-back {
+  gap: 4px;
+}
+
+.island-highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 999px;
+  background: rgb(255 183 195 / 75%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 30%), inset 0 -1px 0 rgb(0 0 0 / 15%);
+  pointer-events: none;
+}
+
+@media (min-width: 640px) {
+  .island-link {
+    padding: 0 14px;
+    font-size: 14px;
+  }
+
+  .island-content-detail {
+    min-width: 260px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .island-link {
+    padding: 0 16px;
+    font-size: 16px;
+  }
+
+  .island-content-detail {
+    min-width: 280px;
+  }
+}
+
+@media (max-width: 359px) {
+  .island-link {
+    padding: 0 7px;
+  }
+
+  .island-icon {
+    padding: 0 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .island-link {
+    transition: none;
+  }
+}
+
 /* Keep laptop sizing close to the intended 75% view without changing the layout. */
 @media (min-width: 768px) and (max-width: 1439px) {
   html {
