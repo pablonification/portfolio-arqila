@@ -64,7 +64,7 @@ export default function Footer() {
             />
           </Link>
           <Link
-            href="https://www.linkedin.com/in/arqila-surya-putra-342160237/"
+            href="https://www.linkedin.com/in/arqila-surya-putra/"
             className="group"
           >
             <Image
