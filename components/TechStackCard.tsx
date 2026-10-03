@@ -4,21 +4,52 @@ import Matter, { Engine, Render, Runner, Composite, Body } from "matter-js";
 interface TechStackItem {
   name: string;
   src: string;
+  width: number;
+  height: number;
 }
 
 const techStack: TechStackItem[] = [
-  { name: "java", src: "/java.svg" },
-  { name: "ex", src: "/expressjs.svg" },
-  { name: "node", src: "/nextjs.svg" },
-  { name: "docker", src: "/docker.svg" },
-  { name: "c", src: "/c.svg" },
-  { name: "python", src: "/python.svg" },
-  { name: "html5", src: "/html.svg" },
-  { name: "css", src: "/css.svg" },
-  { name: "typescript", src: "/ts.svg" },
-  { name: "javascript", src: "/js.svg" },
-  { name: "git", src: "/git.svg" },
-  { name: "react", src: "/react.svg" },
+  { name: "java", src: "/java.svg", width: 76, height: 102 },
+  { name: "Express.js", src: "/tech/rounded/expressjs.svg.svg", width: 122, height: 122 },
+  { name: "Next.js", src: "/tech/rounded/nextjs.svg.svg", width: 128, height: 128 },
+  { name: "docker", src: "/docker.svg", width: 100, height: 68 },
+  { name: "c", src: "/c.svg", width: 111, height: 119 },
+  { name: "python", src: "/tech/rounded/python.svg.svg", width: 99, height: 101 },
+  { name: "html5", src: "/html.svg", width: 96, height: 107 },
+  { name: "css", src: "/css.svg", width: 106, height: 112 },
+  { name: "typescript", src: "/tech/rounded/ts.svg.svg", width: 100, height: 101 },
+  { name: "javascript", src: "/tech/rounded/js.svg.svg", width: 110, height: 110 },
+  { name: "git", src: "/tech/rounded/git.svg.svg", width: 100, height: 100 },
+  { name: "react", src: "/react.svg", width: 101, height: 90 },
+  { name: "Go", src: "/tech/rounded/go.svg.svg", width: 128, height: 128 },
+  { name: "FastAPI", src: "/tech/rounded/fastapi.svg.svg", width: 128, height: 128 },
+  { name: "Node.js", src: "/tech/nodejs.svg", width: 71, height: 80 },
+  { name: "PostgreSQL", src: "/tech/rounded/postgresql.png.svg", width: 540, height: 557 },
+  { name: "Supabase", src: "/tech/rounded/supabase.svg.svg", width: 109, height: 113 },
+  { name: "MongoDB", src: "/tech/rounded/mongodb.svg.svg", width: 128, height: 128 },
+  { name: "Redis", src: "/tech/rounded/redis.svg.svg", width: 128, height: 128 },
+  { name: "Tailwind CSS", src: "/tech/rounded/tailwind.png.svg", width: 180, height: 180 },
+  { name: "Ionic", src: "/tech/rounded/ionic.png.svg", width: 192, height: 192 },
+  { name: "Capacitor", src: "/tech/rounded/capacitor.png.svg", width: 192, height: 192 },
+  { name: "NativeWind", src: "/tech/rounded/nativewind.svg.svg", width: 24, height: 24 },
+  { name: "Whisper", src: "/tech/rounded/openai-standard.png.svg", width: 640, height: 640 },
+  { name: "TimeGPT", src: "/tech/rounded/timegpt.svg.svg", width: 373, height: 373 },
+  { name: "Gemini", src: "/tech/rounded/gemini.png.svg", width: 512, height: 512 },
+  { name: "Vercel AI SDK", src: "/tech/rounded/ai-sdk.svg.svg", width: 64, height: 64 },
+  { name: "GitHub", src: "/tech/github.svg", width: 98, height: 96 },
+  { name: "Cloudflare R2", src: "/tech/rounded/cloudflare.svg.svg", width: 128, height: 128 },
+  { name: "Coolify", src: "/tech/rounded/coolify.png.svg", width: 512, height: 512 },
+  { name: "Dokploy", src: "/tech/rounded/dokploy.svg.svg", width: 600, height: 600 },
+  { name: "Greptile", src: "/tech/rounded/greptile.png.svg", width: 2048, height: 2048 },
+  { name: "CodeRabbit", src: "/tech/rounded/coderabbit.png.svg", width: 180, height: 180 },
+  { name: "Blacksmith", src: "/tech/rounded/blacksmith.png.svg", width: 256, height: 256 },
+  { name: "Clerk", src: "/tech/rounded/clerk.png.svg", width: 256, height: 256 },
+  { name: "Resend", src: "/tech/rounded/resend.png.svg", width: 180, height: 180 },
+  { name: "Fonnte", src: "/tech/rounded/fonnte.png.svg", width: 300, height: 300 },
+  { name: "Xendit", src: "/tech/rounded/xendit.png.svg", width: 256, height: 256 },
+  { name: "Mayar", src: "/tech/rounded/mayar.png.svg", width: 362, height: 363 },
+  { name: "Midtrans", src: "/tech/midtrans.svg", width: 28, height: 30 },
+  { name: "IFTTT", src: "/tech/rounded/ifttt.svg.svg", width: 32, height: 32 },
 ];
 
 const TechStackCard: React.FC = () => {
@@ -192,14 +223,16 @@ const TechStackCard: React.FC = () => {
     if (!engine || !render || !inView || bodiesAdded.current) return;
     bodiesAdded.current = true;
 
-    const bodyWidth = 48;
-    const bodyHeight = 48;
+    const bodyWidth = Math.min(48, (render.options.width as number) / 8);
+    const bodyHeight = bodyWidth;
     const logoBodies = techStack.map((item, idx) => {
+      const spriteScale = Math.min(bodyWidth / item.width, bodyHeight / item.height);
       const x = (render.options.width as number) / 2 + Math.random() * 20 - 10;
       const y = 50 + idx * 1.5;
 
       // Create the logo body with adjusted physics properties
       const body = Matter.Bodies.rectangle(x, y, bodyWidth, bodyHeight, {
+        label: item.name,
         restitution: 0.3, // Reduce bounciness
         friction: 0.8, // Increase friction
         density: 0.002, // Slightly increase density
@@ -217,8 +250,8 @@ const TechStackCard: React.FC = () => {
         render: {
           sprite: {
             texture: item.src,
-            xScale: bodyWidth / 128,
-            yScale: bodyHeight / 128,
+            xScale: spriteScale,
+            yScale: spriteScale,
           },
         },
       });
