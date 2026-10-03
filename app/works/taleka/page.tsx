@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/OptimizedImage";
 import Link from "next/link";
 
 // Helper component untuk role tags
@@ -35,7 +35,7 @@ export default function TalekaPage() {
           <section className="mb-12 md:mb-16">
             <div className="relative w-full mx-auto">
               <div className="relative bg-gradient-to-b from-gray-300 to-gray-800 rounded-2xl shadow-2xl overflow-hidden aspect-[21/9]">
-                <Image
+                <Image priority sizes="(max-width: 1200px) 94vw, 1152px"
                   src="/taleka-cover.png"
                   alt="Taleka AI companion, welcome screen, Elder Studio, and story dashboard"
                   width={3840}

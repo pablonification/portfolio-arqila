@@ -60,7 +60,17 @@ Useful commands:
 npm run build
 npm run start
 npm run lint
+npm run typecheck
+npm run check:production -- http://localhost:3000
 ```
+
+## Images and loading
+
+`npm run optimize:images` creates content-addressed WebP derivatives and tiny loading previews for raster images referenced in the app. Originals remain in `public/` for editing. Re-run it when adding or replacing images; unchanged images use the cached manifest. Commit `public/optimized/` and `lib/image-manifest.json` along with the source change.
+
+Use `OptimizedImage` for page media, with explicit `sizes` matching its displayed width. Work covers use `priority`; images below the fold stay lazy. The 3D contact card and tech-stack physics load near the viewport with reserved skeleton layouts, and their animation loops pause offscreen. Fonts are local WOFF2 files; their licenses are in `app/fonts/`.
+
+`npm run check:production -- <base-url>` checks the served production routes, image previews, responsive image sizing, redirects, and the initial JavaScript budget. Run it after `npm run build` and `npm run start`.
 
 ## Optional URL shortener storage
 

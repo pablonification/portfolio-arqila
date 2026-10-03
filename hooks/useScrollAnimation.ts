@@ -15,6 +15,10 @@ export const useScrollAnimation = <T extends HTMLElement = HTMLElement>(
   const elementRef = useRef<T>(null);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+      setIsVisible(true);
+      return;
+    }
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {

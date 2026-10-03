@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function RedirectPage() {
   const params = useParams();
@@ -59,15 +60,17 @@ export default function RedirectPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Redirecting...</p>
+          <div role="status" aria-label="Finding your destination" className="mb-4 w-64 rounded-xl bg-white/80 p-6">
+            <div aria-hidden="true" className="space-y-4"><Skeleton className="h-5 w-full" /><Skeleton className="h-4 w-3/4" /><Skeleton className="h-10 w-full rounded-lg" /></div>
+          </div>
+          <p className="text-gray-600" role="status">Redirecting...</p>
           {redirectUrl && (
             <div className="mt-4 p-4 bg-white/80 rounded-lg">
               <p className="text-sm text-gray-500 mb-2">
-                Taking too long? 
+                Taking too long?
               </p>
-              <a 
-                href={redirectUrl} 
+              <a
+                href={redirectUrl}
                 className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
               >
                 Continue to destination
@@ -85,8 +88,8 @@ export default function RedirectPage() {
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4 text-gray-800">404 - Not Found</h1>
           <p className="text-gray-600 mb-6">The short URL you're looking for doesn't exist.</p>
-          <a 
-            href="/" 
+          <a
+            href="/"
             className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
           >
             Go to Homepage
@@ -101,8 +104,8 @@ export default function RedirectPage() {
       <div className="text-center">
         <h1 className="text-4xl font-bold mb-4 text-gray-800">Error</h1>
         <p className="text-gray-600 mb-6">Something went wrong while redirecting.</p>
-        <a 
-          href="/" 
+        <a
+          href="/"
           className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
         >
           Go to Homepage
@@ -110,4 +113,4 @@ export default function RedirectPage() {
       </div>
     </div>
   );
-} 
+}

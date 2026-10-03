@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Matter, { Engine, Render, Runner, Composite, Body } from "matter-js";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface TechStackItem {
   name: string;
@@ -92,7 +93,7 @@ const TechStackCard: React.FC = () => {
         height: containerHeight,
         wireframes: false,
         background: "transparent",
-        pixelRatio: 3,
+        pixelRatio: Math.min(window.devicePixelRatio || 1, 2),
       },
     });
 
@@ -146,19 +147,14 @@ const TechStackCard: React.FC = () => {
     // Add air friction to dampen movement
     newEngine.world.gravity.scale = 0.001;
 
-    // Add passive wheel event listener to allow scrolling
-    const handleWheel = (e: WheelEvent) => {
-      // Allow default scroll behavior
-    };
-    canvasRef.current.addEventListener("wheel", handleWheel, { passive: true });
-
     setEngine(newEngine);
     setRender(newRender);
 
     return () => {
-      if (canvasRef.current) {
-        canvasRef.current.removeEventListener("wheel", handleWheel);
-      }
+      Matter.Mouse.clearSourceEvents(mouse);
+      Render.stop(newRender);
+      Composite.clear(newEngine.world, false);
+      Engine.clear(newEngine);
     };
   }, []);
 
@@ -173,8 +169,9 @@ const TechStackCard: React.FC = () => {
       // Update render dimensions
       render.options.width = newWidth;
       render.options.height = newHeight;
-      render.canvas.width = newWidth * 3;
-      render.canvas.height = newHeight * 3;
+      Render.setPixelRatio(render, Math.min(window.devicePixelRatio || 1, 2));
+      render.canvas.width = newWidth * (render.options.pixelRatio || 1);
+      render.canvas.height = newHeight * (render.options.pixelRatio || 1);
       render.canvas.style.width = newWidth + "px";
       render.canvas.style.height = newHeight + "px";
 
@@ -226,24 +223,45 @@ const TechStackCard: React.FC = () => {
     let cancelled = false;
     let runner: Runner | null = null;
     let renderStarted = false;
+    let visible = false;
+    const syncActivity = () => {
+      if (!runner) return;
+      if (visible && !document.hidden && !renderStarted) {
+        Runner.run(runner, engine);
+        Render.run(render);
+        renderStarted = true;
+      } else if ((!visible || document.hidden) && renderStarted) {
+        Runner.stop(runner);
+        Render.stop(render);
+        renderStarted = false;
+      }
+    };
+    const activityObserver = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; syncActivity(); });
+    if (containerRef.current) activityObserver.observe(containerRef.current);
+    document.addEventListener("visibilitychange", syncActivity);
 
     const preload = (src: string) =>
-      new Promise<void>((resolve) => {
+      new Promise<HTMLImageElement | null>((resolve) => {
         const img = new Image();
-        img.onload = () => resolve();
-        img.onerror = () => resolve();
+        const timeout = window.setTimeout(() => resolve(null), 10000);
+        img.onload = () => { clearTimeout(timeout); resolve(img); };
+        img.onerror = () => { clearTimeout(timeout); resolve(null); };
         img.src = src;
       });
 
-    Promise.all(techStack.map((item) => preload(item.src))).then(() => {
+    Promise.all(techStack.map((item) => preload(item.src))).then((loaded) => {
       if (cancelled || !containerRef.current) return;
+      techStack.forEach((item, index) => {
+        const texture = loaded[index];
+        if (texture) render.textures[item.src] = texture;
+      });
 
       const bodyWidth = Math.min(48, (render.options.width as number) / 8);
     const bodyHeight = bodyWidth;
     const containerW = render.options.width as number;
     const containerH = render.options.height as number;
     const margin = 2;
-    const logoBodies = techStack.map((item, idx) => {
+    const logoBodies = techStack.filter((_, idx) => loaded[idx]).map((item, idx) => {
       const spriteScale = Math.min(bodyWidth / item.width, bodyHeight / item.height);
       // Edge-to-edge rain: spawn across the entire width and upper half so the
       // icons stay spread instead of funneling into a center pile.
@@ -334,15 +352,16 @@ const TechStackCard: React.FC = () => {
     });
 
     runner = Runner.create();
-    Runner.run(runner, engine);
-    Render.run(render);
-    renderStarted = true;
+    syncActivity();
     setRunning(true);
     });
 
     // Cleanup function
     return () => {
       cancelled = true;
+      activityObserver.disconnect();
+      document.removeEventListener("visibilitychange", syncActivity);
+      bodiesAdded.current = false;
       Matter.Events.off(engine, "afterUpdate");
       if (runner) Runner.stop(runner);
       if (renderStarted) Render.stop(render);
@@ -352,7 +371,7 @@ const TechStackCard: React.FC = () => {
   return (
     <div
       ref={cardRef}
-      className="bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden"
+      className="h-full bg-white/90 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1),0_10px_20px_-5px_rgba(0,0,0,0.08),inset_0_2px_0_rgba(255,255,255,0.8),inset_0_-1px_0_rgba(0,0,0,0.1)] border border-gray-200/50 relative overflow-hidden"
     >
       {/* 3D Inner Glow Effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-100/40 rounded-xl pointer-events-none"></div>
@@ -371,6 +390,10 @@ const TechStackCard: React.FC = () => {
         ref={containerRef}
         className="relative w-full h-[clamp(300px,20.833vw,400px)] relative z-10"
       >
+        {!running && <div role="status" aria-label="Loading tech stack" className="absolute inset-0 grid grid-cols-6 content-center gap-4">
+          {Array.from({ length: 18 }, (_, i) => <Skeleton key={i} className="mx-auto h-10 w-10 rounded-xl" />)}
+          <span className="sr-only">Loading tech stack</span>
+        </div>}
         <canvas
           ref={canvasRef}
           className={`absolute top-0 left-0 w-full h-full transition-opacity duration-500 ${running ? "opacity-100" : "opacity-0"}`}

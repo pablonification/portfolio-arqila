@@ -20,7 +20,7 @@ export default function Footer() {
             alt="Email Icon"
             width={200}
             height={200}
-            quality={100}
+            quality={80}
             className="w-[clamp(1.5rem,2vw,1.75rem)] h-[clamp(1.5rem,2vw,1.75rem)]"
           />
           <span className="text-2xl tracking-tighter">arqilasp@gmail.com</span>
@@ -36,7 +36,7 @@ export default function Footer() {
               alt="Letterboxd Icon"
               width={200}
               height={200}
-              quality={100}
+              quality={80}
               className="rounded-lg w-9 h-10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 group-hover:-translate-y-1"
             />
           </Link>
@@ -49,7 +49,7 @@ export default function Footer() {
               alt="Spotify Icon"
               width={200}
               height={200}
-              quality={100}
+              quality={80}
               className="rounded-lg w-10 h-10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 group-hover:-translate-y-1"
             />
           </Link>
@@ -59,7 +59,7 @@ export default function Footer() {
               alt="Instagram Icon"
               width={200}
               height={200}
-              quality={100}
+              quality={80}
               className="rounded-lg w-9 h-10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 group-hover:-translate-y-1"
             />
           </Link>
@@ -72,7 +72,7 @@ export default function Footer() {
               alt="Linkedin Icon"
               width={200}
               height={200}
-              quality={100}
+              quality={80}
               className="rounded-lg w-9 h-10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 group-hover:-translate-y-1"
             />
           </Link>
@@ -82,7 +82,7 @@ export default function Footer() {
               alt="Github Icon"
               width={200}
               height={200}
-              quality={100}
+              quality={80}
               className="rounded-lg w-10 h-10 transition-transform duration-300 ease-in-out transform group-hover:scale-110 group-hover:-translate-y-1"
             />
           </Link>

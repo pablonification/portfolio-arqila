@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
+import { LanyardSkeleton } from "@/components/LoadingState";
 import {
   Canvas,
   extend,
@@ -46,9 +47,24 @@ export default function Lanyard({
   fov = 8,
   transparent = true,
 }: LanyardProps) {
+  const [ready, setReady] = useState(false);
+  const [active, setActive] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    let visible = true;
+    const update = () => setActive(visible && !document.hidden);
+    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; update(); });
+    if (containerRef.current) observer.observe(containerRef.current);
+    document.addEventListener("visibilitychange", update);
+    return () => { observer.disconnect(); document.removeEventListener("visibilitychange", update); };
+  }, []);
   return (
-    <div className="relative -top-16 sm:-top-16 z-0 w-full h-screen flex justify-center items-center transform scale-100 origin-center -mt-8 sm:mt-0">
+    <div ref={containerRef} className="relative -top-16 sm:-top-16 z-0 w-full h-screen flex justify-center items-center transform scale-100 origin-center -mt-8 sm:mt-0">
+      {!ready && <div className="absolute inset-0 pointer-events-none"><LanyardSkeleton /></div>}
+      <div className={`h-full w-full transition-opacity duration-500 ${ready ? "opacity-100" : "opacity-0"}`}>
       <Canvas
+        dpr={[1, 1.5]}
+        frameloop={active ? "always" : "never"}
         camera={{ position, fov }}
         gl={{ alpha: transparent }}
         onCreated={({ gl }) =>
@@ -56,8 +72,10 @@ export default function Lanyard({
         }
       >
         <ambientLight intensity={Math.PI} />
-        <Physics gravity={gravity} timeStep={1 / 60}>
+        <Suspense fallback={null}>
+        <Physics gravity={gravity} timeStep={1 / 60} paused={!active}>
           <Band />
+          <SceneReady onReady={() => setReady(true)} />
         </Physics>
         <Environment blur={0.75}>
           <Lightformer
@@ -89,9 +107,16 @@ export default function Lanyard({
             scale={[100, 10, 1]}
           />
         </Environment>
+        </Suspense>
       </Canvas>
+      </div>
     </div>
   );
+}
+
+function SceneReady({ onReady }: { onReady: () => void }) {
+  useEffect(onReady, [onReady]);
+  return null;
 }
 
 interface BandProps {

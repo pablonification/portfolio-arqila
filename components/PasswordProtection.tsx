@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Lock, Eye, EyeOff } from 'lucide-react';
 import { toast } from 'sonner';
+import { LoadingCard } from '@/components/LoadingState';
 
 interface PasswordProtectionProps {
   children: React.ReactNode;
@@ -24,7 +25,7 @@ export default function PasswordProtection({ children }: PasswordProtectionProps
     // Check if user is already authenticated
     const authStatus = localStorage.getItem(AUTH_KEY);
     const authTime = localStorage.getItem(`${AUTH_KEY}_time`);
-    
+
     if (authStatus === 'true' && authTime) {
       const timeElapsed = Date.now() - parseInt(authTime);
       // Session expires after 24 hours
@@ -40,7 +41,7 @@ export default function PasswordProtection({ children }: PasswordProtectionProps
 
   const handlePasswordSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (password === CORRECT_PASSWORD) {
       setIsAuthenticated(true);
       localStorage.setItem(AUTH_KEY, 'true');
@@ -63,7 +64,7 @@ export default function PasswordProtection({ children }: PasswordProtectionProps
   if (isLoading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+        <div className="w-full max-w-md p-4"><LoadingCard label="Loading protected area" /></div>
       </div>
     );
   }
@@ -135,4 +136,4 @@ export default function PasswordProtection({ children }: PasswordProtectionProps
       {children}
     </div>
   );
-} 
+}

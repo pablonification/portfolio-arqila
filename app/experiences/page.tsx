@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import Image from "next/image";
 import { ChevronLeft, ExternalLink, Calendar, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -115,11 +116,7 @@ const techColors: { [key: string]: string } = {
 
 export default function ExperiencePage() {
   const [activeYear, setActiveYear] = useState("2024");
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
+  const isVisible = true;
 
   const years = [...new Set(experiences.map((exp) => exp.year))].sort(
     (a, b) => Number.parseInt(b) - Number.parseInt(a)
@@ -218,7 +215,9 @@ export default function ExperiencePage() {
                         <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-transparent to-gray-200/30 rounded-2xl pointer-events-none"></div>
                         {/* Logo top highlight */}
                         <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-white/80 to-transparent rounded-t-2xl"></div>
-                        <img
+                        <Image
+                          width={48}
+                          height={48}
                           src={exp.logo || "/placeholder.svg"}
                           alt={`${exp.organization} logo`}
                           className="w-12 h-12 rounded-xl object-cover"

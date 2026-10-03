@@ -3,7 +3,6 @@
 import { Renderer, Program, Mesh, Color, Triangle } from "ogl";
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import NavBar from "@/components/NavBar";
 
 const vertexShader = `
 attribute vec2 uv;
@@ -69,7 +68,7 @@ export default function Page({ searchParams }: PageProps) {
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center justify-center min-h-[100dvh] px-4 py-16">
           <h1 
-            className="font-['Rubik_80s_Fade'] text-center mb-6 leading-none tracking-tight text-white mix-blend-difference
+            className="font-rubik text-center mb-6 leading-none tracking-tight text-white mix-blend-difference
                      opacity-0 animate-fade-in-up"
             style={{ 
               fontSize: "clamp(4rem, 10vw, 12rem)",
@@ -188,11 +187,13 @@ function Iridescence({
     });
 
     const mesh = new Mesh(gl, { geometry, program });
-    let animateId: number;
+    let animateId: number | null = null;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     function update(t: number) {
-      animateId = requestAnimationFrame(update);
-      program.uniforms.uTime.value = t * 0.001;
+      animateId = null;
+      if (!document.hidden && !reducedMotion.matches) animateId = requestAnimationFrame(update);
+      program.uniforms.uTime.value = reducedMotion.matches ? 0 : t * 0.001;
       renderer.render({ scene: mesh });
     }
 
@@ -205,6 +206,12 @@ function Iridescence({
     
     ctn.appendChild(gl.canvas);
     animateId = requestAnimationFrame(update);
+    const syncActivity = () => {
+      if (animateId !== null) cancelAnimationFrame(animateId);
+      animateId = document.hidden ? null : requestAnimationFrame(update);
+    };
+    document.addEventListener("visibilitychange", syncActivity);
+    reducedMotion.addEventListener("change", syncActivity);
 
     function handleMouseMove(e: MouseEvent) {
       const rect = ctn.getBoundingClientRect();
@@ -219,7 +226,9 @@ function Iridescence({
     }
 
     return () => {
-      cancelAnimationFrame(animateId);
+      if (animateId !== null) cancelAnimationFrame(animateId);
+      document.removeEventListener("visibilitychange", syncActivity);
+      reducedMotion.removeEventListener("change", syncActivity);
       window.removeEventListener("resize", resize);
       if (mouseReact) {
         ctn.removeEventListener("mousemove", handleMouseMove);

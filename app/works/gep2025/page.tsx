@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/OptimizedImage";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import StackIcon from "tech-stack-icons";
@@ -55,7 +55,7 @@ export default function GEP2025Page() {
           <section className="mb-12 md:mb-16">
             <div className="relative w-full mx-auto">
               <div className="relative bg-gradient-to-b from-gray-300 to-gray-800 rounded-2xl shadow-2xl overflow-hidden aspect-[21/9]">
-                <Image
+                <Image priority sizes="(max-width: 1200px) 94vw, 1152px"
                   src="/gep-cover.webp"
                   alt="DraftAnakITB App Showcase"
                   width={3600}

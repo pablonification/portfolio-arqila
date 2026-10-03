@@ -53,6 +53,7 @@ const DynamicGradient = () => {
   const coverFadeUntilRef = useRef(0);
   const revealElementRef = useRef<HTMLDivElement | null>(null);
   const positionFrame = useRef<number | null>(null);
+  const scrollFrame = useRef<number | null>(null);
   const revealTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const blurTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -123,7 +124,12 @@ const DynamicGradient = () => {
 
     const handleScrollOrResize = () => {
       if (!playingRef.current && modeRef.current !== "collapsing") {
-        setPageScrollProgress(scrollProgress());
+        if (scrollFrame.current === null) {
+          scrollFrame.current = requestAnimationFrame(() => {
+            scrollFrame.current = null;
+            setPageScrollProgress(scrollProgress());
+          });
+        }
       }
       if ((modeRef.current === "revealing" || modeRef.current === "collapsing") &&
           positionFrame.current === null) {
@@ -221,6 +227,7 @@ const DynamicGradient = () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener(GRADUATION_THEME_EVENT, handleThemeChange);
       if (positionFrame.current !== null) cancelAnimationFrame(positionFrame.current);
+      if (scrollFrame.current !== null) cancelAnimationFrame(scrollFrame.current);
       clearTimers();
       document.documentElement.classList.remove("graduation-transitioning");
     };

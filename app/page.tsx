@@ -1,22 +1,15 @@
 "use client";
 import { ganesaSpaceMockups } from "@/lib/ganesa-space-mockups";
 import { otherWorks } from "@/lib/other-works";
-import { useEffect } from "react";
-import Image from "next/image";
+import Image from "@/components/OptimizedImage";
 import Link from "next/link";
-import Lanyard from "@/components/Lanyard";
-import TechStackCard from "@/components/TechStackCard";
+import { DeferredLanyard, DeferredTechStack } from "@/components/DeferredHomeContent";
 import SpotiBar from "@/components/SpotiBar";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export default function Page() {
-  useEffect(() => {
-    document.documentElement.style.scrollBehavior = "smooth";
-  }, []);
 
   // Scroll animation hooks for each section
-  const holaAnimation = useScrollAnimation<HTMLDivElement>({ threshold: 0.3 });
-  const worksAnimation = useScrollAnimation<HTMLElement>({ threshold: 0.2 });
   const experienceAnimation = useScrollAnimation<HTMLElement>({
     threshold: 0.2,
   });
@@ -31,13 +24,8 @@ export default function Page() {
     <>
       {/* Main Content - Reduced max-width and padding */}
       <div
-        ref={holaAnimation.elementRef}
         id="hola"
-        className={`max-w-full mx-2 px-2 sm:mx-4 sm:px-4 lg:px-6 pt-16 sm:pt-24 md:pt-32 lg:pt-40 transition-all duration-1000 ease-out ${
-          holaAnimation.isVisible
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-8"
-        }`}
+        className="max-w-full mx-2 px-2 sm:mx-4 sm:px-4 lg:px-6 pt-16 sm:pt-24 md:pt-32 lg:pt-40"
       >
         <p
           className="mb-4 sm:mb-8 max-w-2xl leading-tight tracking-tighter text-[#575757]"
@@ -48,7 +36,7 @@ export default function Page() {
         </p>
         <div className="relative mb-8 sm:mb-16">
           <h1
-            className="font-['Rubik_80s_Fade'] leading-none tracking-tight flex flex-wrap gap-x-5"
+            className="font-rubik leading-none tracking-tight flex flex-wrap gap-x-5"
             style={{ fontSize: "clamp(6rem, 15vw, 16rem)" }}
           >
             <span>Arqila</span> <span>Surya</span> <span>Putra</span>
@@ -95,12 +83,12 @@ export default function Page() {
                 {/* Header */}
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex items-center gap-2 sm:gap-3">
-                    <Image
+                    <Image sizes="72px"
                       src="/ganesa-space-logo-transparent.png"
                       alt="Ganesa Space icon"
                       width={96}
                       height={96}
-                      quality={100}
+                      quality={80}
                       className="brightness-0"
                       style={{
                         width: "clamp(2rem, 2.5vw, 3rem)",
@@ -145,12 +133,12 @@ export default function Page() {
                               group-hover:-translate-y-2
                               group-hover:-rotate-3"
                   >
-                    <Image
+                    <Image sizes="(max-width: 767px) 88vw, (max-width: 1280px) 40vw, 640px"
                       src="/ganesa-space-partnership.png"
                       alt="Ganesa Space partnership website on desktop"
                       width={1448}
                       height={1086}
-                      quality={100}
+                      quality={80}
                       style={{ clipPath: ganesaSpaceMockups.desktop }}
                       className="w-full h-auto object-contain"
                     />
@@ -169,12 +157,12 @@ export default function Page() {
                               group-hover:translate-y-14
                               group-hover:rotate-2"
                   >
-                    <Image
+                    <Image sizes="(max-width: 767px) 88vw, (max-width: 1280px) 40vw, 640px"
                       src="/ganesa-space-dashboard.png"
                       alt="Ganesa Space mobile dashboard with menfess, AnonChat, and token wallet"
                       width={1527}
                       height={1030}
-                      quality={100}
+                      quality={80}
                       style={{ clipPath: ganesaSpaceMockups.mobile }}
                       className="w-full h-auto object-contain"
                     />
@@ -217,12 +205,12 @@ export default function Page() {
                           </filter>
                         </defs>
                       </svg>
-                      <Image
+                      <Image sizes="72px"
                         src="/taleka-logo.png"
                         alt="Taleka icon"
                         width={1024}
                         height={1024}
-                        quality={100}
+                        quality={80}
                         className="absolute left-1/2 top-1/2 h-[150%] w-[150%] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain"
                         style={{ filter: "url(#taleka-logo-monochrome)" }}
                       />
@@ -253,12 +241,12 @@ export default function Page() {
                 </p>
                 <div className="flex flex-col md:flex-row gap-4 mt-2 -mb-16 sm:-mb-24 justify-center items-center">
                   <div className="relative w-full md:w-[calc(50%-0.5rem)] shrink-0 transform translate-x-0 rotate-0 transition-all duration-300 group-hover:-translate-y-2 group-hover:-rotate-3">
-                    <Image
+                    <Image sizes="(max-width: 767px) 88vw, (max-width: 1280px) 40vw, 640px"
                       src="/taleka-card1.png"
                       alt="Taleka welcome screen on a handheld phone"
                       width={1254}
                       height={1254}
-                      quality={100}
+                      quality={80}
                       className="rounded-lg w-full object-cover translate-x-0 md:translate-x-2 translate-y-10 scale-90"
                       style={{
                         aspectRatio: "4 / 3",
@@ -268,17 +256,15 @@ export default function Page() {
                         outline: "4px solid white",
                         rotate: "-3deg",
                       }}
-                      priority
-                      sizes="(min-width: 1024px) 900px, 100vw"
                     />
                   </div>
                   <div className="hidden md:block relative w-full md:w-[calc(50%-0.5rem)] shrink-0 transform translate-y-4 rotate-0 transition-all duration-300 group-hover:translate-y-8 group-hover:rotate-2">
-                    <Image
+                    <Image sizes="(max-width: 767px) 88vw, (max-width: 1280px) 40vw, 640px"
                       src="/taleka-card2.png"
                       alt="Taleka community stories and reading dashboard"
                       width={1254}
                       height={1254}
-                      quality={100}
+                      quality={80}
                       className="rounded-lg w-full object-cover translate-y-16 scale-95 md:-translate-x-2"
                       style={{
                         aspectRatio: "4 / 3",
@@ -288,8 +274,6 @@ export default function Page() {
                         outline: "4px solid white",
                         rotate: "3deg",
                       }}
-                      priority
-                      sizes="(min-width: 1024px) 900px, 100vw"
                     />
                   </div>
                 </div>
@@ -312,12 +296,12 @@ export default function Page() {
               <div className="relative z-20">
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex items-center gap-2 sm:gap-3">
-                    <Image
+                    <Image sizes="72px"
                       src="/ludic-black.svg"
                       alt="DraftAnakITB icon"
                       width={96}
                       height={96}
-                      quality={100}
+                      quality={80}
                       style={{
                         width: "clamp(2rem, 2.5vw, 3rem)",
                         height: "clamp(2rem, 2.5vw, 3rem)",
@@ -359,12 +343,12 @@ export default function Page() {
                               group-hover:translate-y-4
                               group-hover:-rotate-3"
                   >
-                    <Image
+                    <Image sizes="(max-width: 767px) 88vw, (max-width: 1280px) 40vw, 640px"
                       src="/ludic_pic1.webp"
                       alt="Ludic Interface 1"
                       width={1200}
                       height={900}
-                      quality={100}
+                      quality={80}
                       className="rounded-lg w-full object-cover scale-90"
                     />
                   </div>
@@ -382,12 +366,12 @@ export default function Page() {
                               group-hover:translate-y-8
                               group-hover:rotate-2"
                   >
-                    <Image
+                    <Image sizes="(max-width: 767px) 88vw, (max-width: 1280px) 40vw, 640px"
                       src="/ludic_pic4.webp"
                       alt="Ludic Interface 2"
                       width={1600}
                       height={1200}
-                      quality={100}
+                      quality={80}
                       className="rounded-lg w-full object-cover scale-110"
                     />
                   </div>
@@ -414,12 +398,12 @@ export default function Page() {
                 {/* Header */}
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex items-center gap-2 sm:gap-3">
-                    <Image
+                    <Image sizes="72px"
                       src="/8eh.webp"
                       alt="8EH Radio ITB icon"
                       width={96}
                       height={96}
-                      quality={100}
+                      quality={80}
                       style={{
                         width: "clamp(2rem, 2.5vw, 3rem)",
                         height: "clamp(2rem, 2.5vw, 3rem)",
@@ -452,24 +436,22 @@ export default function Page() {
                 {/* Images */}
                 <div className="flex flex-col md:flex-row gap-4 mt-2 -mb-16 sm:-mb-24 justify-center items-center">
                   <div className="relative w-full md:w-1/2 transform translate-x-0 rotate-0 transition-all duration-300 group-hover:-translate-y-2 group-hover:-rotate-3">
-                    <Image
+                    <Image sizes="(max-width: 767px) 88vw, (max-width: 1280px) 40vw, 640px"
                       src="/8eh-card1.webp"
                       alt="8EH Interface 1"
                       width={3840}
                       height={2880}
-                      quality={100}
+                      quality={80}
                       className="rounded-lg w-full object-cover translate-x-0 md:-translate-x-2 translate-y-10"
-                      priority
-                      sizes="(min-width: 1024px) 900px, 100vw"
                     />
                   </div>
                   <div className="hidden md:block relative w-full md:w-1/2 transform translate-y-4 rotate-0 transition-all duration-300 group-hover:translate-y-8 group-hover:rotate-2">
-                    <Image
+                    <Image sizes="(max-width: 767px) 88vw, (max-width: 1280px) 40vw, 640px"
                       src="/8eh-card2.webp"
                       alt="8EH Interface 2"
                       width={2400}
                       height={1800}
-                      quality={100}
+                      quality={80}
                       className="rounded-lg w-full object-cover scale-110 -translate-x-5 translate-y-7"
                     />
                   </div>
@@ -491,12 +473,12 @@ export default function Page() {
               <div className="relative z-20">
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex items-center gap-2 sm:gap-3">
-                    <Image
+                    <Image sizes="72px"
                       src="/meddocs.webp"
                       alt="Meddocs icon"
                       width={96}
                       height={96}
-                      quality={100}
+                      quality={80}
                       style={{
                         width: "clamp(2rem, 2.5vw, 3rem)",
                         height: "clamp(2rem, 2.5vw, 3rem)",
@@ -527,27 +509,23 @@ export default function Page() {
                 </p>
                 <div className="flex flex-col md:flex-row gap-4 mt-2 -mb-16 sm:-mb-24 justify-center items-center">
                   <div className="relative w-full md:w-1/2 transform translate-x-0 rotate-0 transition-all duration-300 group-hover:-translate-y-2 group-hover:-rotate-3">
-                    <Image
+                    <Image sizes="(max-width: 767px) 88vw, (max-width: 1280px) 40vw, 640px"
                       src="/wjc-card1.webp"
                       alt="Meddocs Interface 1"
                       width={3840}
                       height={2880}
-                      quality={100}
+                      quality={80}
                       className="rounded-lg w-full object-cover translate-x-0 md:translate-x-5 translate-y-10"
-                      priority
-                      sizes="(min-width: 1024px) 900px, 100vw"
                     />
                   </div>
                   <div className="hidden md:block relative w-full md:w-1/2 transform translate-y-4 rotate-0 transition-all duration-300 group-hover:translate-y-8 group-hover:rotate-2">
-                    <Image
+                    <Image sizes="(max-width: 767px) 88vw, (max-width: 1280px) 40vw, 640px"
                       src="/wjc-card2.webp"
                       alt="Meddocs Interface 2"
                       width={3840}
                       height={2880}
-                      quality={100}
+                      quality={80}
                       className="rounded-lg w-full object-cover translate-x-0 md:-translate-x-10 scale-105"
-                      priority
-                      sizes="(min-width: 1024px) 900px, 100vw"
                     />
                   </div>
                 </div>
@@ -568,12 +546,12 @@ export default function Page() {
               <div className="relative z-20">
                 <div className="flex justify-between items-start mb-4">
                   <div className="flex items-center gap-2 sm:gap-3">
-                    <Image
+                    <Image sizes="72px"
                       src="/spakbor.webp"
                       alt="Spakbor Hills icon"
                       width={96}
                       height={96}
-                      quality={100}
+                      quality={80}
                       style={{
                         width: "clamp(2rem, 2.5vw, 3rem)",
                         height: "clamp(2rem, 2.5vw, 3rem)",
@@ -605,27 +583,23 @@ export default function Page() {
                 </p>
                 <div className="flex flex-col md:flex-row gap-4 mt-2 -mb-16 sm:-mb-24 justify-center items-center">
                   <div className="relative w-full md:w-1/2 transform translate-x-0 rotate-0 transition-all duration-300 group-hover:-translate-y-2 group-hover:-rotate-3">
-                    <Image
+                    <Image sizes="(max-width: 767px) 88vw, (max-width: 1280px) 40vw, 640px"
                       src="/spakbor-card1.webp"
                       alt="Spakbor Hills Interface 1"
                       width={3840}
                       height={2880}
-                      quality={100}
+                      quality={80}
                       className="rounded-lg w-full object-cover translate-x-0 md:translate-x-5 translate-y-10"
-                      priority
-                      sizes="(min-width: 1024px) 900px, 100vw"
                     />
                   </div>
                   <div className="hidden md:block relative w-full md:w-1/2 transform translate-y-4 rotate-0 transition-all duration-300 group-hover:translate-y-8 group-hover:rotate-2">
-                    <Image
+                    <Image sizes="(max-width: 767px) 88vw, (max-width: 1280px) 40vw, 640px"
                       src="/spakbor-card2.webp"
                       alt="Spakbor Hills Interface 2"
                       width={3840}
                       height={2880}
-                      quality={100}
+                      quality={80}
                       className="rounded-lg w-full object-cover translate-y-16 scale-105 -translate-x-5"
-                      priority
-                      sizes="(min-width: 1024px) 900px, 100vw"
                     />
                   </div>
                 </div>
@@ -717,32 +691,32 @@ export default function Page() {
             </p>
             <div className="relative z-10 flex items-center justify-center gap-6">
               <div className="relative h-[clamp(43px,2.99vw,57px)] w-[clamp(43px,2.99vw,57px)] shrink-0 overflow-hidden">
-                <Image
+                <Image sizes="144px"
                   src="/ganesa-space-logo-transparent.png"
                   alt="Ganesa Space logo"
                   width={500}
                   height={500}
-                  quality={100}
+                  quality={80}
                   className="absolute left-1/2 top-[54%] h-[157%] w-[157%] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain"
                 />
               </div>
               <div className="h-[clamp(43px,2.99vw,57px)] w-[clamp(43px,2.99vw,57px)] shrink-0 overflow-hidden rounded-lg">
-                <Image
+                <Image sizes="144px"
                   src="/pakuwon-logo.png"
                   alt="Pakuwon Group logo"
                   width={201}
                   height={197}
-                  quality={100}
+                  quality={80}
                   className="h-full w-full object-contain"
                 />
               </div>
               <div className="relative h-[clamp(43px,2.99vw,57px)] w-[clamp(43px,2.99vw,57px)] shrink-0 overflow-hidden rounded-lg">
-                <Image
+                <Image sizes="144px"
                   src="/containder-symbol-source.png"
                   alt="Containder Indonesia logo"
                   width={1772}
                   height={1772}
-                  quality={100}
+                  quality={80}
                   className="absolute -left-[66.6%] -top-[42.5%] h-[233.2%] w-[233.2%] max-w-none"
                 />
               </div>
@@ -778,7 +752,7 @@ export default function Page() {
               </Link>
             </div>
           </div>
-          <TechStackCard />
+          <DeferredTechStack />
         </div>
       </section>
 
@@ -803,7 +777,7 @@ export default function Page() {
             : "opacity-0 sm:translate-y-8 translate-y-24"
         }`}
       >
-        <Lanyard />
+        <DeferredLanyard />
       </div>
     </>
   );

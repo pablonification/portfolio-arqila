@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Copy, ExternalLink, BarChart3, Clock, MousePointer } from 'lucide-react';
 import { toast } from 'sonner';
 import PasswordProtection from '@/components/PasswordProtection';
+import { LoadingCard } from '@/components/LoadingState';
 
 interface ShortenResult {
   shortUrl: string;
@@ -34,6 +35,7 @@ export default function UrlShortenerPage() {
   const [result, setResult] = useState<ShortenResult | null>(null);
   const [stats, setStats] = useState<UrlStats | null>(null);
   const [showStats, setShowStats] = useState(false);
+  const [statsLoading, setStatsLoading] = useState(false);
   const [urlHistory, setUrlHistory] = useState<ShortenResult[]>([]);
 
   // Load history from localStorage on mount
@@ -72,12 +74,12 @@ export default function UrlShortenerPage() {
 
       const data = await response.json();
       setResult(data);
-      
+
       // Add to history and save to localStorage
       const newHistory = [{ ...data, originalUrl: url }, ...urlHistory.slice(0, 9)];
       setUrlHistory(newHistory);
       localStorage.setItem('url_history', JSON.stringify(newHistory));
-      
+
       setUrl('');
       setCustomAlias('');
       toast.success('URL shortened successfully!');
@@ -99,15 +101,21 @@ export default function UrlShortenerPage() {
   };
 
   const loadStats = async (id: string) => {
+    setShowStats(true);
+    setStats(null);
+    setStatsLoading(true);
     try {
       const response = await fetch(`/api/stats/${id}`);
       if (!response.ok) throw new Error('Failed to load stats');
-      
+
       const data = await response.json();
       setStats(data);
       setShowStats(true);
     } catch (error) {
+      setShowStats(false);
       toast.error('Failed to load stats');
+    } finally {
+      setStatsLoading(false);
     }
   };
 
@@ -256,6 +264,8 @@ export default function UrlShortenerPage() {
                         variant="outline"
                         size="sm"
                         onClick={() => loadStats(item.id)}
+                        disabled={statsLoading}
+                        aria-label="View URL statistics"
                       >
                         <BarChart3 className="w-3 h-3" />
                       </Button>
@@ -273,6 +283,7 @@ export default function UrlShortenerPage() {
         )}
 
         {/* Stats */}
+        {showStats && statsLoading && <LoadingCard label="Loading URL statistics" />}
         {showStats && stats && (
           <Card>
             <CardHeader>
@@ -358,4 +369,4 @@ export default function UrlShortenerPage() {
       </div>
     </PasswordProtection>
   );
-} 
+}

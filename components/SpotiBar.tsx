@@ -343,7 +343,7 @@ export default function SpotiBar() {
               alt="Album Cover"
               width={224}
               height={224}
-              quality={100}
+              quality={80}
               className={`w-10 h-10 sm:w-14 sm:h-14 rounded-md transition-transform duration-200 ${
                 isPlaying ? "animate-spin-slow" : ""
               }`}
@@ -366,7 +366,7 @@ export default function SpotiBar() {
             alt="Spotify Icon"
             width={200}
             height={200}
-            quality={100}
+            quality={80}
             className="w-8 h-8 sm:w-12 sm:h-12 opacity-80 hover:opacity-100 transition-opacity duration-200"
           />
         </div>
@@ -400,7 +400,7 @@ export default function SpotiBar() {
           )}
         </div>
       </div>
-      <audio ref={audioRef} src="/bittersweet.mp3" />
+      <audio ref={audioRef} src="/bittersweet.mp3" preload="none" />
       <style jsx>{`
         @keyframes spin-slow {
           from {
