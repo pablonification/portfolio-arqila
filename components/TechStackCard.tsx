@@ -56,18 +56,19 @@ const TechStackCard: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const [inView, setInView] = useState(false);
+  const [running, setRunning] = useState(false);
   const [engine, setEngine] = useState<Engine | null>(null);
   const [render, setRender] = useState<Render | null>(null);
   const bodiesAdded = useRef(false);
   const boundariesRef = useRef<Matter.Body[]>([]);
 
-  // Intersection Observer to detect visibility
+  // Start early: begin loading while the card is still approaching the viewport.
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) setInView(true);
       },
-      { threshold: 0.2 }
+      { threshold: 0, rootMargin: "400px 0px" }
     );
     if (cardRef.current) observer.observe(cardRef.current);
     return () => {
@@ -216,17 +217,38 @@ const TechStackCard: React.FC = () => {
     return () => window.removeEventListener("resize", updateDimensions);
   }, [render, engine]);
 
-  // When the card is in view, add logo bodies and start the simulation
+  // When the card is near view, preload every sprite texture first so icons
+  // never pop in late, then add logo bodies and start the simulation.
   useEffect(() => {
     if (!engine || !render || !inView || bodiesAdded.current) return;
     bodiesAdded.current = true;
 
-    const bodyWidth = Math.min(48, (render.options.width as number) / 8);
+    let cancelled = false;
+    let runner: Runner | null = null;
+    let renderStarted = false;
+
+    const preload = (src: string) =>
+      new Promise<void>((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve();
+        img.onerror = () => resolve();
+        img.src = src;
+      });
+
+    Promise.all(techStack.map((item) => preload(item.src))).then(() => {
+      if (cancelled || !containerRef.current) return;
+
+      const bodyWidth = Math.min(48, (render.options.width as number) / 8);
     const bodyHeight = bodyWidth;
+    const containerW = render.options.width as number;
+    const containerH = render.options.height as number;
+    const margin = 2;
     const logoBodies = techStack.map((item, idx) => {
       const spriteScale = Math.min(bodyWidth / item.width, bodyHeight / item.height);
-      const x = (render.options.width as number) / 2 + Math.random() * 20 - 10;
-      const y = 50 + idx * 1.5;
+      // Edge-to-edge rain: spawn across the entire width and upper half so the
+      // icons stay spread instead of funneling into a center pile.
+      const x = margin + Math.random() * Math.max(containerW - margin * 2, 1);
+      const y = 16 + Math.random() * (containerH * 0.45) + idx * 1.5;
 
       // Create the logo body with adjusted physics properties
       const body = Matter.Bodies.rectangle(x, y, bodyWidth, bodyHeight, {
@@ -254,9 +276,13 @@ const TechStackCard: React.FC = () => {
         },
       });
 
-      // Set initial velocity and angular velocity to be moderate
-      Matter.Body.setVelocity(body, { x: 0, y: 0 });
-      Matter.Body.setAngularVelocity(body, 0);
+      // Strong outward push from the center so icons separate and settle wide.
+      const outward = x < containerW / 2 ? -1 : 1;
+      Matter.Body.setVelocity(body, {
+        x: outward * (1.5 + Math.random() * 2),
+        y: 0,
+      });
+      Matter.Body.setAngularVelocity(body, (Math.random() - 0.5) * 0.15);
 
       return body;
     });
@@ -307,15 +333,19 @@ const TechStackCard: React.FC = () => {
       });
     });
 
-    const runner = Runner.create();
+    runner = Runner.create();
     Runner.run(runner, engine);
     Render.run(render);
+    renderStarted = true;
+    setRunning(true);
+    });
 
     // Cleanup function
     return () => {
+      cancelled = true;
       Matter.Events.off(engine, "afterUpdate");
-      Runner.stop(runner);
-      Render.stop(render);
+      if (runner) Runner.stop(runner);
+      if (renderStarted) Render.stop(render);
     };
   }, [inView, engine, render]);
 
@@ -343,7 +373,7 @@ const TechStackCard: React.FC = () => {
       >
         <canvas
           ref={canvasRef}
-          className="absolute top-0 left-0 w-full h-full"
+          className={`absolute top-0 left-0 w-full h-full transition-opacity duration-500 ${running ? "opacity-100" : "opacity-0"}`}
           style={{ touchAction: "pan-y" }}
         />
       </div>
