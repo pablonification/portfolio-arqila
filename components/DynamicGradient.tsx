@@ -36,7 +36,7 @@ const randomBlobShape = () => {
 };
 
 const DynamicGradient = () => {
-  const [pageScrollProgress, setPageScrollProgress] = useState(0);
+  const [pageView, setPageView] = useState({ progress: 0, y: 0, height: 0 });
   const [coverVisible, setCoverVisible] = useState(false);
   const [blobVisible, setBlobVisible] = useState(false);
   const [reveal, setReveal] = useState({
@@ -76,7 +76,7 @@ const DynamicGradient = () => {
       if (!playingRef.current) {
         modeRef.current = "idle";
         playerRef.current = null;
-        setPageScrollProgress(scrollProgress());
+        setPageView({ progress: scrollProgress(), y: window.scrollY, height: window.innerHeight });
       }
       hideTimer.current = null;
     };
@@ -123,13 +123,15 @@ const DynamicGradient = () => {
     };
 
     const handleScrollOrResize = () => {
-      if (!playingRef.current && modeRef.current !== "collapsing") {
-        if (scrollFrame.current === null) {
-          scrollFrame.current = requestAnimationFrame(() => {
-            scrollFrame.current = null;
-            setPageScrollProgress(scrollProgress());
-          });
-        }
+      if (scrollFrame.current === null) {
+        scrollFrame.current = requestAnimationFrame(() => {
+          scrollFrame.current = null;
+          setPageView((previous) => ({
+            progress: playingRef.current ? previous.progress : scrollProgress(),
+            y: window.scrollY,
+            height: window.innerHeight,
+          }));
+        });
       }
       if ((modeRef.current === "revealing" || modeRef.current === "collapsing") &&
           positionFrame.current === null) {
@@ -195,7 +197,7 @@ const DynamicGradient = () => {
         return;
       }
 
-      setPageScrollProgress(scrollProgress());
+      setPageView({ progress: scrollProgress(), y: window.scrollY, height: window.innerHeight });
       setCoverVisible(false);
       coverFadeUntilRef.current = modeRef.current === "covered"
         ? performance.now() + fadeDuration()
@@ -233,10 +235,29 @@ const DynamicGradient = () => {
     };
   }, []);
 
-  // Keep the base gradient still while the theme is active to avoid scroll repaints.
-  const gradientShift = pageScrollProgress * 100;
-  const startPercent = -gradientShift;
-  const endPercent = 100 - gradientShift;
+  // Paint one document background. iOS does not reliably honor fixed root
+  // backgrounds, so place the color stops in document coordinates instead.
+  useEffect(() => {
+    const root = document.documentElement;
+    const progress = Math.max(0, Math.min(1, pageView.progress));
+    const height = pageView.height || window.innerHeight;
+    const startY = pageView.y - progress * height;
+    const endY = startY + height;
+    const gradient = `linear-gradient(to bottom, #FFB7C3 ${startY}px, #BCF4F5 ${endY}px)`;
+    const start = [255, 183, 195];
+    const end = [188, 244, 245];
+    const edgeColor = start.map((channel, i) => Math.round(channel + (end[i] - channel) * progress));
+    root.style.setProperty("--page-background", coverVisible ? "var(--graduation-background)" : gradient);
+    root.style.setProperty("--page-edge-color", coverVisible ? "#d2baf0" : `rgb(${edgeColor.join(" ")})`);
+    root.style.setProperty("--page-background-size", coverVisible ? `100% ${height}px` : "100% 100%");
+    root.style.setProperty("--page-background-position", coverVisible ? `0px ${pageView.y}px` : "0px 0px");
+    root.style.setProperty("--page-background-repeat", coverVisible ? "repeat-y" : "no-repeat");
+    return () => {
+      for (const property of ["--page-background", "--page-edge-color", "--page-background-size", "--page-background-position", "--page-background-repeat"]) {
+        root.style.removeProperty(property);
+      }
+    };
+  }, [pageView, coverVisible]);
 
   const revealStyle = {
     translate: `${reveal.x}px ${reveal.y}px`,
@@ -246,12 +267,6 @@ const DynamicGradient = () => {
 
   return (
     <>
-      <div
-        className="fixed inset-0 -z-10 pointer-events-none"
-        style={{
-          background: `linear-gradient(to bottom, #FFB7C3 ${startPercent}%, #BCF4F5 ${endPercent}%)`,
-        }}
-      />
       <div
         aria-hidden="true"
         ref={revealElementRef}

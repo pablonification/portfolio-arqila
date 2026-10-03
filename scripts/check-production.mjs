@@ -8,6 +8,7 @@ for (const route of routes) {
   assert.equal(response.status, 200, route);
   const html = await response.text();
   assert.match(html, /<nav/, `${route}: persistent navigation`);
+  assert.match(html, /<meta name="viewport"[^>]*viewport-fit=cover/, `${route}: extend the background into iPhone safe areas`);
   if (route === "/") {
     const hero = html.match(/<div[^>]*id="hola"[^>]*>/)?.[0];
     assert.ok(hero && !hero.includes("opacity-0"), "Opening text must be visible before hydration");

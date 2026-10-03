@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "sonner";
@@ -9,6 +9,12 @@ import DynamicGradient from "@/components/DynamicGradient";
 const inter = localFont({ src: "./fonts/inter.woff2", variable: "--font-inter", weight: "400 700", display: "swap", fallback: ["Arial"] });
 const rubik = localFont({ src: "./fonts/rubik.woff2", variable: "--font-rubik", weight: "400", display: "swap", fallback: ["Arial"] });
 const caveat = localFont({ src: "./fonts/caveat.woff2", variable: "--font-caveat", weight: "400 700", display: "swap", preload: false, fallback: ["cursive"], adjustFontFallback: false });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   title: {
@@ -65,7 +71,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${rubik.variable} ${caveat.variable}`}>
       <body>
         <DynamicGradient />
-        <div className="relative z-0 min-h-[100dvh] overflow-x-hidden">
+        <div className="site-content relative z-0 min-h-[100dvh] overflow-x-hidden">
           <NavBar />
           <main>{children}</main>
           <Footer />
