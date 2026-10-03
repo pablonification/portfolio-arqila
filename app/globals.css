@@ -50,7 +50,7 @@ body {
   display: flex;
   align-items: center;
   width: max-content;
-  padding: 6px;
+  padding: 5px;
   gap: 2px;
 }
 
@@ -65,7 +65,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  min-height: 40px;
+  min-height: 36px;
   padding: 0 10px;
   border-radius: 999px;
   white-space: nowrap;
@@ -97,6 +97,18 @@ body {
 }
 
 .island-icon img {
+  width: 22px;
+  height: 22px;
+}
+
+.island-icon-control {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.island-icon-slot {
   width: 22px;
   height: 22px;
 }

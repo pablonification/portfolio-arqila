@@ -17,24 +17,44 @@ const navItems = [
 
 type Section = (typeof navItems)[number]["id"];
 
-// Share the same spring across the shell and selection so they settle together.
-const islandSpring = { stiffness: 360, damping: 30, mass: 1 };
+const islandSprings = {
+  shape: { stiffness: 190, damping: 20, mass: 1.15 },
+  content: { stiffness: 220, damping: 22, mass: 1 },
+  spin: { stiffness: 150, damping: 15, mass: 0.9 },
+};
+
+// Collapsed icon circle and slim pill height: content padding (5) + link (36) + padding (5).
+const COLLAPSED = 46;
+const CONTENT_INSET = 5;
 
 // Native animations keep running independently of the page's 3D render loop.
 const useIslandAnimation = <T extends HTMLElement>(
   target: Record<string, number | string>,
   reducedMotion: boolean | null,
+  motion: keyof typeof islandSprings = "shape",
+  delay = 0,
+  onComplete?: () => void,
 ) => {
   const ref = useRef<T | null>(null);
+  const completionRef = useRef(onComplete);
+  completionRef.current = onComplete;
   const keyframes = JSON.stringify(target);
   useLayoutEffect(() => {
     if (!ref.current) return;
     const animation = animate(ref.current, JSON.parse(keyframes), {
-      easing: reducedMotion ? "linear" : spring(islandSpring),
+      easing: reducedMotion ? "linear" : spring(islandSprings[motion]),
+      delay: reducedMotion ? 0 : delay,
       ...(reducedMotion ? { duration: 0 } : {}),
     });
-    return () => animation.stop();
-  }, [keyframes, reducedMotion]);
+    let cancelled = false;
+    animation.finished.then(() => {
+      if (!cancelled) completionRef.current?.();
+    }).catch(() => {});
+    return () => {
+      cancelled = true;
+      animation.stop();
+    };
+  }, [keyframes, reducedMotion, motion, delay]);
   return ref;
 };
 
@@ -47,10 +67,13 @@ const Navbar = () => {
   const pathname = usePathname();
   const reducedMotion = useReducedMotion();
   const [activeTab, setActiveTab] = useState<Section>("hola");
-  const [isRevealed, setIsRevealed] = useState(false);
+  const [entrance, setEntrance] = useState<"hidden" | "icon" | "spin" | "expanded">("hidden");
   const [iconTurns, setIconTurns] = useState(0);
   const [size, setSize] = useState({ width: 0, height: 0 });
   const [highlight, setHighlight] = useState({ x: 0, y: 0, width: 0, height: 0 });
+  const [iconWidth, setIconWidth] = useState(40);
+  const [iconHeight, setIconHeight] = useState(36);
+  const entranceStartedRef = useRef(false);
   const sectionsRef = useRef<HTMLDivElement | null>(null);
   const detailRef = useRef<HTMLDivElement | null>(null);
   const pendingScrollRef = useRef<{ section: Section; top: number } | null>(null);
@@ -63,15 +86,17 @@ const Navbar = () => {
       : "sections";
   const isDetail = mode !== "sections";
   const detailLabel = mode === "experience" ? "Experience" : "Works";
+  const isRevealed = entrance === "expanded";
+  const isVisible = entrance !== "hidden";
   const detailVisible = isRevealed && isDetail;
   const sectionsVisible = isRevealed && !isDetail;
 
   const shellRef = useIslandAnimation<HTMLDivElement>({
-    width: `${isRevealed ? size.width : 36}px`,
-    height: `${isRevealed ? size.height : 12}px`,
-    opacity: isRevealed ? 1 : 0,
-    y: isRevealed ? 0 : -18,
-    scale: isRevealed ? 1 : 0.8,
+    width: `${isRevealed ? size.width : COLLAPSED}px`,
+    height: `${isRevealed ? size.height : COLLAPSED}px`,
+    opacity: isVisible ? 1 : 0,
+    y: isVisible ? 0 : -14,
+    scale: isVisible ? 1 : 0.6,
   }, reducedMotion);
   const highlightRef = useIslandAnimation<HTMLDivElement>({
     x: highlight.x,
@@ -79,31 +104,55 @@ const Navbar = () => {
     width: `${highlight.width}px`,
     height: `${highlight.height}px`,
     opacity: isRevealed ? 1 : 0,
-  }, reducedMotion);
+  }, reducedMotion, "shape", isRevealed ? 0.12 : 0);
   const detailAnimationRef = useIslandAnimation<HTMLDivElement>({
     opacity: detailVisible ? 1 : 0,
-    y: detailVisible ? 0 : -5,
-    filter: detailVisible || reducedMotion ? "blur(0px)" : "blur(5px)",
-  }, reducedMotion);
+    y: detailVisible ? 0 : -8,
+    filter: detailVisible || reducedMotion ? "blur(0px)" : "blur(7px)",
+  }, reducedMotion, "content", detailVisible ? 0.12 : 0);
   const sectionsAnimationRef = useIslandAnimation<HTMLDivElement>({
     opacity: sectionsVisible ? 1 : 0,
-    y: sectionsVisible ? 0 : 5,
-    filter: sectionsVisible || reducedMotion ? "blur(0px)" : "blur(5px)",
+    y: sectionsVisible ? 0 : 8,
+    filter: sectionsVisible || reducedMotion ? "blur(0px)" : "blur(7px)",
+  }, reducedMotion, "content", sectionsVisible ? 0.12 : 0);
+  const iconLinkRef = useIslandAnimation<HTMLAnchorElement>({
+    x: isRevealed ? CONTENT_INSET : (COLLAPSED - iconWidth) / 2,
+    y: isRevealed ? CONTENT_INSET : (COLLAPSED - iconHeight) / 2,
+    opacity: isVisible && (!isRevealed || !isDetail) ? 1 : 0,
   }, reducedMotion);
   const iconRef = useIslandAnimation<HTMLSpanElement>({
     rotate: reducedMotion ? 0 : iconTurns * 360,
-  }, reducedMotion);
+  }, reducedMotion, "spin", 0, () => {
+    // Expand only when the staged opening spin has actually settled.
+    if (entrance === "spin") setEntrance("expanded");
+  });
 
+  // Strictly sequential entrance: shell pops in with a static icon, the spin
+  // starts only after the icon is on screen, and the pill expands last.
   // The shared root layout keeps this state alive during client-side navigation.
   useEffect(() => {
-    const timer = window.setTimeout(() => setIsRevealed(true), reducedMotion ? 0 : 180);
-    return () => window.clearTimeout(timer);
+    if (reducedMotion) {
+      setEntrance("expanded");
+      return;
+    }
+    if (entranceStartedRef.current) return;
+    entranceStartedRef.current = true;
+    const reveal = window.setTimeout(() => setEntrance("icon"), 180);
+    const spin = window.setTimeout(() => {
+      setEntrance("spin");
+      setIconTurns(1);
+    }, 780);
+    return () => {
+      window.clearTimeout(reveal);
+      window.clearTimeout(spin);
+    };
   }, [reducedMotion]);
 
   useLayoutEffect(() => {
     // Keep both layers mounted so fast route changes never replace measured nodes.
     if (sectionsRef.current) sectionsRef.current.inert = !isRevealed || isDetail;
     if (detailRef.current) detailRef.current.inert = !isRevealed || !isDetail;
+    if (iconLinkRef.current) iconLinkRef.current.inert = !isRevealed || isDetail;
     const content = isDetail ? detailRef.current : sectionsRef.current;
     if (!content) return;
     let disposed = false;
@@ -112,6 +161,10 @@ const Navbar = () => {
       if (disposed) return;
       // Read layout sizes, not transformed bounds: the content can be mid-animation.
       setSize({ width: content.offsetWidth, height: content.offsetHeight });
+      if (iconLinkRef.current) {
+        setIconWidth(iconLinkRef.current.offsetWidth);
+        setIconHeight(iconLinkRef.current.offsetHeight);
+      }
       const target = content.querySelector<HTMLElement>("[data-active='true']");
       if (target) {
         setHighlight({
@@ -215,17 +268,34 @@ const Navbar = () => {
 
 
   return (
-    <nav aria-label="Main navigation" className="island-nav font-inter">
+    <nav aria-label="Main navigation" className="island-nav font-inter" data-entrance={entrance}>
       <div
         ref={shellRef}
         className="island-shell"
-        style={{ width: 36, height: 12, opacity: 0, pointerEvents: isRevealed ? "auto" : "none" }}
+        style={{ width: COLLAPSED, height: COLLAPSED, opacity: 0, pointerEvents: isRevealed ? "auto" : "none" }}
       >
         <div
           ref={highlightRef}
           aria-hidden="true"
           className="island-highlight"
         />
+
+        <Link
+          ref={iconLinkRef}
+          href="/#hola"
+          aria-label="Back to top"
+          aria-hidden={!isRevealed || isDetail}
+          className="island-link island-icon island-icon-control"
+          style={{ opacity: 0, pointerEvents: isRevealed && !isDetail ? "auto" : "none" }}
+          onClick={(event) => {
+            scrollToSection(event, "hola");
+            setIconTurns((turns) => turns + 1);
+          }}
+        >
+          <span ref={iconRef}>
+            <Image src="/iconamoon_confused-face-fill.svg" alt="" width={24} height={24} priority />
+          </span>
+        </Link>
 
         <div
           ref={(element) => { detailRef.current = element; detailAnimationRef.current = element; }}
@@ -255,19 +325,9 @@ const Navbar = () => {
           aria-hidden={!sectionsVisible}
           style={{ opacity: 0, pointerEvents: sectionsVisible ? "auto" : "none" }}
         >
-          <Link
-            href="/#hola"
-            aria-label="Back to top"
-            className="island-link island-icon"
-            onClick={(event) => {
-              scrollToSection(event, "hola");
-              setIconTurns((turns) => turns + 1);
-            }}
-          >
-            <span ref={iconRef}>
-              <Image src="/iconamoon_confused-face-fill.svg" alt="" width={24} height={24} />
-            </span>
-          </Link>
+          <span className="island-link island-icon" aria-hidden="true">
+            <span className="island-icon-slot" />
+          </span>
           {navItems.map(({ id, name }) => (
             <Link
               key={id}
