@@ -45,10 +45,9 @@ const techStack: TechStackItem[] = [
   { name: "Clerk", src: "/tech/rounded/clerk.png.svg", width: 256, height: 256 },
   { name: "Resend", src: "/tech/rounded/resend.png.svg", width: 180, height: 180 },
   { name: "Fonnte", src: "/tech/rounded/fonnte.png.svg", width: 300, height: 300 },
-  { name: "Xendit", src: "/tech/rounded/xendit.png.svg", width: 256, height: 256 },
+  { name: "Xendit", src: "/optimized/xendit-59210b3a091f6280.webp", width: 128, height: 128 },
   { name: "Mayar", src: "/tech/rounded/mayar.png.svg", width: 362, height: 363 },
   { name: "Midtrans", src: "/tech/midtrans.svg", width: 28, height: 30 },
-  { name: "IFTTT", src: "/tech/rounded/ifttt.svg.svg", width: 32, height: 32 },
 ];
 
 const TechStackCard: React.FC = () => {
